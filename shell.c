@@ -10,8 +10,8 @@ void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
 	char *split = strtok(cmd, " ");
 	char mainCmd[20];
-	char flags[20][20];
-	int flagCounter = 0;
+	char flag1[20];
+	char flag2[20];
 
 	// if (cmd[strlen(cmd)-1] == '\n') {
 	// 	cmd[strlen(cmd)-1] = '\0';
@@ -23,18 +23,18 @@ void command(char cmd[]) {
 			strcpy(mainCmd, split);
 		}
 		else {
-			strcpy(flags[flagCounter], split);
-			flagCounter++;
+			if (strlen(flag1) == 0) {
+				strcpy(flag1, split);
+			}
+			else {
+				strcpy(flag2, split);
+			}
 		}
 		split = strtok(NULL, " ");
 	}
 
 	printf("Main command: %s\n", mainCmd);
-	printf("Flags: ");
-	for (int i=0; i<strlen(flags); i++) {
-		printf("%s ", flags[i]);
-	}
-	printf("\n");
+	printf("Flags: %s %s\n", flag1, flag2);
 }
 
 void shell() {

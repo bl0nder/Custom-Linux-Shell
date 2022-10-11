@@ -10,8 +10,10 @@ void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
 	char *test = strtok(cmd, " ");
 
-	printf("First part of the split: %s", test);
-	printf("Second part (?) of the split: %s", cmd);
+	while (test != NULL) {
+		printf("%s ", test);
+		test = strtok(NULL, " ");
+	}
 }
 
 void shell() {

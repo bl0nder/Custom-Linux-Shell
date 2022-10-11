@@ -32,7 +32,7 @@ void executeCommand(char cmd[], char* split) {
 	char flag2[10] = "\0";
 		
 
-	while(strlen(flag1) == 0 || strlen(flag2) == 0) {
+	while(split!=NULL && (trlen(flag1) == 0 || strlen(flag2) == 0)) {
 		//All flags start with a hyphen
 		if (split[0] == '-') {
 			

@@ -31,7 +31,10 @@ void executeCommand(char cmd[], char* split) {
 	char flag1[10] = "\0";
 	char flag2[10] = "\0";
 		
-	while(1) {	
+	printf("Split: %s\n", split);
+
+	while(1) {
+
 		//All flags start with a hyphen
 		if (split[0] == '-') {
 

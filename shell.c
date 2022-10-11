@@ -39,10 +39,12 @@ void executeCommand(char cmd[], char* split) {
 			printf("Flag!\n");
 			
 			if (split[strlen(split)-1] == '\n') {
+				printf("Newline found\n");
 				split[strlen(split)-1] = '\0';
+				printf("%s\n", split);
 			}
 
-			
+
 			//Check whether this flag is flag1 or flag2 by checking if length of flag1 is 0 or not
 			if (strlen(flag1) == 0) {
 				//Copy -x (x can be anything) to flag1

@@ -18,6 +18,7 @@ void executeCommand(char cmd[], char flag1[], char flag2[]) {
 	}
 	else {
 		printf("Unknown command\n");
+		printf("%s\n", cmd);
 	}
 }
 

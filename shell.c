@@ -6,6 +6,21 @@
 
 const int maxChar = 1000;
 
+void executeCommand(char cmd[]) {
+	if (strcmp(cmd, "cd") == 0) {
+		printf("You're trying to change directory!\n");
+	}
+	else if (strcmp(cmd, "pwd") == 0) {
+		printf("You're trying to print the path to working directory!\n");
+	}
+	else if (strcmp(cmd, "echo") == 0) {
+		printf("You're trying to write something to the console!\n");
+	}
+	else {
+		printf("Unknown command\n");
+	}
+}
+
 void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
 	char *split = strtok(cmd, " ");
@@ -34,7 +49,7 @@ void command(char cmd[]) {
 	}
 
 	printf("Main command: %s\n", mainCmd);
-	printf("Flags:%s%s\n", flag1, flag2);
+	printf("Flags: %s %s\n", flag1, flag2);
 }
 
 void shell() {

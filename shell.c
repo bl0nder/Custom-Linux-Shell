@@ -11,7 +11,7 @@ void command(char cmd[]) {
 void shell() {
 	char cmd[100];	 
 	int counter = 0;
-	while (counter < 0) {
+	while (counter < 1) {
 		printf("bl0nderShell> ");
 		command(cmd);
 		counter++;

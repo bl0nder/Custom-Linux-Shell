@@ -7,29 +7,83 @@
 
 const int maxChar = 1000;
 
-void cd(char* split) {
-	while(split != NULL) {
-		if (split[0] == '-') {
-			printf("FLAG FOUND\n");
-		}
-		split = strtok(NULL, " ");
+void echo(char* split, char flag1[], char flag2[]) {
+	//flags -> Upper case (-u) & Meme case (-m)
+	
+	if (strlen(flag1) == 0) {
+
 	}
+	
+	if (strcmp(flag1, "-u") == 0) {
+		printf("-u flag detected as first flag\n");
+	}
+	else if (strcmp(flag1, "-m") == 0) {
+		printf("-m flag detected as first flag\n");
+	}
+
+	
 }
 
 void executeCommand(char cmd[], char* split) {
+	
+	char flag1[10] = "\0";
+	char flag2[10] = "\0";
+		
+	while(1) {	
+
+		if (strlen(split) == 0) {
+			break;
+		}
+
+		else {
+			//All flags start with a hyphen
+			if (split[0] == '-') {
+
+				//Check whether this flag is flag1 or flag2 by checking if length of flag1 is 0 or not
+				if (strlen(flag1) == 0) {
+					//Copy -x (x can be anything) to flag1
+					strcpy(flag1, split);
+				}
+				
+				else {
+					//Copy -x (x can be anything) to flag2
+					strcpy(flag2, split);
+				}
+				
+				//Go to next split
+				split = strtok(NULL, " ");
+			}
+
+			else {
+				break;
+			}
+		}
+
+	}
+
+	//Exit shell
 	if (strcmp(cmd, "exit") == 0) {
 		exit(0);
 	}
+
+	//cd - change directory
 	else if (strcmp(cmd, "cd") == 0) {
 		printf("You're trying to change directory!\n");
-		cd(split);
+	
 	}
+
+	//pwd - path to working directory
 	else if (strcmp(cmd, "pwd") == 0) {
 		printf("You're trying to print the path to working directory!\n");
 	}
+
+	//echo 
 	else if (strcmp(cmd, "echo") == 0) {
+		echo(split, flag1, flag2);
 		printf("You're trying to write something to the console!\n");
 	}
+
+	//unknown command
 	else {
 		printf("Unknown command\n");
 		printf("%s\n", cmd);

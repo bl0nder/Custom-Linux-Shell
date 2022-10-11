@@ -14,6 +14,8 @@ void command(char cmd[]) {
 		printf("Last element is a newline :(\n");
 	}
 
+	printf("Second to last element is: %s\n", cmd[strlen(cmd)-2]);
+
 	// while (test != NULL) {
 	// 	if ((*test) != '\n') {
 	// 		printf("%s ", test);

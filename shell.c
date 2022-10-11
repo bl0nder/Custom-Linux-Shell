@@ -10,9 +10,11 @@ const int maxChar = 1000;
 void echo(char* split, char flag1[], char flag2[]) {
 	//flags -> Upper case (-u) & Meme case (-m)
 	
-	if (strlen(flag1) == 0) {
+	printf("%s %s\n", flag1, flag2);
 
-	}
+	// if (strlen(flag1) == 0) {
+
+	// }
 	
 	if (strcmp(flag1, "-u") == 0) {
 		printf("-u flag detected as first flag\n");

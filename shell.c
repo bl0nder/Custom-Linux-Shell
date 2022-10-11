@@ -4,29 +4,21 @@
 #include <sys/wait.h>
 
 int main() {
-	pid_t pid;
-
-	pid = fork();
-
-	const char* binaryPath = "/bin/ls";
-	const char* arg1 = "-la";
-	const char* arg2 = "/home/bl0nder/a0";
-
-	if (pid < 0) {
-		fprintf(stderr, "Error occurred :(");
-		return 1;
-	}
-
-	else if (pid == 0) {
-		printf("I am a child with ID %d\n", getpid());
-		printf("My parent process has ID %d\n", getppid());
-		execl(binaryPath, binaryPath, arg1, arg2, NULL);
-	}
-
-	else {
-		wait(NULL);
-		printf("Child complete!\n");
-	}
-
+	shell();
 	return 0;
+}
+
+void shell() {
+	char* cmd[10];	 
+	int counter = 0;
+	while (counter < 0) {
+		printf("bl0nderShell> ");
+		command(cmd);
+		counter++;
+	}
+}
+
+void command(char* cmd[]) {
+	gets(cmd);	//gets is better than scanf since scanf stops reading input when it encouters whitespace
+	printf("Here is what you entered: %s", cmd);
 }

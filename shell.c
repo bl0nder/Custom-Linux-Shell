@@ -30,35 +30,27 @@ void executeCommand(char cmd[], char* split) {
 	char flag2[10] = "\0";
 		
 	while(1) {	
+		//All flags start with a hyphen
+		if (split[0] == '-') {
 
-		if (strlen(split) == 0) {
-			break;
+			//Check whether this flag is flag1 or flag2 by checking if length of flag1 is 0 or not
+			if (strlen(flag1) == 0) {
+				//Copy -x (x can be anything) to flag1
+				strcpy(flag1, split);
+			}
+			
+			else {
+				//Copy -x (x can be anything) to flag2
+				strcpy(flag2, split);
+			}
+			
+			//Go to next split
+			split = strtok(NULL, " ");
 		}
 
 		else {
-			//All flags start with a hyphen
-			if (split[0] == '-') {
-
-				//Check whether this flag is flag1 or flag2 by checking if length of flag1 is 0 or not
-				if (strlen(flag1) == 0) {
-					//Copy -x (x can be anything) to flag1
-					strcpy(flag1, split);
-				}
-				
-				else {
-					//Copy -x (x can be anything) to flag2
-					strcpy(flag2, split);
-				}
-				
-				//Go to next split
-				split = strtok(NULL, " ");
-			}
-
-			else {
-				break;
-			}
+			break;
 		}
-
 	}
 
 	//Exit shell

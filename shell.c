@@ -120,7 +120,7 @@ void command(char cmd[]) {
  
 	// printf("Main command: %s\n", mainCmd);
 	// printf("Flags: %s %s\n", flag1, flag2);
-
+	split = strtok(NULL, " ");
 	executeCommand(mainCmd, split);
 }
 

@@ -10,7 +10,7 @@ void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
 	char *split = strtok(cmd, " ");
 	char mainCmd[20];
-	char flags[5][20];
+	char flags[20][20];
 	int flagCounter = 0;
 
 	// if (cmd[strlen(cmd)-1] == '\n') {

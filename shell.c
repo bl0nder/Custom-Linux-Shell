@@ -6,7 +6,7 @@
 
 const int maxChar = 1000;
 
-void executeCommand(char cmd[]) {
+void executeCommand(char cmd[], char flag1, char flag2) {
 	if (strcmp(cmd, "cd") == 0) {
 		printf("You're trying to change directory!\n");
 	}
@@ -50,6 +50,8 @@ void command(char cmd[]) {
 
 	printf("Main command: %s\n", mainCmd);
 	printf("Flags: %s %s\n", flag1, flag2);
+
+	executeCommand(mainCmd, flag1, flag2);
 }
 
 void shell() {

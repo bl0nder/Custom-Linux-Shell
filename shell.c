@@ -30,7 +30,11 @@ void command(char cmd[]) {
 	}
 
 	printf("Main command: %s\n", mainCmd);
-	printf("Flags: %s\n", flags);
+	printf("Flags: ");
+	for (int i=0; i<strlen(flags); i++) {
+		printf("%s ", flags[i]);
+	}
+	printf("\n");
 }
 
 void shell() {

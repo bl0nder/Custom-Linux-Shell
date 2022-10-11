@@ -10,29 +10,12 @@ void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
 	// char *test = strtok(cmd, " ");
 
-	for (int i=0; i<strlen(cmd); i++) {
-		char c = cmd[i];
+	// if (cmd[strlen(cmd)-1] == '\n') {
+	// 	cmd[strlen(cmd)-1] = '\0';
+	// }
 
-		char mainCmd[20] = "";
-		char flags[20] = "";
 
-		if (c == ' ' || c == '\n') {
-			continue;
-		}
-
-		else {
-			if (strlen(mainCmd) == 0) {
-				mainCmd[strlen(mainCmd)-1] = c;
-			}
-			else {
-				flags[strlen(flags)-1] = c;
-			}
-		}
-
-		printf("Main command: %s\n", mainCmd);
-		printf("Flags: %s\n", flags);
-
-	}
+	printf("Test: %d\n", strcmp("         ", ""));
 
 	// while (test != NULL) {
 	// 	if ((*test) != '\n') {

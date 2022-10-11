@@ -6,7 +6,7 @@
 
 const int maxChar = 1000;
 
-void executeCommand(char cmd[], char flag1[], char flag2[]) {
+void executeCommand(char cmd[]) {
 	if (strcmp(cmd, "cd") == 0) {
 		printf("You're trying to change directory!\n");
 	}
@@ -26,33 +26,38 @@ void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
 	char *split = strtok(cmd, " ");
 	char mainCmd[20] = "\0";
-	char flag1[20] = "\0";
-	char flag2[20] = "\0";
+	// char flag1[20] = "\0";
+	// char flag2[20] = "\0";
 
+	//Removing trailing newline character
 	if (strlen(cmd) > 0 && cmd[strlen(cmd)-1] == '\n') {
 		cmd[strlen(cmd)-1] = '\0';
 	}
 
-
-	while (split != NULL) {
-		if (strlen(mainCmd) == 0) {
-			strcpy(mainCmd, split);
-		}
-		else {
-			if (strlen(flag1) == 0) {
-				strcpy(flag1, split);
-			}
-			else {
-				strcpy(flag2, split);
-			}
-		}
-		split = strtok(NULL, " ");
+	//Extracting main command name and passing to executeCommand()
+	if (strlen(mainCmd) == 0) {
+		strcpy(mainCmd, split);
 	}
 
+	// while (split != NULL) {
+	// 	if (strlen(mainCmd) == 0) {
+	// 		strcpy(mainCmd, split);
+	// 	}
+	// 	// else {
+	// 	// 	if (strlen(flag1) == 0) {
+	// 	// 		strcpy(flag1, split);
+	// 	// 	}
+	// 	// 	else {
+	// 	// 		strcpy(flag2, split);
+	// 	// 	}
+	// 	// }
+	// 	split = strtok(NULL, " ");
+	// }
+ 
 	printf("Main command: %s\n", mainCmd);
-	printf("Flags: %s %s\n", flag1, flag2);
+	// printf("Flags: %s %s\n", flag1, flag2);
 
-	executeCommand(mainCmd, flag1, flag2);
+	executeCommand(mainCmd);
 }
 
 void shell() {

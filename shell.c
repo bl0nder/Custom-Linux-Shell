@@ -49,7 +49,7 @@ void command(char cmd[]) {
 		split = strtok(NULL, " ");
 	}
 
-	printf("Main command: %s\n", mainCmd);
+	printf("Main command: %s", mainCmd);
 	printf("Flags: %s %s\n", flag1, flag2);
 
 	executeCommand(mainCmd, flag1, flag2);

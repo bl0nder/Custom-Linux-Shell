@@ -13,8 +13,8 @@ void command(char cmd[]) {
 	for (int i=0; i<strlen(cmd); i++) {
 		char c = cmd[i];
 
-		char mainCmd[20] = "";
-		char flags[20]= "";
+		char mainCmd[20] = "\0";
+		char flags[20] = "\0";
 
 		if (c == ' ' || c == '\n') {
 			continue;
@@ -22,10 +22,10 @@ void command(char cmd[]) {
 
 		else {
 			if (strlen(mainCmd) == 0) {
-				mainCmd += c;
+				mainCmd[strlen(mainCmd)-1] = c;
 			}
 			else {
-				flags += c;
+				flags[strlen(flags)-1] = c;
 			}
 		}
 

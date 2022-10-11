@@ -33,15 +33,12 @@ void executeCommand(char cmd[], char* split) {
 		
 
 	while(strlen(flag1) == 0 || strlen(flag2) == 0) {
-		printf("Split: %s\n", split);
 		//All flags start with a hyphen
 		if (split[0] == '-') {
-			printf("Flag!\n");
 			
+			//Remove newline character from end of split (if it exists)
 			if (split[strlen(split)-1] == '\n') {
-				printf("Newline found\n");
 				split[strlen(split)-1] = '\0';
-				printf("%s", split);
 			}
 
 

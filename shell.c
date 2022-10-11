@@ -29,9 +29,9 @@ void command(char cmd[]) {
 	char flag1[20] = "\0";
 	char flag2[20] = "\0";
 
-	// if (cmd[strlen(cmd)-1] == '\n') {
-	// 	cmd[strlen(cmd)-1] = '\0';
-	// }
+	if (strlen(cmd) > 0 && cmd[strlen(cmd)-1] == '\n') {
+		cmd[strlen(cmd)-1] = '\0';
+	}
 
 
 	while (split != NULL) {

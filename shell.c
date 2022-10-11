@@ -23,8 +23,8 @@ void command(char cmd[]) {
 			strcpy(mainCmd, split);
 		}
 		else {
-			flags[counter] = split;
-			counter++;
+			flags[flagCounter] = split;
+			flagCounter++;
 		}
 		split = strtok(NULL, " ");
 	}

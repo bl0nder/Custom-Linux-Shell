@@ -10,11 +10,29 @@ void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
 	// char *test = strtok(cmd, " ");
 
-	if (cmd[strlen(cmd)-1] == '\n') {
-		printf("Last element is a newline :(\n");
-	}
+	for (int i=0; i<strlen(cmd); i++) {
+		char c = cmd[i];
 
-	printf("Second to last element is: %c\n", cmd[strlen(cmd)-2]);
+		char mainCmd[20] = "";
+		char flags[20]= "";
+
+		if (c == ' ' || c == '\n') {
+			continue;
+		}
+
+		else {
+			if (strlen(mainCmd) == 0) {
+				mainCmd += c;
+			}
+			else {
+				flags += c;
+			}
+		}
+
+		printf("Main command: %s\n", mainCmd);
+		printf("Flags: %s\n", flags);
+
+	}
 
 	// while (test != NULL) {
 	// 	if ((*test) != '\n') {

@@ -7,6 +7,7 @@
 const int maxChar = 1000;
 
 void cd(char* split) {
+	char flags[];
 	while(split != NULL) {
 		if (split[0] == '-') {
 			printf("FLAG FOUND\n");
@@ -16,7 +17,10 @@ void cd(char* split) {
 }
 
 void executeCommand(char cmd[], char* split) {
-	if (strcmp(cmd, "cd") == 0) {
+	if (strcmp(cmd, "exit") == 0) {
+		exit(0);
+	}
+	else if (strcmp(cmd, "cd") == 0) {
 		printf("You're trying to change directory!\n");
 		cd(split);
 	}
@@ -44,7 +48,6 @@ void command(char cmd[]) {
 		cmd[strlen(cmd)-1] = '\0';
 	}
 
-	//Extracting main command name and passing to executeCommand()
 	if (strlen(mainCmd) == 0) {
 		strcpy(mainCmd, split);
 	}
@@ -71,12 +74,10 @@ void command(char cmd[]) {
 }
 
 void shell() {
-	char cmd[maxChar];	 
-	int counter = 0;
-	while (counter < 1) {
+	char cmd[maxChar];
+	while (1) {
 		printf("bl0nderShell> ");
 		command(cmd);
-		counter++;
 	}
 }
 

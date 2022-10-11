@@ -11,7 +11,7 @@ void command(char cmd[]) {
 	char *test = strtok(cmd, " ");
 
 	while (test != NULL) {
-		if (test == '\n') {
+		if ((*test) == '\n') {
 			printf("%s ", test);
 			test = strtok(NULL, " ");	
 		}

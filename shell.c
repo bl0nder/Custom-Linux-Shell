@@ -19,7 +19,7 @@ void echo(char* split, char flag1[], char flag2[]) {
 	if (strcmp(flag1, "-u") == 0) {
 		printf("-u flag detected as first flag\n");
 	}
-	else if (strcmp(flag1, "-m") == 0) {
+	else if (strcmp(flag2, "-m") == 0) {
 		printf("-m flag detected as first flag\n");
 	}
 

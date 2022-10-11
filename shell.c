@@ -2,14 +2,20 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <string.h>
+
+const int maxChar = 1000;
 
 void command(char cmd[]) {
-	fgets(cmd, 100, stdin);	//gets is better than scanf since scanf stops reading input when it encouters whitespace
-	printf("Here is what you entered: %s", cmd);
+	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
+	char *test = strtok(cmd, " ");
+
+	printf("First part of the split: %s", test);
+	printf("Second part (?) of the split: %s", cmd);
 }
 
 void shell() {
-	char cmd[100];	 
+	char cmd[maxChar];	 
 	int counter = 0;
 	while (counter < 1) {
 		printf("bl0nderShell> ");

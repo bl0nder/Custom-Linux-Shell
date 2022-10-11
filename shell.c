@@ -4,7 +4,7 @@
 #include <sys/wait.h>
 
 void command(char* cmd[]) {
-	fgets(cmd, sizeof(cmd), stdin);	//gets is better than scanf since scanf stops reading input when it encouters whitespace
+	fgets(&cmd, sizeof(cmd), stdin);	//gets is better than scanf since scanf stops reading input when it encouters whitespace
 	printf("Here is what you entered: %s", cmd);
 }
 

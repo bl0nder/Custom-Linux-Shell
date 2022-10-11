@@ -8,14 +8,18 @@ const int maxChar = 1000;
 
 void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
-	char *test = strtok(cmd, " ");
+	// char *test = strtok(cmd, " ");
 
-	while (test != NULL) {
-		if ((*test) != '\n') {
-			printf("%s ", test);
-			test = strtok(NULL, " ");	
-		}
+	if (cmd[strlen(cmd)-1] == '\n') {
+		printf("Last element is a newline :(\n");
 	}
+
+	// while (test != NULL) {
+	// 	if ((*test) != '\n') {
+	// 		printf("%s ", test);
+	// 		test = strtok(NULL, " ");	
+	// 	}
+	// }
 }
 
 void shell() {

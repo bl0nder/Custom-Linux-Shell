@@ -6,7 +6,7 @@
 
 const int maxChar = 1000;
 
-void executeCommand(char cmd[], char flag1, char flag2) {
+void executeCommand(char cmd[], char[] flag1, char[] flag2) {
 	if (strcmp(cmd, "cd") == 0) {
 		printf("You're trying to change directory!\n");
 	}

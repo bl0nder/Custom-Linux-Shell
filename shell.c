@@ -6,9 +6,19 @@
 
 const int maxChar = 1000;
 
-void executeCommand(char cmd[]) {
+void cd(char* split) {
+	while(split != NULL) {
+		if (split[0] == '-') {
+			printf("FLAG FOUND\n");
+		}
+		split = strtok(NULL, " ");
+	}
+}
+
+void executeCommand(char cmd[], char* split) {
 	if (strcmp(cmd, "cd") == 0) {
 		printf("You're trying to change directory!\n");
+		cd(split);
 	}
 	else if (strcmp(cmd, "pwd") == 0) {
 		printf("You're trying to print the path to working directory!\n");
@@ -54,10 +64,10 @@ void command(char cmd[]) {
 	// 	split = strtok(NULL, " ");
 	// }
  
-	printf("Main command: %s\n", mainCmd);
+	// printf("Main command: %s\n", mainCmd);
 	// printf("Flags: %s %s\n", flag1, flag2);
 
-	executeCommand(mainCmd);
+	executeCommand(mainCmd, split);
 }
 
 void shell() {

@@ -20,10 +20,10 @@ void command(char cmd[]) {
 
 	while (split != NULL) {
 		if (strlen(mainCmd) == 0) {
-			mainCmd = split;
+			strcpy(mainCmd, split);
 		}
 		else {
-			flag[counter] = split;
+			flags[counter] = split;
 			counter++;
 		}
 		split = strtok(NULL, " ");

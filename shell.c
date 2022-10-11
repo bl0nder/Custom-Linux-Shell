@@ -8,7 +8,6 @@
 const int maxChar = 1000;
 
 void cd(char* split) {
-	char flags[];
 	while(split != NULL) {
 		if (split[0] == '-') {
 			printf("FLAG FOUND\n");

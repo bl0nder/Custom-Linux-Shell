@@ -14,8 +14,7 @@ void command(char cmd[]) {
 	// 	cmd[strlen(cmd)-1] = '\0';
 	// }
 
-
-	printf("Test: %d\n", strcmp("", ""));
+	printf("%d\n", strlen("                    "));
 
 	// while (test != NULL) {
 	// 	if ((*test) != '\n') {

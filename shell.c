@@ -41,7 +41,7 @@ void executeCommand(char cmd[], char* split) {
 			if (split[strlen(split)-1] == '\n') {
 				printf("Newline found\n");
 				split[strlen(split)-1] = '\0';
-				printf("%s\n", split);
+				printf("%s", split);
 			}
 
 

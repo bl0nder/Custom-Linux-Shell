@@ -9,10 +9,11 @@ const int maxChar = 1000;
 
 void echo_u(char* split) {
 	while (split != NULL) {
-		
+
 		for (int i=0; i<strlen(split); i++) {
 			if (split[i] >= 'a' && split[i] <= 'z') {
 				split[i] -= 32;
+				printf("%c", split[i]);
 			}
 		}
 
@@ -20,7 +21,7 @@ void echo_u(char* split) {
 			printf("%s ", split);
 		}
 		else {
-			printf("\n");
+			printf("%s", split);
 		}
 		split = strtok(NULL, " ");
 	}

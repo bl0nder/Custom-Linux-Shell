@@ -81,6 +81,10 @@ void echo(char* split, char flag1[], char flag2[]) {
 	if (strlen(flag1) != 0) {
 		if (strcmp(flag1, "-u") == 0) {
 			echo_u(split, strlen(flag2) == 0);
+			while (split != NULL) {
+				printf("%s\n", split);
+				split = strtok(NULL, " ");
+			}
 		}
 		else if (strcmp(flag1, "-m") == 0) {
 			echo_m(split, strlen(flag2) == 0);
@@ -181,10 +185,6 @@ void executeCommand(char cmd[], char* split) {
 
 	//echo 
 	else if (strcmp(cmd, "echo") == 0) {
-		while (split != NULL) {
-			printf("%s\n", split);
-			split = strtok(NULL, " ");
-		}
 		echo(split, flag1, flag2);
 	}
 

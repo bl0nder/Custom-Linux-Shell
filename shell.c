@@ -235,7 +235,7 @@ void shell(int argc, char* argv) {
 	char cmd[maxChar];
 	while (1) {
 		printf("bl0nderShell> ");
-		command(cmd);
+		command(cmd, argc, argv);
 	}
 }
 

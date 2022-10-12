@@ -7,7 +7,7 @@
 
 const int maxChar = 1000;
 
-void echo_u(char* split) {
+void echo_u(char* split, int print) {
 	while (split != NULL) {
 
 		for (int i=0; i<strlen(split); i++) {
@@ -26,7 +26,7 @@ void echo_u(char* split) {
 	}
 }
 
-void echo_m(char* split) {
+void echo_m(char* split, int print) {
 	while (split != NULL) {
 		for (int i=0; i<strlen(split); i+=2) {
 			if (split[i] >= 'a' && split[i] <= 'z') {
@@ -34,12 +34,15 @@ void echo_m(char* split) {
 			}
 		}
 
-		if (split[strlen(split)-1] != '\n')  {	
-			printf("%s ", split);
+		if (print) {
+			if (split[strlen(split)-1] != '\n')  {	
+				printf("%s ", split);
+			}
+			else {
+				printf("%s", split);
+			}
 		}
-		else {
-			printf("%s", split);
-		}
+		
 		split = strtok(NULL, " ");
 
 	}
@@ -54,10 +57,10 @@ void echo(char* split, char flag1[], char flag2[]) {
 	//Detect first flag
 	if (strlen(flag1) != 0) {
 		if (strcmp(flag1, "-u") == 0) {
-			echo_u(split);
+			echo_u(split, strlen(flag2) != 0);
 		}
 		else if (strcmp(flag1, "-m") == 0) {
-			echo_m(split);
+			echo_m(split, strlen(flag2) != 0);
 		}
 		else {
 			printf("Unrecognised flag %s\n", flag1);
@@ -66,10 +69,10 @@ void echo(char* split, char flag1[], char flag2[]) {
 		//Detect second flag - Second flag can exist only if first flag exists
 		if (strlen(flag2) != 0 && strcmp(flag1, flag2) != 0) {
 			if (strcmp(flag2, "-u") == 0) {
-				echo_u(split);
+				echo_u(split, 1);
 			}
 			else if (strcmp(flag2, "-m") == 0) {
-				echo_m(split);
+				echo_m(split, 1);
 			}
 			else {
 				printf("Unrecognised flag %s\n", flag2);

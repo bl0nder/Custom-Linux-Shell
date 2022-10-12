@@ -39,6 +39,7 @@ void echo_u(char* split, int print) {
 void echo_m(char* split, int print) {
 	int prevCase = 0;	//0 -> lower case; 1 -> upper case
 	while (split != NULL) {
+		printf("%s", split);
 		//Toggle case
 		for (int i=0; i<strlen(split); i++) {
 			if (prevCase == 0) {

@@ -162,7 +162,7 @@ void command(char cmd[]) {
  
 	// printf("Main command: %s\n", mainCmd);
 	// printf("Flags: %s %s\n", flag1, flag2);
-	split = strtok(NULL, "-");
+	// split = strtok(NULL, "-");
 	printf("TestL %s\n", split);
 	// executeCommand(mainCmd, split);
 }

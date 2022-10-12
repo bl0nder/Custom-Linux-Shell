@@ -51,7 +51,7 @@ void echo(char* split, char flag1[], char flag2[]) {
 	else {
 		//Need to run while loop since input string might have whitespace 
 		while (split != NULL) {
-			printf("%s ", split);
+			printf("%s", split);
 			split = strtok(NULL, " ");
 		}
 	}

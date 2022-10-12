@@ -16,12 +16,15 @@ void echo_u(char* split, int print) {
 			}
 		}
 
-		if (split[strlen(split)-1] != '\n')  {	
-			printf("%s ", split);
+		if (print) {
+			if (split[strlen(split)-1] != '\n')  {	
+				printf("%s ", split);
+			}
+			else {
+				printf("%s", split);
+			}
 		}
-		else {
-			printf("%s", split);
-		}
+
 		split = strtok(NULL, " ");
 	}
 }
@@ -42,7 +45,7 @@ void echo_m(char* split, int print) {
 				printf("%s", split);
 			}
 		}
-		
+
 		split = strtok(NULL, " ");
 
 	}
@@ -57,10 +60,10 @@ void echo(char* split, char flag1[], char flag2[]) {
 	//Detect first flag
 	if (strlen(flag1) != 0) {
 		if (strcmp(flag1, "-u") == 0) {
-			echo_u(split, strlen(flag2) != 0);
+			echo_u(split, (int) strlen(flag2) != 0);
 		}
 		else if (strcmp(flag1, "-m") == 0) {
-			echo_m(split, strlen(flag2) != 0);
+			echo_m(split, (int) strlen(flag2) != 0);
 		}
 		else {
 			printf("Unrecognised flag %s\n", flag1);

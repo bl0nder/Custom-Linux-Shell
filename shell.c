@@ -13,7 +13,7 @@ void echo(char* split, char flag1[], char flag2[]) {
 
 	
 	//Detect first flag
-	if (flag1 != NULL) {
+	if (strlen(flag1) != 0) {
 		if (strcmp(flag1, "-u") == 0) {
 			printf("-u flag detected as first flag\n");
 		}
@@ -30,7 +30,7 @@ void echo(char* split, char flag1[], char flag2[]) {
 	
 	
 	//Detect second flag
-	if (flag2 != NULL) {
+	if (strlen(flag2) != 0) {
 		if (strcmp(flag2, "-u") == 0) {
 			printf("-u flag detected as second flag\n");
 		}

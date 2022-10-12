@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <string.h>
+#include <unistd.h>
 
 const int maxChar = 1000;
 
@@ -59,8 +60,6 @@ void echo_m(char* split, int print) {
 void echo(char* split, char flag1[], char flag2[]) {
 
 	//flags -> Upper case (-u) & Meme case (-m)
-	int uFlag = 0;
-	int mFlag = 0;
 	
 	//Detect first flag
 	if (strlen(flag1) != 0) {
@@ -112,6 +111,18 @@ void echo(char* split, char flag1[], char flag2[]) {
 	}
 }
 
+void cd(char* split, char flag1[], char flag2[]) {
+
+	
+}
+
+void pwd(char* split, char flag1[], char flag2[]) {
+	char dir[100];
+
+	getcwd(dir, 100);
+	printf("%s\n", dir);
+}
+
 void executeCommand(char cmd[], char* split) {
 	
 	char flag1[10] = "\0";
@@ -156,7 +167,7 @@ void executeCommand(char cmd[], char* split) {
 	//cd - change directory
 	else if (strcmp(cmd, "cd") == 0) {
 		printf("You're trying to change directory!\n");
-	
+		cd(split, flag1, flag2);
 	}
 
 	//pwd - path to working directory

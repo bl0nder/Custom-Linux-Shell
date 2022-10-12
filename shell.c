@@ -35,7 +35,7 @@ void echo(char* split, char flag1[], char flag2[]) {
 			}
 			else if (strcmp(flag2, "-m") == 0) {
 				printf("-m flag detected as second flag\n");
-				mflag = 1;
+				mFlag = 1;
 			}
 			else {
 				printf("Unrecognised flag %s\n", flag2);

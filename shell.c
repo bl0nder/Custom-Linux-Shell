@@ -167,10 +167,6 @@ void executeCommand(char cmd[], char* split) {
 	//echo 
 	else if (strcmp(cmd, "echo") == 0) {
 		echo(split, flag1, flag2);
-		while (split != NULL) {
-			printf("%s\n", split);
-			split = strtok(NULL, " ");
-		}
 	}
 
 	//unknown command

@@ -198,7 +198,7 @@ void executeCommand(char cmd[], char* split) {
 void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
 	char *split = strtok(cmd, " ");
-	char mainCmd[20] = "\0";
+	char mainCmd[100] = "\0";
 	// char flag1[20] = "\0";
 	// char flag2[20] = "\0";
 

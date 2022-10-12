@@ -10,8 +10,8 @@ const int maxChar = 1000;
 void echo(char* split, char flag1[], char flag2[]) {
 
 	//flags -> Upper case (-u) & Meme case (-m)
-	uFlag = false;
-	mFlag = false;
+	bool uFlag = false;
+	bool mFlag = false;
 	
 	//Detect first flag
 	if (strlen(flag1) != 0) {

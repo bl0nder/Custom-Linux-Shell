@@ -8,20 +8,21 @@
 const int maxChar = 1000;
 
 void echo_u(char* split, int print) {
-	while (split != NULL) {
+	char* temp = split;
+	while (temp != NULL) {
 
-		for (int i=0; i<strlen(split); i++) {
-			if (split[i] >= 'a' && split[i] <= 'z') {
-				split[i] = split[i] - 32;
+		for (int i=0; i<strlen(temp); i++) {
+			if (temp[i] >= 'a' && temp[i] <= 'z') {
+				temp[i] -= 32;
 			}
 		}
 
 		if (print) {
-			if (split[strlen(split)-1] != '\n')  {	
-				printf("%s ", split);
+			if (split[strlen(temp)-1] != '\n')  {	
+				printf("%s ", temp);
 			}
 			else {
-				printf("%s", split);
+				printf("%s", temp);
 			}
 		}
 
@@ -32,8 +33,10 @@ void echo_u(char* split, int print) {
 		// 	printf("%s", split);
 		// }
 
-		split = strtok(NULL, " ");
+		temp = strtok(NULL, " ");
 	}
+
+	split = temp;
 }
 
 void echo_m(char* split, int print) {

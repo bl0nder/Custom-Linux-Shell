@@ -16,27 +16,23 @@ void echo_u(char* split, int print) {
 			}
 		}
 
-		// if (print) {
-		// 	if (split[strlen(split)-1] != '\n')  {	
-		// 		printf("%s ", split);
-		// 	}
-		// 	else {
-		// 		printf("%s", split);
-		// 	}
+		if (print) {
+			if (split[strlen(split)-1] != '\n')  {	
+				printf("%s ", split);
+			}
+			else {
+				printf("%s", split);
+			}
+		}
+
+		// if (split[strlen(split)-1] != '\n')  {	
+		// 	printf("%s ", split);
+		// }
+		// else {
+		// 	printf("%s", split);
 		// }
 
-		if (split[strlen(split)-1] != '\n')  {	
-			printf("%s ", split);
-		}
-		else {
-			printf("%s", split);
-		}
-
 		split = strtok(NULL, " ");
-	}
-
-	while (split != NULL) {
-		printf("%s\n", split);
 	}
 }
 
@@ -91,6 +87,10 @@ void echo(char* split, char flag1[], char flag2[]) {
 		}
 		else {
 			printf("Unrecognised flag %s\n", flag1);
+		}
+
+		while (split != NULL) {
+			printf("%s\n", split);
 		}
 
 		//Detect second flag - Second flag can exist only if first flag exists

@@ -91,6 +91,7 @@ void echo(char* split, char flag1[], char flag2[]) {
 
 		while (split != NULL) {
 			printf("%s\n", split);
+			split = strtok(NULL, " ");
 		}
 
 		//Detect second flag - Second flag can exist only if first flag exists

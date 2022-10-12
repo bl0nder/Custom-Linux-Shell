@@ -120,7 +120,14 @@ void pwd(char* split, char flag1[], char flag2[]) {
 
 void cd(char* split, char flag1[], char flag2[]) {
 	const char* path = split;
-	chdir(path);
+	int ans = chdir(path);
+
+	if (ans == 0) {
+		pwd(split, flag1, flag2);
+	}
+	else {
+		printf("oh no\n");
+	}
 }
 
 
@@ -169,7 +176,7 @@ void executeCommand(char cmd[], char* split) {
 	else if (strcmp(cmd, "cd") == 0) {
 		printf("You're trying to change directory!\n");
 		cd(split, flag1, flag2);
-		pwd(split, flag1, flag2);
+		
 	}
 
 	//pwd - print working directory

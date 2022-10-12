@@ -57,7 +57,6 @@ void echo(char* split, char flag1[], char flag2[]) {
 				split = strtok(NULL, " ");
 			}
 		}
-		printf("\n");
 	}
 }
 

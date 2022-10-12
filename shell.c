@@ -75,9 +75,6 @@ void echo(char* split, char flag1[], char flag2[]) {
 				printf("Unrecognised flag %s\n", flag2);
 			}
 		}
-		else {
-			printf("Second flag is NULL\n");
-		}
 
 	}
 

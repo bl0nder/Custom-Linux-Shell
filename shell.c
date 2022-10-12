@@ -7,6 +7,18 @@
 
 const int maxChar = 1000;
 
+void echo_u(char* split) {
+	while (split != NULL) {
+		if (split[strlen(split)-1] != '\n')  {
+			printf("%s ", split);
+		}
+		else {
+			printf("%s", split);
+		}
+		split = strtok(NULL, " ");
+	}
+}
+
 void echo(char* split, char flag1[], char flag2[]) {
 
 	//flags -> Upper case (-u) & Meme case (-m)
@@ -51,7 +63,9 @@ void echo(char* split, char flag1[], char flag2[]) {
 	else {
 		//Need to run while loop since input string might have whitespace 
 		while (split != NULL) {
-			//Cannot print newline charater like this since it will have a space after it => printing it later
+			//Handling newline character in last split since that will get printed with a space after it
+			//If newline is detected => current split is last split
+			//=> Print last split without whitespace after it
 			if (split[strlen(split)-1] != '\n')  {
 				printf("%s ", split);
 			}
@@ -118,7 +132,6 @@ void executeCommand(char cmd[], char* split) {
 	//echo 
 	else if (strcmp(cmd, "echo") == 0) {
 		echo(split, flag1, flag2);
-		printf("You're trying to write something to the console!\n");
 	}
 
 	//unknown command

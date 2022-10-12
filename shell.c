@@ -95,7 +95,7 @@ void echo(char* split, char flag1[], char flag2[]) {
 				printf("%s ", split);
 			}
 			else {
-				printf("\n", split);
+				printf("%s", split);
 			}
 			split = strtok(NULL, " ");
 		}

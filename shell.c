@@ -131,7 +131,7 @@ void executeCommand(char cmd[], char* split) {
 	
 	char flag1[10] = "\0";
 	char flag2[10] = "\0";
-		
+
 
 	while(split!=NULL && (strlen(flag1) == 0 || strlen(flag2) == 0)) {
 		//All flags start with a hyphen
@@ -181,6 +181,10 @@ void executeCommand(char cmd[], char* split) {
 
 	//echo 
 	else if (strcmp(cmd, "echo") == 0) {
+		while (split != NULL) {
+			printf("%s\n", split);
+			split = strtok(NULL, " ");
+		}
 		echo(split, flag1, flag2);
 	}
 

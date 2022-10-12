@@ -11,11 +11,6 @@ void echo(char* split, char flag1[], char flag2[]) {
 
 	//flags -> Upper case (-u) & Meme case (-m)
 
-	printf("%s %s\n", flag1, flag2);
-
-	// if (strlen(flag1) == 0) {
-
-	// }
 	
 	//Detect first flag
 	if (flag1 != NULL) {
@@ -28,6 +23,9 @@ void echo(char* split, char flag1[], char flag2[]) {
 		else {
 			printf("Unrecognised flag %s\n", flag1);
 		}
+	}
+	else {
+		printf("First flag is NULL\n");
 	}
 	
 	
@@ -42,6 +40,9 @@ void echo(char* split, char flag1[], char flag2[]) {
 		else {
 			printf("Unrecognised flag %s\n", flag2);
 		}
+	}
+	else {
+		printf("Second flag is NULL\n");
 	}
 	
 

@@ -12,7 +12,7 @@ void echo_u(char* split, int print) {
 
 		for (int i=0; i<strlen(split); i++) {
 			if (split[i] >= 'a' && split[i] <= 'z') {
-				split[i] -= 32;
+				split[i] = split[i] - 32;
 			}
 		}
 

@@ -52,8 +52,11 @@ void echo(char* split, char flag1[], char flag2[]) {
 		//Need to run while loop since input string might have whitespace 
 		while (split != NULL) {
 			//Cannot print newline charater like this since it will have a space after it => printing it later
-			if (strcmp(split, "\n") != 0)  {
+			if (split[strlen(split)-1] != '\n'))  {
 				printf("%s ", split);
+			}
+			else {
+				printf("%s", split);
 			}
 			split = strtok(NULL, " ");
 		}

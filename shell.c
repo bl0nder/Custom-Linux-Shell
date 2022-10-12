@@ -8,58 +8,25 @@
 const int maxChar = 1000;
 
 void echo_u(char* split, int print) {
-	
-	for (int i=0; i<strlen(split); i++) {
-		if (split[i] >= 'a' && split[i] <= 'z') {
-			split[i] -= 32;
-		}
-	}
+	while (split != NULL) {
 
-	if (print) {
-		if (split[strlen(split)-1] != '\n')  {	
-			printf("%s ", split);
+		for (int i=0; i<strlen(split); i++) {
+			if (split[i] >= 'a' && split[i] <= 'z') {
+				split[i] -= 32;
+			}
 		}
-		else {
-			printf("%s", split);
-		}
-	}
 
-	// if (split[strlen(split)-1] != '\n')  {	
-	// 	printf("%s ", split);
-	// }
-	// else {
-	// 	printf("%s", split);
-	// }
+		if (print) {
+			if (split[strlen(split)-1] != '\n')  {	
+				printf("%s ", split);
+			}
+			else {
+				printf("%s", split);
+			}
+		}
+		split = strtok(NULL, " ");
+	}
 }
-
-// void echo_u(char* split, int print) {
-// 	while (split != NULL) {
-
-// 		for (int i=0; i<strlen(split); i++) {
-// 			if (split[i] >= 'a' && split[i] <= 'z') {
-// 				split[i] -= 32;
-// 			}
-// 		}
-
-// 		if (print) {
-// 			if (split[strlen(split)-1] != '\n')  {	
-// 				printf("%s ", split);
-// 			}
-// 			else {
-// 				printf("%s", split);
-// 			}
-// 		}
-
-// 		// if (split[strlen(split)-1] != '\n')  {	
-// 		// 	printf("%s ", split);
-// 		// }
-// 		// else {
-// 		// 	printf("%s", split);
-// 		// }
-
-// 		split = strtok(NULL, " ");
-// 	}
-// }
 
 void echo_m(char* split, int print) {
 	int prevCase = 0;	//0 -> lower case; 1 -> upper case
@@ -105,10 +72,7 @@ void echo(char* split, char flag1[], char flag2[]) {
 	//Detect first flag
 	if (strlen(flag1) != 0) {
 		if (strcmp(flag1, "-u") == 0) {
-			while (split != NULL) {
-				echo_u(split, strlen(flag2) == 0);
-				split = strtok(NULL, " ");
-			}
+			echo_u(split, strlen(flag2) == 0);
 		}
 		else if (strcmp(flag1, "-m") == 0) {
 			echo_m(split, strlen(flag2) == 0);

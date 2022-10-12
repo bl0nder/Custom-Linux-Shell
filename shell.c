@@ -119,7 +119,7 @@ void pwd(char* split, char flag1[], char flag2[]) {
 }
 
 void cd(char* split, char flag1[], char flag2[]) {
-	const char* path = split;
+	const char* path = &(*split);
 
 	int ans = chdir(split);
 

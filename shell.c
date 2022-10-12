@@ -10,12 +10,10 @@ const int maxChar = 1000;
 void echo_u(char* split) {
 	while (split != NULL) {
 		
-		int counter = 0;
-		while (split[counter]) {
-			if (split[counter] >= 'a' && split[counter] <= 'z') {
-				split[counter] = split[counter] - 32;
+		for (int i=0; i<strlen(split); i++) {
+			if (split[i] >= 'a' && split[i] <= 'z') {
+				split[i] -= 32;
 			}
-			counter++;
 		}
 
 		if (split[strlen(split)-1] != '\n')  {	
@@ -39,8 +37,8 @@ void echo(char* split, char flag1[], char flag2[]) {
 		if (strcmp(flag1, "-u") == 0) {
 			printf("-u flag detected as first flag\n");
 			uFlag = 1;
-			// echo_u(split);
-			printf("%s\n", split);
+			echo_u(split);
+			// printf("%s", split);
 		}
 		else if (strcmp(flag1, "-m") == 0) {
 			printf("-m flag detected as first flag\n");

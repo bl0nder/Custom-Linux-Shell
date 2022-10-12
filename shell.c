@@ -35,10 +35,8 @@ void echo(char* split, char flag1[], char flag2[]) {
 	//Detect first flag
 	if (strlen(flag1) != 0) {
 		if (strcmp(flag1, "-u") == 0) {
-			printf("-u flag detected as first flag\n");
 			uFlag = 1;
 			echo_u(split);
-			// printf("%s", split);
 		}
 		else if (strcmp(flag1, "-m") == 0) {
 			printf("-m flag detected as first flag\n");
@@ -49,7 +47,7 @@ void echo(char* split, char flag1[], char flag2[]) {
 		}
 
 		//Detect second flag - Second flag can exist only if first flag exists
-		if (strlen(flag2) != 0) {
+		if (strlen(flag2) != 0 && strcmp(flag1, flag2) != 0) {
 			if (strcmp(flag2, "-u") == 0) {
 				printf("-u flag detected as second flag\n");
 				uFlag = 1;
@@ -57,6 +55,7 @@ void echo(char* split, char flag1[], char flag2[]) {
 			else if (strcmp(flag2, "-m") == 0) {
 				printf("-m flag detected as second flag\n");
 				mFlag = 1;
+				printf("Testing: %s", split);
 			}
 			else {
 				printf("Unrecognised flag %s\n", flag2);

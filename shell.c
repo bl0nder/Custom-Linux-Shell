@@ -30,11 +30,22 @@ void echo_u(char* split, int print) {
 }
 
 void echo_m(char* split, int print) {
+	int prevCase = 0;	//0 -> lower case; 1 -> upper case
 	while (split != NULL) {
-		for (int i=0; i<strlen(split); i+=2) {
-			if (split[i] >= 'a' && split[i] <= 'z') {
-				split[i] -= 32;
+		for (int i=0; i<strlen(split); i++) {
+			if (prevCase == 0) {
+				if (split[i] >= 'a' && split[i] <= 'z') {
+					split[i] -= 32;
+				}		
+				prevCase = 1;
 			}
+			else {
+				if (split[i] >= 'A' && split[i] <= 'Z') {
+					split[i] += 32;
+				}
+				prevCase = 0;
+			}
+		
 		}
 
 		if (print) {

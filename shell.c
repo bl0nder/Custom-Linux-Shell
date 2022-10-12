@@ -16,13 +16,20 @@ void echo_u(char* split, int print) {
 			}
 		}
 
-		if (print) {
-			if (split[strlen(split)-1] != '\n')  {	
-				printf("%s ", split);
-			}
-			else {
-				printf("%s", split);
-			}
+		// if (print) {
+		// 	if (split[strlen(split)-1] != '\n')  {	
+		// 		printf("%s ", split);
+		// 	}
+		// 	else {
+		// 		printf("%s", split);
+		// 	}
+		// }
+
+		if (split[strlen(split)-1] != '\n')  {	
+			printf("%s ", split);
+		}
+		else {
+			printf("%s", split);
 		}
 
 		split = strtok(NULL, " ");

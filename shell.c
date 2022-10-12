@@ -33,21 +33,17 @@ void echo(char* split, char flag1[], char flag2[]) {
 	//flags -> Upper case (-u) & Meme case (-m)
 	int uFlag = 0;
 	int mFlag = 0;
-	char first = NULL;
-	char second = NULL;
 	
 	//Detect first flag
 	if (strlen(flag1) != 0) {
 		if (strcmp(flag1, "-u") == 0) {
 			printf("-u flag detected as first flag\n");
 			uFlag = 1;
-			first = 'u';
 			echo_u(split);
 		}
 		else if (strcmp(flag1, "-m") == 0) {
 			printf("-m flag detected as first flag\n");
 			mFlag = 1;
-			first = 'm';
 		}
 		else {
 			printf("Unrecognised flag %s\n", flag1);
@@ -58,12 +54,10 @@ void echo(char* split, char flag1[], char flag2[]) {
 			if (strcmp(flag2, "-u") == 0) {
 				printf("-u flag detected as second flag\n");
 				uFlag = 1;
-				second = 'u';
 			}
 			else if (strcmp(flag2, "-m") == 0) {
 				printf("-m flag detected as second flag\n");
 				mFlag = 1;
-				second = 'm';
 			}
 			else {
 				printf("Unrecognised flag %s\n", flag2);

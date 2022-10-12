@@ -10,7 +10,8 @@ const int maxChar = 1000;
 void echo(char* split, char flag1[], char flag2[]) {
 
 	//flags -> Upper case (-u) & Meme case (-m)
-
+	uFlag = false;
+	mFlag = false;
 	
 	//Detect first flag
 	if (strlen(flag1) != 0) {
@@ -23,27 +24,36 @@ void echo(char* split, char flag1[], char flag2[]) {
 		else {
 			printf("Unrecognised flag %s\n", flag1);
 		}
-	}
-	else {
-		printf("First flag is NULL\n");
-	}
-	
-	
-	//Detect second flag
-	if (strlen(flag2) != 0) {
-		if (strcmp(flag2, "-u") == 0) {
-			printf("-u flag detected as second flag\n");
-		}
-		else if (strcmp(flag2, "-m") == 0) {
-			printf("-m flag detected as second flag\n");
+
+		//Detect second flag - Second flag can exist only if first flag exists
+		if (strlen(flag2) != 0) {
+			if (strcmp(flag2, "-u") == 0) {
+				printf("-u flag detected as second flag\n");
+			}
+			else if (strcmp(flag2, "-m") == 0) {
+				printf("-m flag detected as second flag\n");
+			}
+			else {
+				printf("Unrecognised flag %s\n", flag2);
+			}
 		}
 		else {
-			printf("Unrecognised flag %s\n", flag2);
+			printf("Second flag is NULL\n");
+		}
+
+	}
+
+	//No flags - print split to console as it is without modification
+	else {
+		//Need to run while loop since input string might have whitespace 
+		while (split != NULL) {
+			printf("%s ", split);
+			split = strtok(NULL, " ");
 		}
 	}
-	else {
-		printf("Second flag is NULL\n");
-	}
+	
+	
+	
 	
 
 	

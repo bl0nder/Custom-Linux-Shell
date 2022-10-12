@@ -172,7 +172,6 @@ void executeCommand(char cmd[], char* split) {
 
 	//pwd - print working directory
 	else if (strcmp(cmd, "pwd") == 0) {
-		printf("You're trying to print the path to working directory!\n");
 		pwd(split, flag1, flag2);
 	}
 

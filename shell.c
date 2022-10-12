@@ -226,9 +226,10 @@ const int maxChar = 1000;
 // }
 
 void command(char cmd[], int argc, char* argv[]) {
-	for (int i=0; i<argc;i++) {
-		printf("%s\n", argv[i]);
-	}
+	printf("%d\n", argc);
+	// for (int i=0; i<argc;i++) {
+	// 	printf("%s\n", argv[i]);
+	// }
 }
 
 void shell(int argc, char* argv[]) {

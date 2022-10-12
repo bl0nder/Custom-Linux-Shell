@@ -8,20 +8,42 @@
 const int maxChar = 1000;
 
 void echo(char* split, char flag1[], char flag2[]) {
+
 	//flags -> Upper case (-u) & Meme case (-m)
-	
+
 	printf("%s %s\n", flag1, flag2);
 
 	// if (strlen(flag1) == 0) {
 
 	// }
 	
-	if (strcmp(flag1, "-u") == 0) {
-		printf("-u flag detected as first flag\n");
+	//Detect first flag
+	if (flag1 != NULL) {
+		if (strcmp(flag1, "-u") == 0) {
+			printf("-u flag detected as first flag\n");
+		}
+		else if (strcmp(flag1, "-m") == 0) {
+			printf("-m flag detected as first flag\n");
+		}
+		else {
+			printf("Unrecognised flag %s\n", flag1);
+		}
 	}
-	else if (strcmp(flag2, "-m") == 0) {
-		printf("-m flag detected as first flag\n");
+	
+	
+	//Detect second flag
+	if (flag2 != NULL) {
+		if (strcmp(flag2, "-u") == 0) {
+			printf("-u flag detected as second flag\n");
+		}
+		else if (strcmp(flag2, "-m") == 0) {
+			printf("-m flag detected as second flag\n");
+		}
+		else {
+			printf("Unrecognised flag %s\n", flag2);
+		}
 	}
+	
 
 	
 }

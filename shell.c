@@ -225,13 +225,13 @@ const int maxChar = 1000;
 // 	executeCommand(mainCmd, split);
 // }
 
-void command(char cmd[], int argc, char* argv) {
+void command(char cmd[], int argc, char* argv[]) {
 	for (int i=0; i<argc;i++) {
 		printf("%s\n", argv[i]);
 	}
 }
 
-void shell(int argc, char* argv) {
+void shell(int argc, char* argv[]) {
 	char cmd[maxChar];
 	while (1) {
 		printf("bl0nderShell> ");
@@ -239,7 +239,7 @@ void shell(int argc, char* argv) {
 	}
 }
 
-int main(int argc, char* argv) {
+int main(int argc, char* argv[]) {
 	shell(argc, argv);
 	return 0;
 }

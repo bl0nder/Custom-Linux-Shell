@@ -41,30 +41,30 @@ void echo_m(char* split, int print) {
 	while (split != NULL) {
 		printf("%s", split);
 		//Toggle case
-		for (int i=0; i<strlen(split); i++) {
-			if (prevCase == 0) {
-				if (split[i] >= 'a' && split[i] <= 'z') {
-					split[i] -= 32;
-				}		
-				prevCase = 1;
-			}
-			else {
-				if (split[i] >= 'A' && split[i] <= 'Z') {
-					split[i] += 32;
-				}
-				prevCase = 0;
-			}
+		// for (int i=0; i<strlen(split); i++) {
+		// 	if (prevCase == 0) {
+		// 		if (split[i] >= 'a' && split[i] <= 'z') {
+		// 			split[i] -= 32;
+		// 		}		
+		// 		prevCase = 1;
+		// 	}
+		// 	else {
+		// 		if (split[i] >= 'A' && split[i] <= 'Z') {
+		// 			split[i] += 32;
+		// 		}
+		// 		prevCase = 0;
+		// 	}
 		
-		}
+		// }
 
-		if (print) {
-			if (split[strlen(split)-1] != '\n')  {	
-				printf("%s ", split);
-			}
-			else {
-				printf("%s", split);
-			}
-		}
+		// if (print) {
+		// 	if (split[strlen(split)-1] != '\n')  {	
+		// 		printf("%s ", split);
+		// 	}
+		// 	else {
+		// 		printf("%s", split);
+		// 	}
+		// }
 
 		split = strtok(NULL, " ");
 

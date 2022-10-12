@@ -13,7 +13,6 @@ void echo_u(char* split) {
 		for (int i=0; i<strlen(split); i++) {
 			if (split[i] >= 'a' && split[i] <= 'z') {
 				split[i] -= 32;
-				printf("%c", split[i]);
 			}
 		}
 

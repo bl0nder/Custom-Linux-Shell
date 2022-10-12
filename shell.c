@@ -55,12 +55,6 @@ void echo(char* split, char flag1[], char flag2[]) {
 			split = strtok(NULL, "");
 		}
 	}
-	
-	
-	
-	
-
-	
 }
 
 void executeCommand(char cmd[], char* split) {
@@ -130,8 +124,7 @@ void executeCommand(char cmd[], char* split) {
 
 void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
-	// char *split = strtok(cmd, " ");
-	char *split = strtok(cmd, "-");
+	char *split = strtok(cmd, " ");
 	char mainCmd[20] = "\0";
 	// char flag1[20] = "\0";
 	// char flag2[20] = "\0";
@@ -162,9 +155,9 @@ void command(char cmd[]) {
  
 	// printf("Main command: %s\n", mainCmd);
 	// printf("Flags: %s %s\n", flag1, flag2);
-	split = strtok(NULL, "-");
-	printf("TestL %s\n", split);
-	// executeCommand(mainCmd, split);
+	split = strtok(NULL, " ");
+	
+	executeCommand(mainCmd, split);
 }
 
 void shell() {

@@ -39,7 +39,8 @@ void echo(char* split, char flag1[], char flag2[]) {
 		if (strcmp(flag1, "-u") == 0) {
 			printf("-u flag detected as first flag\n");
 			uFlag = 1;
-			echo_u(split);
+			// echo_u(split);
+			printf("%s\n", split);
 		}
 		else if (strcmp(flag1, "-m") == 0) {
 			printf("-m flag detected as first flag\n");

@@ -134,7 +134,7 @@ const int flagSize = 20;
 // }
 
 
-void executeCommand(char* split[]) {
+void executeCommand(char* split[], int splitLen) {
 	
 	
 	
@@ -147,16 +147,18 @@ void executeCommand(char* split[]) {
 
 	printf("Command: %s\n", cmd);
 
-	for (int i=0; split[i] != NULL; i++) {
+	for (int i=0; i<splitLen; i++) {
 		printf("%s\n", split[i]);
 	}
 
 	//Get flags from split and store them in flag1 and flag2
-	if (split[1][0] == '-' && strlen(split[1])==2) {
-		strcpy(flag1, split[1]);
-	}
-	if (split[2][0] == '-' && strlen(split[2])==2) {
-		strcpy(flag2, split[2]);
+	if (splitLen > 2) {
+		if (split[1][0] == '-' && strlen(split[1])==2) {
+			strcpy(flag1, split[1]);
+		}
+		if (splitLen > 3 && split[2][0] == '-' && strlen(split[2])==2) {
+			strcpy(flag2, split[2]);
+		}
 	}
 
 	if (!flag1) {
@@ -232,6 +234,7 @@ void command(char cmd[]) {
 	char* split[100];
 
 	int splitCounter = 0;
+	int splitLen = 0;
 	
 	while (splitCounter < 100) {
 		if (temp == NULL) {
@@ -239,6 +242,7 @@ void command(char cmd[]) {
 		}
 		else {
 			split[splitCounter] = temp;
+			splitLen++;
 			temp = strtok(NULL, " \n");
 		}
 		splitCounter++;
@@ -258,7 +262,7 @@ void command(char cmd[]) {
 
 	// split = strtok(NULL, " ");
 	
-	executeCommand(split);
+	executeCommand(split, splitLen+1);
 }
 
 void shell() {

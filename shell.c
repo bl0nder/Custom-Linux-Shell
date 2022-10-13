@@ -229,7 +229,7 @@ void executeCommand(char* split[], int splitLen) {
 
 void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
-	char* temp = strtok(cmd, " ");
+	char* temp = strtok(cmd, " \n");
 	char* split[100];
 
 	int splitCounter = 0;
@@ -246,8 +246,6 @@ void command(char cmd[]) {
 		}
 		splitCounter++;
 	}
-
-	printf("%s\n", split[0]);
 
 
 	// char mainCmd[100] = "\0";

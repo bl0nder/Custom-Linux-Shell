@@ -142,8 +142,8 @@ void executeCommand(char* split[]) {
 	char cmd[commandSize];
 	strcpy(cmd, split[0]);
 
-	char flag1[flagSize] = '\0';
-	char flag2[flagSize] = '\0';
+	char flag1[flagSize];
+	char flag2[flagSize];
 
 	printf("Command: %s\n", cmd);
 
@@ -154,11 +154,16 @@ void executeCommand(char* split[]) {
 	//Get flags from split and store them in flag1 and flag2
 	if (split[1][0] == '-' && strlen(split[1])==2) {
 		strcpy(flag1, split[1]);
-		printf("First flag: %s\n", flag1);
 	}
 	if (split[2][0] == '-' && strlen(split[2])==2) {
 		strcpy(flag2, split[2]);
-		printf("Second flag: %s\n", flag2);
+	}
+
+	if (flag1 == NULL) {
+		printf("No flag1\n");
+	}
+	if (flag2 == NULL) {
+		printf("No flag2\n");
 	}
 
 

@@ -7,6 +7,7 @@
 #include <unistd.h>
 
 const int maxChar = 1000;
+const int commandSize = 20;
 
 // void echo_u(char* split[], int print) {
 // 	for (int i=0; i<strlen(split); i++) {
@@ -136,6 +137,11 @@ void executeCommand(char* split[]) {
 	
 	char flag1[10] = "\0";
 	char flag2[10] = "\0";
+	char cmd[commandSize];
+
+	strcpy(cmd, split[0]);
+
+	printf("Command: %s\n", cmd);
 
 	for (int i=0; split[i] != NULL; i++) {
 		printf("%s\n", split[i]);

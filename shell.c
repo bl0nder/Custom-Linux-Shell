@@ -8,6 +8,7 @@
 
 const int maxChar = 1000;
 const int commandSize = 20;
+const int flagSize = 20;
 
 // void echo_u(char* split[], int print) {
 // 	for (int i=0; i<strlen(split); i++) {
@@ -135,11 +136,14 @@ const int commandSize = 20;
 
 void executeCommand(char* split[]) {
 	
-	char flag1[10] = "\0";
-	char flag2[10] = "\0";
+	
+	
+	//Get command from split
 	char cmd[commandSize];
-
 	strcpy(cmd, split[0]);
+
+	char flag1[flagSize] = "\0";
+	char flag2[flagSize] = "\0";
 
 	printf("Command: %s\n", cmd);
 
@@ -147,11 +151,14 @@ void executeCommand(char* split[]) {
 		printf("%s\n", split[i]);
 	}
 
+	//Get flags from split and store them in flag1 and flag2
 	if (split[1][0] == '-' && strlen(split[1])==2) {
-		printf("First flag: %s\n", split[1]);
+		strcpy(flag1, split[1]);
+		printf("First flag: %s\n", flag1);
 	}
 	if (split[2][0] == '-' && strlen(split[2])==2) {
-		printf("Second flag: %s\n", split[2]);
+		strcpy(flag2, split[2]);
+		printf("Second flag: %s\n", flag2);
 	}
 
 

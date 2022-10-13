@@ -63,7 +63,7 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 
 	//Vanilla - no flags
 	if (flag1[0] == '\0' && flag2[0] == '\0') {
-		for (int i=0; i<strlen(argument); i++) {
+		for (int i=0; argument[i] != '\0'; i++) {
 			printf("%s ", argument[i]);
 		}
 	}
@@ -157,6 +157,11 @@ void executeCommand(char* split[], int splitLen) {
 	for (int i=0; i<flagSize; i++) {
 		flag1[i] = '\0';
 		flag2[i] = '\0';
+	}
+
+	//Initialise argument array to contain null characters
+	for (int i=0; i<argSize; i++) {
+		argument[i] = '\0';
 	}
 
 	//Get flags from split and store them in flag1 and flag2

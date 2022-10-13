@@ -101,26 +101,40 @@ void pwd(char flag1[], char flag2[], char* argument[]) {
 		printf("%s\n", dir);
 	}
 
-	else if (!strcmp(flag1, "-L") && flag2[0] == '\0') {
-		char* envName = getenv("PWD");
-		printf("-L flag detected opinion accepted\n");
-		printf("%s\n", envName);
+	//1 flag present 
+	else if (flag2[0] == '\0') {
+
+		//L flag - outputs contents of $PWD environment variable
+		if (!strcmp(flag1, "-L") {
+			char* envName = getenv("PWD");
+			printf("%s\n", envName);
+		}
+
+		//P flag - 
+		else if (!strcmp(flag1, "-P")) {
+
+		}
+	}
+
+	//Both flags present
+	else if () {
+
 	}
 
 }
 
-// void cd(char* split[], char flag1[], char flag2[]) {
-// 	const char* path = (const char*) split;
+void cd(char flag1[], char flag2[], char* argument) {
+	const char* path = argument;
 
-// 	int ans = chdir(path);
+	int ans = chdir(path);
 
-// 	if (ans == 0) {
-// 		pwd(split, flag1, flag2);
-// 	}
-// 	else {
-// 		printf("oh no\n");
-// 	}
-// }
+	if (ans == 0) {
+		pwd(flag1, flag2, argument);
+	}
+	else {
+		printf("oh no\n");
+	}
+}
 
 
 void executeCommand(char* split[], int splitLen) {
@@ -180,12 +194,11 @@ void executeCommand(char* split[], int splitLen) {
 		exit(0);
 	}
 
-	// //cd - change directory
-	// else if (strcmp(cmd, "cd") == 0) {
-	// 	printf("You're trying to change directory!\n");
-	// 	cd(split, flag1, flag2);
-		
-	// }
+	//cd - change directory
+	else if (!strcmp(cmd, "cd")) {
+		printf("You're trying to change directory!\n");
+		cd(flag1, flag2, argument);
+	}
 
 	//pwd - print working directory
 	else if (!strcmp(cmd, "pwd")) {

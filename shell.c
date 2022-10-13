@@ -113,7 +113,7 @@ const int argSize = 1000;
 // 	}
 // }
 
-void pwd(char cmd[], char flag1[], char flag2[], char argument[]) {
+void pwd(char cmd[], char flag1[], char flag2[], char* argument[]) {
 	
 	printf("%s\n", argument);
 	// char dir[100];
@@ -147,7 +147,7 @@ void executeCommand(char* split[], int splitLen) {
 	char flag2[flagSize];
 
 	//String to store argument
-	char argument[argSize];
+	char* argument[argSize];
 
 	//Initialise flag1 and flag2 to be arrays of null characters (helps in checking if flags exist or not)
 	for (int i=0; i<flagSize; i++) {

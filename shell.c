@@ -8,7 +8,7 @@
 
 const int maxChar = 1000;
 
-void echo_u(char* split, int print) {
+void echo_u(char* split[], int print) {
 	for (int i=0; i<strlen(split); i++) {
 		if (split[i] >= 'a' && split[i] <= 'z') {
 			split[i] -= 32;
@@ -25,7 +25,7 @@ void echo_u(char* split, int print) {
 	}
 }
 
-void echo_m(char* split, int print) {
+void echo_m(char* split[], int print) {
 	int prevCase = 0;	//0 -> lower case; 1 -> upper case
 	
 	//printf("%s", split);
@@ -57,7 +57,7 @@ void echo_m(char* split, int print) {
 
 }
 
-void echo(char* split, char flag1[], char flag2[]) {
+void echo(char* split[], char flag1[], char flag2[]) {
 
 	//flags -> Upper case (-u) & Meme case (-m)
 	
@@ -111,14 +111,14 @@ void echo(char* split, char flag1[], char flag2[]) {
 	}
 }
 
-void pwd(char* split, char flag1[], char flag2[]) {
+void pwd(char* split[], char flag1[], char flag2[]) {
 	char dir[100];
 
 	getcwd(dir, 100);
 	printf("%s\n", dir);
 }
 
-void cd(char* split, char flag1[], char flag2[]) {
+void cd(char* split[], char flag1[], char flag2[]) {
 	const char* path = (const char*) split;
 
 	int ans = chdir(path);

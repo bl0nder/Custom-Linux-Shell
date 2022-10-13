@@ -200,7 +200,7 @@ const int maxChar = 1000;
 void command(char cmd[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
 	char* temp = strtok(cmd, " ");
-	char* split[100] = NULL;
+	char* split[100];
 
 	int splitCounter = 0;
 	

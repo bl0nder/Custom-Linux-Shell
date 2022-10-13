@@ -92,7 +92,7 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 	}
 }
 
-void pwd(char flag1[], char flag2[], char* argument[]) {
+char path[] pwd(char flag1[], char flag2[], char* argument[]) {
 	char dir[100];
 
 	//No flags
@@ -121,6 +121,8 @@ void pwd(char flag1[], char flag2[], char* argument[]) {
 
 	}
 
+	return dir;
+
 }
 
 void cd(char flag1[], char flag2[], char* argument[]) {
@@ -129,8 +131,8 @@ void cd(char flag1[], char flag2[], char* argument[]) {
 	int ans = chdir(path);
 
 	if (ans == 0) {
-		setenv("PWD", path, 1);	//Set $PWD environment variable to changed path as well
-		pwd(flag1, flag2, argument);
+		char updatedPath[] = pwd(flag1, flag2, argument);
+		setenv("PWD", updatedPath, 1);	//Set $PWD environment variable to changed path as well
 	}
 	else {
 		printf("oh no\n");

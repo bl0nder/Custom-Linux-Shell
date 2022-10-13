@@ -129,6 +129,7 @@ void cd(char flag1[], char flag2[], char* argument[]) {
 	int ans = chdir(path);
 
 	if (ans == 0) {
+		setenv("PWD", path, 1);	//Set $PWD environment variable to changed path as well
 		pwd(flag1, flag2, argument);
 	}
 	else {

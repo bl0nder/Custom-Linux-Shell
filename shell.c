@@ -136,14 +136,14 @@ const int commandSize = 20;
 void executeCommand(char* split[]) {
 	
 	
-	int flagSize = 20;
+	const int flagSize = 20;
 	
 	//Get command from split
 	char cmd[commandSize];
 	strcpy(cmd, split[0]);
 
-	char flag1[flagSize] = "\0";
-	char flag2[flagSize] = "\0";
+	char flag1[flagSize] = {"\0"};
+	char flag2[flagSize] = {"\0"};
 
 	printf("Command: %s\n", cmd);
 

@@ -148,11 +148,11 @@ void executeCommand(char* split[], int splitLen) {
 	}
 
 	//Get flags from split and store them in flag1 and flag2
-	if (splitLen > 2) {
+	if (splitLen >= 2) {
 		if (split[1][0] == '-' && strlen(split[1])==2) {
 			strcpy(flag1, split[1]);
 		}
-		if (splitLen > 3 && split[2][0] == '-' && strlen(split[2])==2) {
+		if (splitLen >= 3 && split[2][0] == '-' && strlen(split[2])==2) {
 			strcpy(flag2, split[2]);
 		}
 	}

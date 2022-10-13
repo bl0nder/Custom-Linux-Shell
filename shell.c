@@ -132,7 +132,7 @@ void cd(char* split, char flag1[], char flag2[]) {
 }
 
 
-void executeCommand(char cmd[], char* split) {
+void executeCommand(char* split[]) {
 	
 	char flag1[10] = "\0";
 	char flag2[10] = "\0";
@@ -206,7 +206,7 @@ void command(char cmd[]) {
 	
 	while (temp != NULL) {
 		split[splitCounter] = temp;
-		temp = strtok(NULL, " ");
+		temp = strtok(NULL, " \n");
 		splitCounter++;
 	}
 
@@ -227,7 +227,7 @@ void command(char cmd[]) {
 
 	// split = strtok(NULL, " ");
 	
-	// executeCommand(mainCmd, split);
+	//executeCommand(split);
 }
 
 void shell() {

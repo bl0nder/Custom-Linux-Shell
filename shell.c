@@ -93,10 +93,20 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 }
 
 void pwd(char flag1[], char flag2[], char* argument[]) {
-	//Vanilla - no flags
 	char dir[100];
-	getcwd(dir, 100);
-	printf("%s\n", dir);
+
+	//No flags
+	if (flag1[0] == '\0' && flag2[0] == '\0') {
+		getcwd(dir, 100);
+		printf("%s\n", dir);
+	}
+
+	if (strcmp(flag1[0], "-L") && flag2[0] == '\0') {
+		char* envName = secure_getenv("$PWD");
+		printf("-L flag detected opinion accepted\n");
+		printf("%s\n", envName);
+	}
+
 }
 
 // void cd(char* split[], char flag1[], char flag2[]) {
@@ -164,36 +174,6 @@ void executeCommand(char* split[], int splitLen) {
 		argument[counter] = split[i];
 		counter++;
 	}
-
-	// while(split!=NULL && (strlen(flag1) == 0 || strlen(flag2) == 0)) {
-	// 	//All flags start with a hyphen
-	// 	if (split[0] == '-') {
-			
-	// 		//Remove newline character from end of split (if it exists)
-	// 		if (split[strlen(split)-1] == '\n') {
-	// 			split[strlen(split)-1] = '\0';
-	// 		}
-
-
-	// 		//Check whether this flag is flag1 or flag2 by checking if length of flag1 is 0 or not
-	// 		if (strlen(flag1) == 0) {
-	// 			//Copy -x (x can be anything) to flag1
-	// 			strcpy(flag1, split);
-	// 		}
-			
-	// 		else {
-	// 			//Copy -x (x can be anything) to flag2
-	// 			strcpy(flag2, split);
-	// 		}
-			
-	// 		//Go to next split
-	// 		split = strtok(NULL, " ");
-	// 	}
-
-	// 	else {
-	// 		break;
-	// 	}
-	// }
 
 	//Exit shell
 	if (!strcmp(cmd, "exit")) {

@@ -161,10 +161,10 @@ void executeCommand(char* split[], int splitLen) {
 		}
 	}
 
-	if (!flag1) {
+	if (flag1==NULL) {
 		printf("No flag1\n");
 	}
-	if (!flag2) {
+	if (flag2==NULL) {
 		printf("No flag2\n");
 	}
 

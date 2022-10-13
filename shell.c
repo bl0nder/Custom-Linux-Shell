@@ -261,7 +261,7 @@ void command(char cmd[]) {
 	// }
 
 	// split = strtok(NULL, " ");
-	
+	printf("%d\n", splitLen);
 	executeCommand(split, splitLen+1);
 }
 

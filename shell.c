@@ -211,12 +211,12 @@ void executeCommand(char* split[], int splitLen) {
 	// }
 
 	//pwd - print working directory
-	if (strcmp(cmd, "pwd") == 0) {
+	if (!strcmp(cmd, "pwd")) {
 		pwd(flag1, flag2, argument);
 	}
 
 	//echo 
-	else if (strcmp(cmd, "echo") == 0) {
+	else if (!strcmp(cmd, "echo")) {
 		echo(flag1, flag2, argument);
 	}
 

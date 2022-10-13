@@ -123,7 +123,7 @@ void pwd(char flag1[], char flag2[], char* argument[]) {
 
 }
 
-void cd(char flag1[], char flag2[], char* argument) {
+void cd(char flag1[], char flag2[], char* argument[]) {
 	const char* path = argument;
 
 	int ans = chdir(path);

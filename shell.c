@@ -260,10 +260,8 @@ void shell() {
 	while (1) {
 		char dir[100];
 		getcwd(dir, 100);
-
-		char* token = strtok(dir, "/");
 	
-		printf("bl0nderShell | %s> ", token[strlen(token)-1]);
+		printf("<%s> ", dir);
 		command(cmd);
 	}
 }

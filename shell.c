@@ -159,10 +159,10 @@ void executeCommand(char* split[]) {
 		strcpy(flag2, split[2]);
 	}
 
-	if (flag1 == NULL) {
+	if (!flag1) {
 		printf("No flag1\n");
 	}
-	if (flag2 == NULL) {
+	if (!flag2) {
 		printf("No flag2\n");
 	}
 

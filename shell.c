@@ -115,7 +115,7 @@ const int argSize = 1000;
 
 void pwd(char cmd[], char flag1[], char flag2[], char* argument[]) {
 	
-	printf("%s\n", argument);
+	printf("%s\n", argument[0]);
 	// char dir[100];
 
 	// getcwd(dir, 100);

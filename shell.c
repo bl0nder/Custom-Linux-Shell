@@ -127,15 +127,15 @@ void cd(char flag1[], char flag2[], char* argument[]) {
 	char* updatedPath;
 	int ans = chdir(path);
 
+	char dir[100];
 	if (ans == 0) {
-		char dir[100];
 		getcwd(dir, 100);
 		printf("%s\n", dir);
 
 		setenv("PWD", dir, 1);	//Set $PWD environment variable to changed path as well
 	}
 	else {
-		printf("oh no\n");
+		printf("[!] Directory %s not found\n", dir);
 	}
 }
 
@@ -199,7 +199,6 @@ void executeCommand(char* split[], int splitLen) {
 
 	//cd - change directory
 	else if (!strcmp(cmd, "cd")) {
-		printf("You're trying to change directory!\n");
 		cd(flag1, flag2, argument);
 	}
 

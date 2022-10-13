@@ -9,7 +9,7 @@
 const int maxChar = 1000;
 const int commandSize = 20;
 const int flagSize = 20;
-
+const int argSize = 1000;
 // void echo_u(char* split[], int print) {
 // 	for (int i=0; i<strlen(split); i++) {
 // 		if (split[i] >= 'a' && split[i] <= 'z') {
@@ -113,12 +113,14 @@ const int flagSize = 20;
 // 	}
 // }
 
-// void pwd(char* split[], char flag1[], char flag2[]) {
-// 	char dir[100];
+void pwd(char cmd[], char flag1[], char flag2[], char argument[]) {
+	
+	printf("%s\n", argument);
+	// char dir[100];
 
-// 	getcwd(dir, 100);
-// 	printf("%s\n", dir);
-// }
+	// getcwd(dir, 100);
+	// printf("%s\n", dir);
+}
 
 // void cd(char* split[], char flag1[], char flag2[]) {
 // 	const char* path = (const char*) split;
@@ -140,18 +142,22 @@ void executeCommand(char* split[], int splitLen) {
 	char cmd[commandSize];
 	strcpy(cmd, split[0]);
 
+	//Strings to store flags
 	char flag1[flagSize];
 	char flag2[flagSize];
 
-	printf("Command: %s\n", cmd);
+	//String to store argument
+	char argument[argSize];
 
+	//Initialise flag1 and flag2 to be arrays of null characters (helps in checking if flags exist or not)
 	for (int i=0; i<flagSize; i++) {
 		flag1[i] = '\0';
 		flag2[i] = '\0';
 	}
 
-	for (int i=0; i<splitLen; i++) {
-		printf("%s\n", split[i]);
+	//Initialise argument to be an array of null characters
+	for (int i=0; i<argSize; i++) {
+		argument[i] = '\0';
 	}
 
 	//Get flags from split and store them in flag1 and flag2
@@ -164,13 +170,23 @@ void executeCommand(char* split[], int splitLen) {
 		}
 	}
 
-	if (flag1[0] == '\0') {
-		printf("No flag1\n");
+	//set argument based on how many flags there are
+	int start = 0;
+	if (flag1[0] == '\0' && flag2[0] == '\0') {
+		start = 1;
 	}
-	if (flag2[0] == '\0') {
-		printf("No flag2\n");
+	else if (flag1[0] != '\0' && flag2[0]=='\0') {
+		start = 2;
+	}
+	else if (flag1[0] != '\0' && flag2[0] !='\0') {
+		start = 3;
 	}
 
+	int counter = 0;
+	for (int i=start; i<splitLen; i++) {
+		argument[counter] = split[i];
+		counter++;
+	}
 
 	// while(split!=NULL && (strlen(flag1) == 0 || strlen(flag2) == 0)) {
 	// 	//All flags start with a hyphen
@@ -214,10 +230,10 @@ void executeCommand(char* split[], int splitLen) {
 		
 	// }
 
-	// //pwd - print working directory
-	// else if (strcmp(cmd, "pwd") == 0) {
-	// 	pwd(split, flag1, flag2);
-	// }
+	//pwd - print working directory
+	if (strcmp(cmd, "pwd") == 0) {
+		pwd(cmd, flag1, flag2, argument);
+	}
 
 	// //echo 
 	// else if (strcmp(cmd, "echo") == 0) {

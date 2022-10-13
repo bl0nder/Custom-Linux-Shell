@@ -132,7 +132,7 @@ void cd(char* split, char flag1[], char flag2[]) {
 }
 
 
-void executeCommand(char* split[]) {
+void executeCommand(char cmd[], char* split[]) {
 	
 	char flag1[10] = "\0";
 	char flag2[10] = "\0";

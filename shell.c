@@ -92,7 +92,7 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 	}
 }
 
-void pwd(char flag1[], char flag2[], char* argument[]) {
+void pwd(char flag1[], char flag2[]) {
 	char dir[100];
 
 	//No flags
@@ -205,7 +205,7 @@ void executeCommand(char* split[], int splitLen) {
 
 	//pwd - print working directory
 	else if (!strcmp(cmd, "pwd")) {
-		pwd(flag1, flag2, argument);
+		pwd(flag1, flag2);
 	}
 
 	//echo 
@@ -258,7 +258,7 @@ void command(char cmd[]) {
 void shell() {
 	char cmd[maxChar];
 	while (1) {
-		printf("bl0nderShell> ");
+		printf("bl0nderShell | %s> ", pwd("\0", "\0", ));
 		command(cmd);
 	}
 }

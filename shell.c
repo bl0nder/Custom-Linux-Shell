@@ -136,8 +136,6 @@ const int flagSize = 20;
 
 void executeCommand(char* split[], int splitLen) {
 	
-	
-	
 	//Get command from split
 	char cmd[commandSize];
 	strcpy(cmd, split[0]);
@@ -146,6 +144,11 @@ void executeCommand(char* split[], int splitLen) {
 	char flag2[flagSize];
 
 	printf("Command: %s\n", cmd);
+
+	for (int i=0; i<flagSize; i++) {
+		flag1[i] = '\0';
+		flag2[i] = '\0';
+	}
 
 	for (int i=0; i<splitLen; i++) {
 		printf("%s\n", split[i]);
@@ -161,10 +164,10 @@ void executeCommand(char* split[], int splitLen) {
 		}
 	}
 
-	if (flag1==NULL) {
+	if (!flag1) {
 		printf("No flag1\n");
 	}
-	if (flag2==NULL) {
+	if (!flag2) {
 		printf("No flag2\n");
 	}
 

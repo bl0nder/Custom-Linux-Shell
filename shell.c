@@ -210,7 +210,7 @@ void command(char cmd[]) {
 		splitCounter++;
 	}
 
-	for (int i=0; i<strlen(split); i++) {
+	for (int i=0; i<100; i++) {
 		printf("%s\n", split[i]);
 	}
 

@@ -92,7 +92,7 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 	}
 }
 
-char pwd(char flag1[], char flag2[], char* argument[]) {
+char* pwd(char flag1[], char flag2[], char* argument[]) {
 	char dir[100];
 
 	//No flags

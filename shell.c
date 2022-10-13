@@ -101,8 +101,8 @@ void pwd(char flag1[], char flag2[], char* argument[]) {
 		printf("%s\n", dir);
 	}
 
-	if (strcmp(flag1[0], "-L") && flag2[0] == '\0') {
-		char* envName = secure_getenv("$PWD");
+	if (strcmp(flag1, "-L") && flag2[0] == '\0') {
+		char* envName = getenv("$PWD");
 		printf("-L flag detected opinion accepted\n");
 		printf("%s\n", envName);
 	}

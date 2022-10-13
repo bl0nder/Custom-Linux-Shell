@@ -247,6 +247,8 @@ void command(char cmd[]) {
 		splitCounter++;
 	}
 
+	printf("%s\n", split[0]);
+
 
 	// char mainCmd[100] = "\0";
 

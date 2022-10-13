@@ -204,9 +204,14 @@ void command(char cmd[]) {
 
 	int splitCounter = 0;
 	
-	while (temp != NULL) {
-		split[splitCounter] = temp;
-		temp = strtok(NULL, " \n");
+	while (splitCounter < 100) {
+		if (temp == NULL) {
+			split[splitCounter] = NULL;
+		}
+		else {
+			split[splitCounter] = temp;
+			temp = strtok(NULL, " \n");
+		}
 		splitCounter++;
 	}
 

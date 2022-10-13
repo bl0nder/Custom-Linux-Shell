@@ -239,7 +239,7 @@ void shell(int argc, char* argv[]) {
 	char cmd[maxChar];
 	while (1) {
 		printf("bl0nderShell> ");
-		printf("%d %s\n", argc, argv)
+		printf("%d %s\n", argc, argv);
 		// command(cmd);
 		break;
 	}

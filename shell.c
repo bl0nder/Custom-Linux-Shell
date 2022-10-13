@@ -164,10 +164,10 @@ void executeCommand(char* split[], int splitLen) {
 		}
 	}
 
-	if (!flag1) {
+	if (flag1[0] == '\0') {
 		printf("No flag1\n");
 	}
-	if (!flag2) {
+	if (flag2[0] == '\0') {
 		printf("No flag2\n");
 	}
 
@@ -264,7 +264,6 @@ void command(char cmd[]) {
 	// }
 
 	// split = strtok(NULL, " ");
-	printf("%d\n", splitLen);
 	executeCommand(split, splitLen);
 }
 

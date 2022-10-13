@@ -261,7 +261,7 @@ void shell() {
 		char dir[100];
 		getcwd(dir, 100);
 	
-		printf("<%s> ", dir);
+		printf("[%s]> ", dir);
 		command(cmd);
 	}
 }

@@ -63,7 +63,7 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 
 	//Vanilla - no flags
 	if (flag1[0] == '\0' && flag2[0] == '\0') {
-		for (int i=0; argument[i] != '\0'; i++) {
+		for (int i=0; *(argument[i]) != '\0'; i++) {
 			printf("%s ", argument[i]);
 		}
 	}

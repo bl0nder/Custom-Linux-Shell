@@ -113,13 +113,12 @@ const int argSize = 1000;
 // 	}
 // }
 
-void pwd(char cmd[], char flag1[], char flag2[], char* argument[]) {
+void pwd(char flag1[], char flag2[], char* argument[]) {
 	
-	printf("%s\n", argument[0]);
-	// char dir[100];
-
-	// getcwd(dir, 100);
-	// printf("%s\n", dir);
+	//Vanilla - no flags
+	char dir[100];
+	getcwd(dir, 100);
+	printf("%s\n", dir);
 }
 
 // void cd(char* split[], char flag1[], char flag2[]) {
@@ -146,7 +145,7 @@ void executeCommand(char* split[], int splitLen) {
 	char flag1[flagSize];
 	char flag2[flagSize];
 
-	//String to store argument
+	//Char pointer to store argument (could have multiple substrings in it)
 	char* argument[argSize];
 
 	//Initialise flag1 and flag2 to be arrays of null characters (helps in checking if flags exist or not)
@@ -227,7 +226,7 @@ void executeCommand(char* split[], int splitLen) {
 
 	//pwd - print working directory
 	if (strcmp(cmd, "pwd") == 0) {
-		pwd(cmd, flag1, flag2, argument);
+		pwd(flag1, flag2, argument);
 	}
 
 	// //echo 

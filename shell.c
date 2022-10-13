@@ -127,11 +127,11 @@ char* pwd(char flag1[], char flag2[], char* argument[]) {
 
 void cd(char flag1[], char flag2[], char* argument[]) {
 	const char* path = argument[0];
-
+	char* updatedPath;
 	int ans = chdir(path);
 
 	if (ans == 0) {
-		char updatedPath[] = pwd(flag1, flag2, argument);
+		updatedPath = pwd(flag1, flag2, argument);
 		setenv("PWD", updatedPath, 1);	//Set $PWD environment variable to changed path as well
 	}
 	else {

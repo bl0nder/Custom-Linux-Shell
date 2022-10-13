@@ -66,6 +66,24 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 		for (int i=0; argument[i] != NULL; i++) {
 			printf("%s ", argument[i]);
 		}
+
+		printf("\n");
+	}
+
+	//1 flag 
+	if (flag1[0] != '\0' && flag2[0] == '\0') {
+		if (!strcmp(flag1, "-n")) {
+			for (int i=0; argument[i] != NULL; i++) {
+				if (i+1 < argSize)  {
+					if (argument[i+1] != NULL) {
+						printf("%s ", argument[i]);
+					}
+					else {
+						printf("%s", argument[i]);
+					}
+				}
+			}
+		}
 	}
 	
 	//Detect first flag

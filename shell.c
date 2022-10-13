@@ -105,7 +105,7 @@ void pwd(char flag1[], char flag2[], char* argument[]) {
 	else if (flag2[0] == '\0') {
 
 		//L flag - outputs contents of $PWD environment variable
-		if (!strcmp(flag1, "-L") {
+		if (!strcmp(flag1, "-L")) {
 			char* envName = getenv("PWD");
 			printf("%s\n", envName);
 		}
@@ -117,7 +117,7 @@ void pwd(char flag1[], char flag2[], char* argument[]) {
 	}
 
 	//Both flags present
-	else if () {
+	else if (!strcmp(flag1, "-L")) {
 
 	}
 

@@ -210,7 +210,7 @@ void command(char cmd[]) {
 		splitCounter++;
 	}
 
-	for (int i=0; i<100; i++) {
+	for (int i=0; i<strlen(temp); i++) {
 		printf("%s\n", split[i]);
 	}
 
@@ -235,6 +235,7 @@ void shell() {
 	while (1) {
 		printf("bl0nderShell> ");
 		command(cmd);
+		break;
 	}
 }
 

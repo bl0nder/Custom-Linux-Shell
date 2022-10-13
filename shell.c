@@ -155,11 +155,6 @@ void executeCommand(char* split[], int splitLen) {
 		flag2[i] = '\0';
 	}
 
-	//Initialise argument to be an array of null characters
-	for (int i=0; i<argSize; i++) {
-		argument[i] = '\0';
-	}
-
 	//Get flags from split and store them in flag1 and flag2
 	if (splitLen > 2) {
 		if (split[1][0] == '-' && strlen(split[1])==2) {

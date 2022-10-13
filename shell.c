@@ -93,9 +93,6 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 }
 
 void pwd(char flag1[], char flag2[], char* argument[]) {
-	
-	printf("PWD!\n");
-
 	//Vanilla - no flags
 	char dir[100];
 	getcwd(dir, 100);
@@ -198,10 +195,10 @@ void executeCommand(char* split[], int splitLen) {
 	// 	}
 	// }
 
-	// //Exit shell
-	// if (strcmp(cmd, "exit") == 0) {
-	// 	exit(0);
-	// }
+	//Exit shell
+	if (!strcmp(cmd, "exit")) {
+		exit(0);
+	}
 
 	// //cd - change directory
 	// else if (strcmp(cmd, "cd") == 0) {
@@ -211,7 +208,7 @@ void executeCommand(char* split[], int splitLen) {
 	// }
 
 	//pwd - print working directory
-	if (!strcmp(cmd, "pwd")) {
+	else if (!strcmp(cmd, "pwd")) {
 		pwd(flag1, flag2, argument);
 	}
 
@@ -220,11 +217,10 @@ void executeCommand(char* split[], int splitLen) {
 		echo(flag1, flag2, argument);
 	}
 
-	// //unknown command
-	// else {
-	// 	printf("Unknown command\n");
-	// 	printf("%s\n", cmd);
-	// }
+	//unknown command
+	else {
+		printf("[!] Unknown command %s entered\n", cmd);
+	}
 }
 
 void command(char cmd[]) {

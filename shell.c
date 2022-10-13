@@ -61,6 +61,8 @@ const int argSize = 1000;
 
 void echo(char flag1[], char flag2[], char* argument[]) {
 
+	//Flags -> (-n) and TBD
+
 	//Vanilla - no flags
 	if (flag1[0] == '\0' && flag2[0] == '\0') {
 		for (int i=0; argument[i] != NULL; i++) {
@@ -84,60 +86,16 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 				}
 			}
 		}
+		else {
+			printf("[!] Unknown flag %s entered\n");
+		}
 	}
-	
-	//Detect first flag
-	// if (strlen(flag1) != 0) {
-	// 	while (split != NULL) {
-			
-	// 		if (strcmp(flag1, "-u") == 0) {
-	// 			echo_u(split, strlen(flag2) == 0);
-	// 		}
-	// 		else if (strcmp(flag1, "-m") == 0) {
-	// 			echo_m(split, strlen(flag2) == 0);
-	// 		}
-	// 		else {
-	// 			printf("Unrecognised flag %s\n", flag1);
-	// 		}
-
-
-	// 		//Detect second flag - Second flag can exist only if first flag exists
-	// 		if (strlen(flag2) != 0 && strcmp(flag1, flag2) != 0) {
-	// 			if (strcmp(flag2, "-u") == 0) {
-	// 				echo_u(split, 1);
-	// 			}
-	// 			else if (strcmp(flag2, "-m") == 0) {
-	// 				echo_m(split, 1);
-	// 			}
-	// 			else {
-	// 				printf("Unrecognised flag %s\n", flag2);
-	// 			}
-	// 		}
-	// 		split = strtok(NULL, " ");
-	// 	}
-
-	// }
-
-	// //No flags - print split to console as it is without modification
-	// else {
-	// 	//Need to run while loop since input string might have whitespace 
-	// 	while (split != NULL) {
-	// 		//Handling newline character in last split since that will get printed with a space after it
-	// 		//If newline is detected => current split is last split
-	// 		//=> Print last split without whitespace after it
-	// 		if (split[strlen(split)-1] != '\n')  {
-	// 			printf("%s ", split);
-	// 		}
-	// 		else {
-	// 			printf("%s", split);
-	// 		}
-	// 		split = strtok(NULL, " ");
-	// 	}
-	// }
 }
 
 void pwd(char flag1[], char flag2[], char* argument[]) {
 	
+	printf("PWD!\n");
+
 	//Vanilla - no flags
 	char dir[100];
 	getcwd(dir, 100);
@@ -310,7 +268,6 @@ void shell() {
 	while (1) {
 		printf("bl0nderShell> ");
 		command(cmd);
-		break;
 	}
 }
 

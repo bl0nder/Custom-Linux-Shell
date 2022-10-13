@@ -10,54 +10,6 @@ const int maxChar = 1000;
 const int commandSize = 20;
 const int flagSize = 20;
 const int argSize = 1000;
-// void echo_u(char* split[], int print) {
-// 	for (int i=0; i<strlen(split); i++) {
-// 		if (split[i] >= 'a' && split[i] <= 'z') {
-// 			split[i] -= 32;
-// 		}
-// 	}
-
-// 	if (print) {
-// 		if (split[strlen(split)-1] != '\n')  {	
-// 			printf("%s ", split);
-// 		}
-// 		else {
-// 			printf("%s", split);
-// 		}
-// 	}
-// }
-
-// void echo_m(char* split[], int print) {
-// 	int prevCase = 0;	//0 -> lower case; 1 -> upper case
-	
-// 	//printf("%s", split);
-// 	//Toggle case
-// 	for (int i=0; i<strlen(split); i++) {
-// 		if (prevCase == 0) {
-// 			if (split[i] >= 'a' && split[i] <= 'z') {
-// 				split[i] -= 32;
-// 			}		
-// 			prevCase = 1;
-// 		}
-// 		else {
-// 			if (split[i] >= 'A' && split[i] <= 'Z') {
-// 				split[i] += 32;
-// 			}
-// 			prevCase = 0;
-// 		}
-	
-// 	}
-
-// 	if (print) {
-// 		if (split[strlen(split)-1] != '\n')  {	
-// 			printf("%s ", split);
-// 		}
-// 		else {
-// 			printf("%s", split);
-// 		}
-// 	}
-
-// }
 
 void echo(char flag1[], char flag2[], char* argument[]) {
 

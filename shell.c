@@ -8,7 +8,6 @@
 
 const int maxChar = 1000;
 const int commandSize = 20;
-const int flagSize = 20;
 
 // void echo_u(char* split[], int print) {
 // 	for (int i=0; i<strlen(split); i++) {
@@ -137,6 +136,7 @@ const int flagSize = 20;
 void executeCommand(char* split[]) {
 	
 	
+	const int flagSize = 20;
 	
 	//Get command from split
 	char cmd[commandSize];

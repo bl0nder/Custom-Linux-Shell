@@ -136,7 +136,7 @@ const int commandSize = 20;
 void executeCommand(char* split[]) {
 	
 	
-	const int flagSize = 20;
+	int flagSize = 20;
 	
 	//Get command from split
 	char cmd[commandSize];

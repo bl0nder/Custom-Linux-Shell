@@ -136,7 +136,7 @@ void executeCommand(char* split[]) {
 	
 	char flag1[10] = "\0";
 	char flag2[10] = "\0";
-	char cmd[] = *split[0];
+	char cmd[] = split[0];
 
 	for (int i=0; split[i] != NULL; i++) {
 		printf("%s\n", split[i]);

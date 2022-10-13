@@ -124,18 +124,15 @@ void pwd(char flag1[], char flag2[]) {
 
 void cd(char flag1[], char flag2[], char* argument[]) {
 	const char* path = argument[0];
-	char* updatedPath;
 	int ans = chdir(path);
 
 	char dir[100];
 	if (ans == 0) {
 		getcwd(dir, 100);
-		printf("%s\n", dir);
-
 		setenv("PWD", dir, 1);	//Set $PWD environment variable to changed path as well
 	}
 	else {
-		printf("[!] Directory %s not found\n", dir);
+		printf("[!] Directory %s not found\n", path);
 	}
 }
 

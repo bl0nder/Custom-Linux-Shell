@@ -258,7 +258,7 @@ void command(char cmd[]) {
 void shell() {
 	char cmd[maxChar];
 	while (1) {
-		printf("bl0nderShell | %s> ", pwd("\0", "\0", ));
+		printf("bl0nderShell | %s> ", pwd("\0", "\0"));
 		command(cmd);
 	}
 }

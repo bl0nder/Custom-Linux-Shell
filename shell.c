@@ -64,7 +64,18 @@ void pwd(char flag1[], char flag2[]) {
 
 		//P flag - 
 		else if (!strcmp(flag1, "-P")) {
+			const int size = 1000;
+			char path_noSymbolicLinks[size] = {'\0'};
+			int flag = 0;
+			getcwd(dir, 100);
+			flag = readlink(dir, path_noSymbolicLinks, size);
 
+			if (flag < 0) {
+				printf("[!] Erorr in resolving pathname\n");
+			}
+			else {
+				printf("%s\n", path_noSymbolicLinks);
+			}
 		}
 	}
 

@@ -186,7 +186,7 @@ void executeCommand(char* split[], int splitLen) {
 			execl("ls", "ls", NULL);
 		}
 		else {
-			wait();
+			wait(NULL);
 			printf("Child complete!\n");
 		}
 	}

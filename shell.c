@@ -175,6 +175,22 @@ void executeCommand(char* split[], int splitLen) {
 		echo(flag1, flag2, argument);
 	}
 
+	else if (!strcmp(cmd, "ls")) {
+		pid_t pid;
+		pid = fork();
+
+		if (pid < 0) {
+			printf("[!] Some error occurred while executing this command");
+		}
+		else if (pid == 0) {
+			execl("ls", "ls", NULL);
+		}
+		else {
+			wait();
+			printf("Child complete!\n");
+		}
+	}
+
 	//unknown command
 	else {
 		printf("[!] Unknown command %s entered\n", cmd);

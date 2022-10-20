@@ -65,7 +65,7 @@ void pwd(char flag1[], char flag2[]) {
 		//P flag - 
 		else if (!strcmp(flag1, "-P")) {
 			const int size = 1000;
-			char path_noSymbolicLinks[size] = {'\0'};
+			char path_noSymbolicLinks[size];
 			int flag = 0;
 			getcwd(dir, 100);
 			flag = readlink(dir, path_noSymbolicLinks, size);

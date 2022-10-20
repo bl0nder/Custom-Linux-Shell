@@ -2,11 +2,7 @@
 #include <dirent.h>
 #include <stdlib.h>
 
-void ls() {
-    
-}
-
 int main() {
-    ls();
+    printf("Hello world :)\n");
     return 0;
 }

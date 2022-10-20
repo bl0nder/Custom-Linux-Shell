@@ -62,17 +62,20 @@ void pwd(char flag1[], char flag2[]) {
 			printf("%s\n", envName);
 		}
 
-		//P flag - 
+		//P flag - path to working directory without symlinks
 		else if (!strcmp(flag1, "-P")) {
 			const int size = 1000;
 			char path_noSymbolicLinks[size];
 			int flag = 0;
 			getcwd(dir, 100);
 			flag = readlink(dir, path_noSymbolicLinks, size);
-
+			
+			//print dir if no symlink
 			if (flag < 0) {
-				printf("[!] Erorr in resolving pathname\n");
+				printf("%s\n", dir);
 			}
+
+			//print path with resolved symlinks if they exist
 			else {
 				printf("%s\n", path_noSymbolicLinks);
 			}
@@ -81,7 +84,7 @@ void pwd(char flag1[], char flag2[]) {
 
 	//Both flags present
 	else if (!strcmp(flag1, "-L")) {
-
+		printf("[!] Both flags cannot be used at the same time with this command\n");
 	}
 }
 

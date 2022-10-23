@@ -124,7 +124,7 @@ void executeCommand(char* split[], int splitLen) {
 
 	flag1 = "\0";
 	flag2 = "\0";
-	
+
 	//Initialise argument array to contain null 
 	for (int i=0; i<argSize; i++) {
 		argument[i] = NULL;
@@ -179,8 +179,6 @@ void executeCommand(char* split[], int splitLen) {
 	}
 
 	else if (!strcmp(cmd, "ls")) {
-
-		char* f[] = {flag1, flag2};
 		
 		pid_t pid;
 		pid = fork();
@@ -189,7 +187,7 @@ void executeCommand(char* split[], int splitLen) {
 			printf("[!] Some error occurred while executing this command");
 		}
 		else if (pid == 0) {
-			execl("./ls", f, NULL);
+			execl("./ls", flag1, flag2, NULL);
 		}
 		else {
 			wait(NULL);

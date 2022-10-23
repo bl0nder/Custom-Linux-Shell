@@ -110,20 +110,17 @@ void executeCommand(char* split[], int splitLen) {
 	strcpy(cmd, split[0]);
 
 	//Strings to store flags
-	char* flag1;
-	char* flag2;
+	char flag1[flagSize];
+	char flag2[flagSize];
 
 	//Char pointer to store argument (could have multiple substrings in it)
 	char* argument[argSize];
 
 	//Initialise flag1 and flag2 to be arrays of null characters (helps in checking if flags exist or not)
-	// for (int i=0; i<flagSize; i++) {
-	// 	flag1[i] = '\0';
-	// 	flag2[i] = '\0';
-	// }
-
-	flag1 = "\0";
-	flag2 = "\0";
+	for (int i=0; i<flagSize; i++) {
+		flag1[i] = '\0';
+		flag2[i] = '\0';
+	}
 
 	//Initialise argument array to contain null 
 	for (int i=0; i<argSize; i++) {

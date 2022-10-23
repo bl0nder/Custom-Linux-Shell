@@ -177,7 +177,7 @@ void executeCommand(char* split[], int splitLen) {
 
 	else if (!strcmp(cmd, "ls")) {
 		
-		char* args[] = {"./ls", flag1, flag2, 0};
+		char* args[] = {"./ls", (char*) flag1, (char*) flag2, 0};
 		
 		pid_t pid;
 		pid = fork();

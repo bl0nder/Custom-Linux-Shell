@@ -3,7 +3,9 @@
 #include <stdlib.h>
 
 int main(int argc, char* argv[]) {
-    printf("%d\n", argc);
+    if (argv[0] == "hello") {
+        printf("Hello received");
+    }
     printf("Hello world :)\n");
     return 0;
 }

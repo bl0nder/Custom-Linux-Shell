@@ -183,7 +183,7 @@ void executeCommand(char* split[], int splitLen) {
 			printf("[!] Some error occurred while executing this command");
 		}
 		else if (pid == 0) {
-			execl("./ls", "hello", "hello again", "hello yet again", NULL);
+			execl("./ls", flag1, flag2, NULL);
 		}
 		else {
 			wait(NULL);

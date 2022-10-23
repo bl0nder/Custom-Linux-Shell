@@ -184,7 +184,7 @@ void executeCommand(char* split[], int splitLen) {
 			printf("[!] Some error occurred while executing this command");
 		}
 		else if (pid == 0) {
-			char* lsflag = flag1;
+			char* lsflag1 = flag1;
 			char* lsflag2 = flag2;
 			execl("./ls", lsflag1, lsflag2, NULL);
 		}

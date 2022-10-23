@@ -176,6 +176,9 @@ void executeCommand(char* split[], int splitLen) {
 	}
 
 	else if (!strcmp(cmd, "ls")) {
+
+		char* f1 = flag1;
+		char* f2 = flag2;
 		
 		pid_t pid;
 		pid = fork();
@@ -184,9 +187,6 @@ void executeCommand(char* split[], int splitLen) {
 			printf("[!] Some error occurred while executing this command");
 		}
 		else if (pid == 0) {
-			char* lsflag1 = flag1;
-			char* lsflag2 = flag2;
-			printf("FLAGS: %s %s\n", lsflag1, lsflag2);
 			execl("./ls", lsflag1, lsflag2, NULL);
 		}
 		else {

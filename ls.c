@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[]) {
     
-    for (int i=0; i<sizeof(array)/sizeof(char *); i++) {
+    for (int i=0; i<sizeof(argv)/sizeof(char *); i++) {
         printf("%s", argv[i]);
     }
 

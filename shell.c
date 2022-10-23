@@ -110,18 +110,21 @@ void executeCommand(char* split[], int splitLen) {
 	strcpy(cmd, split[0]);
 
 	//Strings to store flags
-	char flag1[flagSize];
-	char flag2[flagSize];
+	char* flag1;
+	char* flag2;
 
 	//Char pointer to store argument (could have multiple substrings in it)
 	char* argument[argSize];
 
 	//Initialise flag1 and flag2 to be arrays of null characters (helps in checking if flags exist or not)
-	for (int i=0; i<flagSize; i++) {
-		flag1[i] = '\0';
-		flag2[i] = '\0';
-	}
+	// for (int i=0; i<flagSize; i++) {
+	// 	flag1[i] = '\0';
+	// 	flag2[i] = '\0';
+	// }
 
+	flag1 = "\0";
+	flag2 = "\0";
+	
 	//Initialise argument array to contain null 
 	for (int i=0; i<argSize; i++) {
 		argument[i] = NULL;
@@ -177,7 +180,7 @@ void executeCommand(char* split[], int splitLen) {
 
 	else if (!strcmp(cmd, "ls")) {
 
-		char f[] = {flag1, flag2};
+		char* f[] = {flag1, flag2};
 		
 		pid_t pid;
 		pid = fork();

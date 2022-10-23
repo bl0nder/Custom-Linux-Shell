@@ -3,9 +3,12 @@
 #include <stdlib.h>
 
 int main(int argc, char* argv[]) {
-    if (argv[0] == "hello") {
-        printf("Hello received");
+    
+    for (int i=0; i<sizeof(array)/sizeof(char *); i++) {
+        printf("%s", argv[i]);
     }
+
+    
     printf("Hello world :)\n");
     return 0;
 }

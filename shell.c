@@ -177,11 +177,16 @@ void executeCommand(char* split[], int splitLen) {
 
 	else if (!strcmp(cmd, "ls")) {
 		
-		char* args[] = {"./ls","\0","\0", 0};
+		// char* args[] = {"./ls","\0","\0", 0};
+		int m = 0;
+		int i = 0;
 
 		//-m flag
 		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
-			strcpy(args[1], "-m");
+			m = 1;
+		}
+		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
+			i = 1;
 		}
 		
 		pid_t pid;
@@ -191,7 +196,19 @@ void executeCommand(char* split[], int splitLen) {
 			printf("[!] Some error occurred while executing this command");
 		}
 		else if (pid == 0) {
-			execl(args[0], (const char*) args[0], (const char*) args[1], (const char*) args[2]);
+			if (m && i) {
+				execl(args[0], "ls", "-m", "-i", 0);
+			}
+			else if (m && !i) {
+				execl(args[0], "ls", "-m", "\0", 0);
+			}
+			else if (!m && i) {
+				execl(args[0], "ls", "\0", "-i", 0);
+			}
+			else {
+				execl(args[0], "ls", "\0", "\0", 0);
+			}
+
 		}
 		else {
 			wait(NULL);

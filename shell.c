@@ -185,7 +185,7 @@ void executeCommand(char* split[], int splitLen) {
 		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
 			m = 1;
 		}
-		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
+		if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
 			i = 1;
 		}
 		

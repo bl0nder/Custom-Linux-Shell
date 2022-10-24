@@ -22,9 +22,7 @@ int main(int argc, char* argv[]) {
             return -1;
         }
         else {
-            while (readDir) {
-                printf("%s ", readDir -> d_name);
-            }
+            printf("%s\n", readDir -> d_name);
         }
     }
 

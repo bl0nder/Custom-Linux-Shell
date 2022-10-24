@@ -22,10 +22,11 @@ int main(int argc, char* argv[]) {
             return -1;
         }
         else {
-            printf("%s\n", readDir -> d_name);
+            while (readDir != NULL) {
+                printf("%s\n", readDir -> d_name);
+            }
         }
     }
 
-    printf("Hello world :)\n");
     return 0;
 }

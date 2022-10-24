@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
         struct dirent* readDir;
         
         directory = opendir(".");
-        int readDirectory = readdir(directory);
+        readDir = readdir(directory);
 
 
         if (errno != 0) {
@@ -24,7 +24,6 @@ int main(int argc, char* argv[]) {
         else {
             while (readDir) {
                 printf("%s ", readDir -> d_name);
-                readDir = readDir -> d_name;
             }
         }
     }

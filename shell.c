@@ -177,18 +177,12 @@ void executeCommand(char* split[], int splitLen) {
 
 	else if (!strcmp(cmd, "ls")) {
 		
-		char* args[] = {"./ls", NULL, NULL, 0};
+		char* args[] = {"./ls","\0","\0", 0};
 
 		//-m flag
 		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
 			strcpy(args[1], "-m");
 		}
-
-
-		// //-
-		// else if (!strcmp(flag1, "-m")) {
-
-		// }
 		
 		pid_t pid;
 		pid = fork();
@@ -197,7 +191,7 @@ void executeCommand(char* split[], int splitLen) {
 			printf("[!] Some error occurred while executing this command");
 		}
 		else if (pid == 0) {
-			execv(args[0], args);
+			execl(args[0], (const char*) args[0], (const char*) args[1], (const char*) args[2]);
 		}
 		else {
 			wait(NULL);

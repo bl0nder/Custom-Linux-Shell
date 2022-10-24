@@ -7,7 +7,7 @@
 int main(int argc, char* argv[]) {    
     
     //No flags
-    if (!strcmp(argv[1], "\0") && !strcmp(argv[2], "\0")) {
+    if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
         errno = 0;
         
         DIR* directory;

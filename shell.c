@@ -199,16 +199,16 @@ void executeCommand(char* split[], int splitLen) {
 		}
 		else if (pid == 0) {
 			if (m && i) {
-				execl("./ls", "ls", "-m", "-i", 0);
+				execl("./ls", "-m", "-i", 0);
 			}
 			else if (m && !i) {
-				execl("./ls", "ls", "-m", "\0", 0);
+				execl("./ls", "-m", "\0", 0);
 			}
 			else if (!m && i) {
-				execl("./ls", "ls", "\0", "-i", 0);
+				execl("./ls", "\0", "-i", 0);
 			}
 			else {
-				execl("./ls", "ls", "\0", "\0", 0);
+				execl("./ls", "\0", "\0", 0);
 			}
 		}
 		else {

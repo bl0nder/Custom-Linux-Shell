@@ -2,6 +2,7 @@
 #include <dirent.h>
 #include <errno.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char* argv[]) {    
     
@@ -13,7 +14,7 @@ int main(int argc, char* argv[]) {
         struct dirent* readDir;
         
         directory = opendir(".");
-        int readDirectory = readdir_r(directory);
+        int readDirectory = readdir(directory);
 
 
         if (errno != 0) {
@@ -23,7 +24,7 @@ int main(int argc, char* argv[]) {
         else {
             while (readDir) {
                 printf("%s ", readDir -> d_name);
-                readDir = readDir -> next;
+                readDir = readDir -> d_name;
             }
         }
     }

@@ -177,7 +177,7 @@ void executeCommand(char* split[], int splitLen) {
 
 	else if (!strcmp(cmd, "ls")) {
 		
-		// char* args[] = {"./ls","\0","\0", 0};
+		//Flags
 		int m = 0;
 		int i = 0;
 
@@ -185,6 +185,8 @@ void executeCommand(char* split[], int splitLen) {
 		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
 			m = 1;
 		}
+
+		//-i flag
 		if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
 			i = 1;
 		}
@@ -208,7 +210,6 @@ void executeCommand(char* split[], int splitLen) {
 			else {
 				execl("./ls", "ls", "\0", "\0", 0);
 			}
-
 		}
 		else {
 			wait(NULL);

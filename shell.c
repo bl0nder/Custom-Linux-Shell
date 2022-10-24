@@ -177,7 +177,7 @@ void executeCommand(char* split[], int splitLen) {
 
 	else if (!strcmp(cmd, "ls")) {
 		
-		char* args[] = {"./ls","\0","\0", 0};
+		char* args[] = {"./ls", NULL, NULL, 0};
 
 		//-m flag
 		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {

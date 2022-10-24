@@ -23,7 +23,8 @@ int main(int argc, char* argv[]) {
         }
         else {
             while (readDir != NULL) {
-                printf("%s\n", readDir -> d_name);
+                printf("%s ", readDir -> d_name);
+                readDir = readdir(directory);
             }
         }
     }

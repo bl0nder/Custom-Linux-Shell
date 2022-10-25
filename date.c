@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[]) {
     
-    setenv("TZ", "UTC", 1);
+    setenv("TZ", "IST", 1);
     tzset();
 
     time_t currentTime;

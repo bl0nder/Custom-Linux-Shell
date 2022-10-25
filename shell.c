@@ -260,6 +260,8 @@ void executeCommand(char* split[], int splitLen) {
 		int f = 0;
 		int i = 0;
 
+		const char* fileName = (const char*) argument;
+
 		if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
 			i = 1;
 		}
@@ -276,7 +278,7 @@ void executeCommand(char* split[], int splitLen) {
 		}
 		else if (pid == 0) {
 			if (f && i) {
-				execl("./rm", "-f", "-i", (const char*) argument, 0);
+				execl("./rm", "-f", "-i", fileName, 0);
 			}
 			else if (f && !i) {
 				execl("./rm", "-f", "\0", 0);
@@ -285,7 +287,7 @@ void executeCommand(char* split[], int splitLen) {
 				execl("./rm", "\0", "-i", 0);
 			}
 			else {
-				execl("./rm", "\0", "\0", (const char*) argument, 0);
+				execl("./rm", "\0", "\0", fileName, 0);
 			}
 		}
 		else {

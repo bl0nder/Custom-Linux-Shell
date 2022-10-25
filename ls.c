@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
                         printf("%s", readDir -> d_name);    
                     }
                     else {
-                        printf(", %s, ", readDir -> d_name);    
+                        printf(", %s", readDir -> d_name);    
                     }   
                     counter++; 
                 }

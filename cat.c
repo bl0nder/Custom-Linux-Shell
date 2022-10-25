@@ -24,7 +24,6 @@ int main(int argc, char* argv[]) {
         while (1) {
             if (c == '\n') {
                 printf("$\n");
-                break;
             }
             else if (feof(fp)) {
                 break;

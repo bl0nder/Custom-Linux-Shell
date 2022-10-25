@@ -5,7 +5,7 @@
 
 int main(int argc, char* argv[]) {
 
-    const char* file = strtok(argv[2], "\n");
+    const char* file = argv[2];
     char* str;
     const int maxSize = 1000;
     FILE *fp = fopen(file, "r");
@@ -20,23 +20,7 @@ int main(int argc, char* argv[]) {
     }
 
     else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
-        // char c = fgetc(fp);
-        // while (!feof(fp)) {
-        //     if (c == '\n') {
-        //         printf("$");
-        //     }
-        //     printf("%c", c);
-        // }
-        while (fgets(str, maxSize, fp)) {
-            char* token = strtok(str, "\n");
-            if (!strcmp(token, str)) {
-                printf("%s", str);
-            }
-            else {
-                printf("%s$\n", token);
-            }
-        }
-        fclose(fp);
+        printf("pls hoja vai");
     }
 
     return 0;

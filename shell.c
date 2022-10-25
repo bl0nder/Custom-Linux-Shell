@@ -303,10 +303,10 @@ void executeCommand(char* split[], int splitLen) {
 		int e = 0;
 		int t = 0;
 
-		if (!strcmp(flag1, "-e") || !strcmp(flag2, "-e")) {
+		if (!strcmp(flag1, "-E") || !strcmp(flag2, "-E")) {
 			e = 1;
 		}
-		if (!strcmp(flag1, "-t") || !strcmp(flag2, "-t")) {
+		if (!strcmp(flag1, "-T") || !strcmp(flag2, "-T")) {
 			t = 1;
 		}
 
@@ -321,13 +321,13 @@ void executeCommand(char* split[], int splitLen) {
 
 		else if (pid == 0) {
 			if (e && t) {
-				execl("./cat", "-e", "-t", fileName, 0);
+				execl("./cat", "-E", "-T", fileName, 0);
 			}
 			else if (e && !t) {
-				execl("./cat", "-e", "\0", fileName, 0);
+				execl("./cat", "-E", "\0", fileName, 0);
 			}
 			else if (!e && t) {
-				execl("./cat", "\0", "-t", fileName, 0);
+				execl("./cat", "\0", "-T", fileName, 0);
 			}
 			else {
 				execl("./cat", "\0", "\0", fileName, 0);

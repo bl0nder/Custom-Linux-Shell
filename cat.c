@@ -19,11 +19,27 @@ int main(int argc, char* argv[]) {
         fclose(fp);
     }
 
-    else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
+    else if (!strcmp(argv[0], "-E") && !strcmp(argv[1], "\0")) {
         char c = fgetc(fp);
         while (1) {
             if (c == '\n') {
                 printf("$\n");
+            }
+            else if (feof(fp)) {
+                break;
+            }
+            else {
+                printf("%c", c);
+            }
+            c= fgetc(fp);
+        }
+    }
+
+    else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-T")) {
+        char c = fgetc(fp);
+        while (1) {
+            if (c == '\t') {
+                printf("^I");
             }
             else if (feof(fp)) {
                 break;

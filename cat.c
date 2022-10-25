@@ -32,6 +32,7 @@ int main(int argc, char* argv[]) {
             else {
                 printf("%c", c);
             }
+            c= fgetc(fp);
         }
     }
 

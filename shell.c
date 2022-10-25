@@ -306,7 +306,7 @@ void executeCommand(char* split[], int splitLen) {
 		if (!strcmp(flag1, "-e") || !strcmp(flag2, "-e")) {
 			e = 1;
 		}
-		if (!strcmp(flag1, "-e") || !strcmp(flag2, "-e")) {
+		if (!strcmp(flag1, "-t") || !strcmp(flag2, "-t")) {
 			t = 1;
 		}
 

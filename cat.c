@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
 
     const char* file = argv[2];
     char* str;
-    const int maxSize = 2000;
+    const int maxSize = 1000;
     // while (fgets(str, maxSize, fp)) {
     //     printf("%s", str);
     // }

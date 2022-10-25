@@ -5,29 +5,29 @@
 #include <string.h>
 
 int main(int argc, char* argv[]) {    
+
+    errno = 0;
     
-    //No flags
-    if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
-        errno = 0;
-        
-        DIR* directory;
-        struct dirent* readDir;
-        
-        directory = opendir(".");
-        readDir = readdir(directory);
+    DIR* directory;
+    struct dirent* readDir;
+    
+    directory = opendir(".");
+    readDir = readdir(directory);
 
 
-        if (errno != 0) {
-            printf("Directory does not exist");
-            return -1;
-        }
-        else {
-            while (readDir != NULL) {
+    if (errno != 0) {
+        printf("Directory does not exist");
+        return -1;
+    }
+    else {
+        while (readDir != NULL) {
+            if (readDir -> d_name[0] != '.') {
                 printf("%s ", readDir -> d_name);
-                readDir = readdir(directory);
             }
+            readDir = readdir(directory);
         }
     }
+
 
     return 0;
 }

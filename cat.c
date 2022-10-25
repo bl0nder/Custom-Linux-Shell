@@ -18,13 +18,13 @@ int main(int argc, char* argv[]) {
     else {
         char* str;
         const int maxSize = 2000;
-        if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
+        if (!strcmp(argv[0], "-?") && !strcmp(argv[1], "-?")) {
             while (fgets(str, maxSize, fp)) {
                 printf("%s", str);
             }
         }
 
-        else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
+        else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "-?")) {
             // char c = fgetc(fp);
             // while (!feof(fp)) {
             //     if (c == '\n') {

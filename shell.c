@@ -300,8 +300,8 @@ void executeCommand(char* split[], int splitLen) {
 
 	else if (!strcmp(cmd, "cat")) {
 
-		char* f1 = "\0";
-		char* f2 = "\0";
+		char* f1 = "-?";
+		char* f2 = "-?";
 
 		if (!strcmp(flag1, "-e") || !strcmp(flag2, "-e")) {
 			strcpy(f1, "-e");

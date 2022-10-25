@@ -19,8 +19,6 @@ int main(int argc, char* argv[]) {
         printf("%s (UTC)\n", ctime(&currentTime));
     }
 
-    else if ()
-
     //For IST
     return 0;
 

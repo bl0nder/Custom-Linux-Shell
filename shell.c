@@ -256,6 +256,46 @@ void executeCommand(char* split[], int splitLen) {
 		}
 	}
 
+	else if (!strcmp(cmd, "rm")) {
+		int f = 0;
+		int i = 0;
+
+		if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
+			i = 1;
+		}
+
+		if (!strcmp(flag1, "-f") || !strcmp(flag2, "-f")) {
+			f = 1;
+		}
+
+		pid_t pid;
+		pid = fork();
+
+		if (pid < 0) {
+			printf("[!] Some error occurred while executing this command\n");
+		}
+		else if (pid == 0) {
+			if (f && i) {
+				execl("./date", "-f", "-i", 0);
+			}
+			else if (u && !r) {
+				execl("./date", "-f", "\0", 0);
+			}
+			else if (i && !f) {
+				execl("./date", "\0", "-i", 0);
+			}
+			else {
+				execl("./date", "\0", "\0", 0);
+			}
+		}
+		else {
+			wait(NULL);
+			printf("Child complete!\n");
+		}
+
+
+	}
+
 	//unknown command
 	else {
 		printf("[!] Unknown command %s entered\n", cmd);

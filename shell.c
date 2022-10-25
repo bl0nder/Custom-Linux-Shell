@@ -224,6 +224,8 @@ int executeCommand(char* split[], int splitLen) {
 				printf("[!] Invalid flag(s) entered\n");
 				exit(-1);
 			}
+
+			exit(0);
 		}
 		else {
 			wait(NULL);

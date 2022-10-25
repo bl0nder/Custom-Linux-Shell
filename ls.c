@@ -13,7 +13,12 @@ int main(int argc, char* argv[]) {
     DIR* directory;
     struct dirent* readDir;
     
-    directory = opendir(getenv("PWD"));
+
+    char tempDir[100];
+    getcwd(tempDir, 100);
+
+    const char* dir = tempDir;
+    directory = opendir(dir);
     readDir = readdir(directory);
 
     struct stat fileStats;

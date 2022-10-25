@@ -339,7 +339,7 @@ void executeCommand(char* split[], int splitLen) {
 		}
 	}
 
-	else if (!strcmp(cmd), "mkdir") {
+	else if (!strcmp(cmd, "mkdir")) {
 		
 	}
 

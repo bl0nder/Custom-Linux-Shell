@@ -22,10 +22,21 @@ int main(int argc, char* argv[]) {
     else {
         while (readDir != NULL) {
             if (readDir -> d_name[0] != '.') {
-                printf("%s ", readDir -> d_name);
+                if (!strcmp(argv[0], "-m")) {
+                    printf("%s", readDir -> d_name);    
+                }
+                else {
+                    printf("%s ", readDir -> d_name);
+                }
             }
+            
             readDir = readdir(directory);
+            
+            if (!strcmp(argv[0], "-m")) {
+                printf(", ");
+            }
         }
+        printf("\n");
     }
 
 

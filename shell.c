@@ -108,7 +108,7 @@ int cd(char flag1[], char flag2[], char* argument[]) {
 }
 
 
-void executeCommand(char* split[], int splitLen) {
+int executeCommand(char* split[], int splitLen) {
 	
 	//Get command from split
 	char cmd[commandSize];
@@ -352,6 +352,8 @@ void executeCommand(char* split[], int splitLen) {
 	else {
 		printf("[!] Unknown command %s entered\n", cmd);
 	}
+
+	return 0;
 }
 
 void command(char cmd[]) {

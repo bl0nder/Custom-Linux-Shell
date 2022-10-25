@@ -7,7 +7,6 @@
 int main(int argc, char* argv[]) {
 
     const char* file = argv[2];
-    printf("%s %s %s\n", argv[0], argv[1], file);
     FILE *fp = fopen(file, "r");
 
     if (fp == NULL) {
@@ -16,17 +15,17 @@ int main(int argc, char* argv[]) {
     }
 
     else {
-        char* str;
-        const int maxSize = 2000;
-        while (fgets(str, maxSize, fp)) {
-            printf("%s", str);
-        }
-        // if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
-        //     printf("GELoihniuhNDUH");
-        //     while (fgets(str, maxSize, fp)) {
-        //         printf("%s", str);
-        //     }
+        // char* str;
+        // const int maxSize = 2000;
+        // while (fgets(str, maxSize, fp)) {
+        //     printf("%s", str);
         // }
+        if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
+            printf("GELoihniuhNDUH");
+            while (fgets(str, maxSize, fp)) {
+                printf("%s", str);
+            }
+        }
 
         // else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
         //     // char c = fgetc(fp);

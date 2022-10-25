@@ -7,46 +7,39 @@
 int main(int argc, char* argv[]) {
 
     const char* file = argv[2];
-    FILE *fp = fopen(file, "r");
-
-    if (fp == NULL) {
-        printf("[!] File does not exist\n");        
-        exit(-1);
+    char* str;
+    const int maxSize = 2000;
+    // while (fgets(str, maxSize, fp)) {
+    //     printf("%s", str);
+    // }
+    if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
+        FILE *fp = fopen(file, "r");
+        while (fgets(str, maxSize, fp)) {
+            printf("%s", str);
+        }
+        fclose(fp);
     }
 
-    else {
-        char* str;
-        const int maxSize = 2000;
-        // while (fgets(str, maxSize, fp)) {
-        //     printf("%s", str);
+    else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
+        FILE *fp = fopen(file, "r");
+        // char c = fgetc(fp);
+        // while (!feof(fp)) {
+        //     if (c == '\n') {
+        //         printf("$");
+        //     }
+        //     printf("%c", c);
         // }
-        if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
-            while (fgets(str, maxSize, fp)) {
+        while (fgets(str, maxSize, fp)) {
+            char* token = strtok(str, "\n");
+            if (!strcmp(token, str)) {
                 printf("%s", str);
             }
-        }
-
-        else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
-            // char c = fgetc(fp);
-            // while (!feof(fp)) {
-            //     if (c == '\n') {
-            //         printf("$");
-            //     }
-            //     printf("%c", c);
-            // }
-            while (fgets(str, maxSize, fp)) {
-                char* token = strtok(str, "\n");
-                if (!strcmp(token, str)) {
-                    printf("%s", str);
-                }
-                else {
-                    printf("%s$\n", token);
-                }
+            else {
+                printf("%s$\n", token);
             }
         }
+        fclose(fp);
     }
-
-    fclose(fp);
 
     return 0;
 }

@@ -4,7 +4,12 @@
 #include <string.h>
 
 
-int main() {
+int main(int argc, char* argv[]) {
     
+    char* file = "";
+
+    if (!strcmp(argv[0], "-i")) {
+
+    }
     return 0;
 }

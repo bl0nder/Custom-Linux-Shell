@@ -276,7 +276,7 @@ void executeCommand(char* split[], int splitLen) {
 		}
 		else if (pid == 0) {
 			if (f && i) {
-				execl("./date", "-f", "-i", 0);
+				execl("./date", "-f", "-i", (const char*) argument, 0);
 			}
 			else if (u && !r) {
 				execl("./date", "-f", "\0", 0);
@@ -285,7 +285,7 @@ void executeCommand(char* split[], int splitLen) {
 				execl("./date", "\0", "-i", 0);
 			}
 			else {
-				execl("./date", "\0", "\0", 0);
+				execl("./date", "\0", "\0", (const char*) argument, 0);
 			}
 		}
 		else {

@@ -19,6 +19,7 @@ int main(int argc, char* argv[]) {
     getcwd(tempDir, 100);
 
     const char* dir = tempDir;
+    printf("cwd: %s\n", dir);
     directory = opendir(dir);
     readDir = readdir(directory);
 

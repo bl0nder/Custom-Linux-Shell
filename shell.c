@@ -260,7 +260,7 @@ void executeCommand(char* split[], int splitLen) {
 		int f = 0;
 		int i = 0;
 
-		const char* fileName = (const char*) argument;
+		const char* fileName = argument[0];
 
 		if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
 			i = 1;

@@ -99,12 +99,12 @@ int cd(char flag1[], char flag2[], char* argument[]) {
 	if (ans == 0) {
 		getcwd(dir, 100);
 		setenv("PWD", dir, 1);	//Set $PWD environment variable to changed path as well
+		return 0;
 	}
 	else {
 		printf("[!] Directory %s not found\n", path);
+		return -1;
 	}
-
-	return 0;
 }
 
 
@@ -213,7 +213,6 @@ void executeCommand(char* split[], int splitLen) {
 				execl("./ls", "\0", "-i", 0);
 			}
 			else {
-				printf("this working\n");
 				execl("./ls", "\0", "\0", 0);
 			}
 		}

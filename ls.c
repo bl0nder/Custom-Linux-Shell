@@ -38,22 +38,23 @@ int main(int argc, char* argv[]) {
                 }
 
                 if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "-i")) {
-                    if (counter != 1) {
+                    if (counter == 1) {
                         printf("%d %s", fileStats.st_ino, readDir -> d_name);    
                     }
                     else {
-                        printf("%d %s, ", fileStats.st_ino, readDir -> d_name);    
+                        printf(", %d %s", fileStats.st_ino, readDir -> d_name);    
                     }
                     counter++;
                 }
 
                 else if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "\0")) {
-                    if (counter != 1) {
+                    if (counter == 1) {
                         printf("%s", readDir -> d_name);    
                     }
                     else {
-                        printf("%s, ", readDir -> d_name);    
-                    }    
+                        printf(", %s, ", readDir -> d_name);    
+                    }   
+                    counter++; 
                 }
 
                 else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-i")) {

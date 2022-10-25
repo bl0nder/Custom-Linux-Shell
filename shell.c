@@ -260,7 +260,7 @@ void executeCommand(char* split[], int splitLen) {
 		int f = 0;
 		int i = 0;
 
-		printf("%s\n", argument);
+		printf("%s\n", argument[0]);
 
 		const char* fileName = argument[0];
 

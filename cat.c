@@ -20,12 +20,19 @@ int main(int argc, char* argv[]) {
     }
 
     else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
-        printf("pls hoja vai");
-
-        while (fgets(str, maxSize, fp)) {
-            char* token = strtok(str, "\n");
+        char c = fgetc(fp);
+        while (1) {
+            if (c == '\n') {
+                printf("$\n");
+                break;
+            }
+            else if (feof(fp)) {
+                break;
+            }
+            else {
+                printf("%c", c);
+            }
         }
-
     }
 
     return 0;

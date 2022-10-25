@@ -243,7 +243,7 @@ void executeCommand(char* split[], int splitLen) {
 			else if (u && !r) {
 				execl("./date", "-u", "\0", 0);
 			}
-			else if (!r && u) {
+			else if (r && !u) {
 				execl("./date", "\0", "-R", 0);
 			}
 			else {

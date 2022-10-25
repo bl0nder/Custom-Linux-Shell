@@ -29,6 +29,8 @@ int main(int argc, char* argv[]) {
         char s[maxSize];
 
         strftime(s, maxSize, format, &timeStruct);
+
+        printf("%s\n", s);
     }   
     return 0;
 

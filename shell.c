@@ -300,14 +300,14 @@ void executeCommand(char* split[], int splitLen) {
 
 	else if (!strcmp(cmd, "cat")) {
 
-		char* f1 = "-?";
-		char* f2 = "-?";
+		int e = 0;
+		int t = 0;
 
 		if (!strcmp(flag1, "-e") || !strcmp(flag2, "-e")) {
-			strcpy(f1, "-e");
+			e = 1;
 		}
 		if (!strcmp(flag1, "-e") || !strcmp(flag2, "-e")) {
-			strcpy(f2, "-t");
+			t = 1;
 		}
 
 		const char* e = f1;
@@ -322,7 +322,18 @@ void executeCommand(char* split[], int splitLen) {
 		}
 
 		else if (pid == 0) {
-			execl("./cat", e, t, fileName, 0);
+			if (e && t) {
+				execl("./cat", "-e", "-t", fileName, 0);
+			}
+			else if (e && !t) {
+				execl("./cat", "-e", "\0", fileName, 0);
+			}
+			else if (!e && t) {
+				execl("./cat", "\0", "-t", fileName, 0);
+			}
+			else {
+				execl("./cat", "\0", "\0", fileName, 0);
+			}
 		}
 
 		else {

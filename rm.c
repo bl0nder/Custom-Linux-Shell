@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
     
     const char* file = argv[2];
 
-    if (!strcmp(argv[1], "-i") && !strmp(argv[0], "\0")) {
+    if (!strcmp(argv[1], "-i") && !strcmp(argv[0], "\0")) {
         printf("Remove file '%s' (y/n)?", file);
         char ans[10];
         scanf("%s", ans);
@@ -25,11 +25,11 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    else if (!strcmp(argv[0], "-f")&& !strmp(argv[1], "\0") {
+    else if (!strcmp(argv[0], "-f")&& !strmp(argv[1], "\0")) {
         remove(file);
     }
 
-    else if (!strmp(argv[0], "\0" && !strmp(argv[1], "\0") {
+    else if (!strmp(argv[0], "\0") && !strmp(argv[1], "\0")) {
         remove (file);
         if (errno != 0) {
             printf("[!] File %s does not exist\n", file);
@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    else if (!strmp(argv[0], "-f" && !strmp(argv[1], "-i") {
+    else if (!strmp(argv[0], "-f") && !strmp(argv[1], "-i")) {
         printf("[!] Both flags cannot be used for this command\n");
         exit(-1);
     }

@@ -339,6 +339,10 @@ void executeCommand(char* split[], int splitLen) {
 		}
 	}
 
+	else if (!strcmp(cmd), "mkdir") {
+		
+	}
+
 	//unknown command
 	else {
 		printf("[!] Unknown command %s entered\n", cmd);

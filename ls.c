@@ -47,12 +47,13 @@ int main(int argc, char* argv[]) {
                 }
 
                 else if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "\0")) {
-                    if (readdir(directory) == NULL) {
-                        printf("%s", readDir -> d_name);    
-                    }
-                    else {
-                        printf("%s, ", readDir -> d_name);    
-                    }
+                    // if (readdir(directory) == NULL) {
+                    //     printf("%s", readDir -> d_name);    
+                    // }
+                    // else {
+                    //     printf("%s, ", readDir -> d_name);    
+                    // }
+                    printf("%s, ", readDir -> d_name);    
                 }
 
                 else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-i")) {

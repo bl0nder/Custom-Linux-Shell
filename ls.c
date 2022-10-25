@@ -14,13 +14,8 @@ int main(int argc, char* argv[]) {
     DIR* directory;
     struct dirent* readDir;
     
-
-    char tempDir[100];
-    getcwd(tempDir, 100);
-
-    const char* dir = tempDir;
-    printf("cwd: %s\n", dir);
-    directory = opendir(dir);
+    printf("cwd: %s\n", argv[2]);
+    directory = opendir(argv[2]);
     readDir = readdir(directory);
 
     struct stat fileStats;

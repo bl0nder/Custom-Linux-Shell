@@ -195,6 +195,11 @@ int executeCommand(char* split[], int splitLen) {
 		if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
 			i = 1;
 		}
+
+		char tempDir[100];
+		getcwd(tempDir, 100);
+
+		const char* dir = tempDir;
 		
 		pid_t pid;
 		pid = fork();
@@ -204,17 +209,16 @@ int executeCommand(char* split[], int splitLen) {
 		}
 		else if (pid == 0) {
 			if (m && i) {
-				execl("./ls", "-m", "-i", 0);
+				execl("./ls", "-m", "-i", dir, 0);
 			}
 			else if (m && !i) {
-				execl("./ls", "-m", "\0", 0);
+				execl("./ls", "-m", "\0", dir, 0);
 			}
 			else if (!m && i) {
-				execl("./ls", "\0", "-i", 0);
+				execl("./ls", "\0", "-i", dir, 0);
 			}
 			else if (!m && !i) {
-				printf("%d %d\n", m, i);
-				execl("./ls", "\0", "\0", 0);
+				execl("./ls", "\0", "\0", dir, 0);
 			}
 			else {
 				printf("[!] Invalid flag(s) entered\n");

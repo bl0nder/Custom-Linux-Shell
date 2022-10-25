@@ -217,6 +217,22 @@ void executeCommand(char* split[], int splitLen) {
 		}
 	}
 
+	else if (!strcmp(cmd, "date")) {
+		pid_t pid;
+		pid = fork();
+
+		if (pid < 0) {
+			printf("[!] Some error occurred while executing this command\n");
+		}
+		else if (pid == 0) {
+			execl("./date", "\0", "\0", 0);
+		}
+		else {
+			wait(NULL);
+			printf("Child complete!\n");
+		}
+	}
+
 	//unknown command
 	else {
 		printf("[!] Unknown command %s entered\n", cmd);

@@ -18,6 +18,8 @@ int main(int argc, char* argv[]) {
         tzset();
         time(&currentTime);
         printf("(UTC) %s\n", ctime(&currentTime));
+        setenv("TZ", "UTC-5:30", 1);
+        tzset();
     }
 
     else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-R")){

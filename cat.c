@@ -19,13 +19,18 @@ int main(int argc, char* argv[]) {
         if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
             while (fgets(str, maxSize, fp)) {
                 printf("%s", str);
-                printf("$");
             }
         }
 
-        // else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
-        //     while (fgetc())
-        // }
+        else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
+            char c = fgetc(fp);
+            while (c != EOF) {
+                if (c == '\n') {
+                    printf("$");
+                }
+                printf("%c", c);
+            }
+        }
     }
 
     return 0;

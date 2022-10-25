@@ -237,13 +237,13 @@ void executeCommand(char* split[], int splitLen) {
 			printf("[!] Some error occurred while executing this command\n");
 		}
 		else if (pid == 0) {
-			if (u && a) {
+			if (u && r) {
 				execl("./date", "-u", "-R", 0);
 			}
-			else if (u && !a) {
+			else if (u && !r) {
 				execl("./date", "-u", "\0", 0);
 			}
-			else if (!a && u) {
+			else if (!r && u) {
 				execl("./date", "\0", "-R", 0);
 			}
 			else {

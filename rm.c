@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
     
     const char* file = argv[2];
 
-    if (!strcmp(argv[0], "-i")) {
+    if (!strcmp(argv[1], "-i")) {
         printf("Remove file '%s' (y/n)?", file);
         char ans[10];
         scanf(ans);

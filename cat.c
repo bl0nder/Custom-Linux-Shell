@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
 
         else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
             char c = fgetc(fp);
-            while (c != EOF) {
+            while (!feof(fp)) {
                 if (c == '\n') {
                     printf("$");
                 }

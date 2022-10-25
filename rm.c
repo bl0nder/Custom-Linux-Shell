@@ -6,10 +6,12 @@
 
 int main(int argc, char* argv[]) {
     
-    char* file = "";
+    // char* file = "";
 
-    if (!strcmp(argv[0], "-i")) {
+    // if (!strcmp(argv[0], "-i")) {
 
-    }
+    // }
+
+    printf("%s", argv[2]);
     return 0;
 }

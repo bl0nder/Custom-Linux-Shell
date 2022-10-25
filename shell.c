@@ -203,6 +203,7 @@ void executeCommand(char* split[], int splitLen) {
 			printf("[!] Some error occurred while executing this command");
 		}
 		else if (pid == 0) {
+			printf("Test\n");
 			if (m && i) {
 				execl("./ls", "-m", "-i", 0);
 			}

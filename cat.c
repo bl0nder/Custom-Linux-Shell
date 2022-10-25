@@ -7,7 +7,7 @@
 int main(int argc, char* argv[]) {
 
     const char* file = argv[2];
-    printf("%s\n", file);
+    printf("%s %s %s\n", argv[0], argv[1], file);
     FILE *fp = fopen(file, "r");
 
     if (fp == NULL) {

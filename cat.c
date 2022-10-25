@@ -15,8 +15,8 @@ int main(int argc, char* argv[]) {
     }
 
     else {
-        // char* str;
-        // const int maxSize = 2000;
+        char* str;
+        const int maxSize = 2000;
         // while (fgets(str, maxSize, fp)) {
         //     printf("%s", str);
         // }

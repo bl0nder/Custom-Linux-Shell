@@ -91,7 +91,7 @@ int pwd(char flag1[], char flag2[]) {
 	return 0;
 }
 
-void cd(char flag1[], char flag2[], char* argument[]) {
+int cd(char flag1[], char flag2[], char* argument[]) {
 	const char* path = argument[0];
 	int ans = chdir(path);
 
@@ -104,7 +104,7 @@ void cd(char flag1[], char flag2[], char* argument[]) {
 		printf("[!] Directory %s not found\n", path);
 	}
 
-	exit(0);
+	return 0;
 }
 
 

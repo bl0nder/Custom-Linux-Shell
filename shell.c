@@ -298,6 +298,14 @@ void executeCommand(char* split[], int splitLen) {
 
 	}
 
+	else if (!strcmp(cmd, "cat")) {
+		const char* e = flag1;
+		const char* t = flag2;
+		const char* fileName = argument[0];
+		
+		execl("./cat", e, t, fileName, 0);
+	}
+
 	//unknown command
 	else {
 		printf("[!] Unknown command %s entered\n", cmd);

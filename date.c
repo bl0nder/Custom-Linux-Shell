@@ -9,14 +9,14 @@ int main(int argc, char* argv[]) {
 
     if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
         time(&currentTime);
-        printf("%s %s\n", ctime(&currentTime), getenv("TZ"));
+        printf("%s\n", ctime(&currentTime));
     }
 
     else if (!strcmp(argv[0], "-u") && !strcmp(argv[1], "\0")) {
         setenv("TZ", "UTC", 1);
         tzset();
         time(&currentTime);
-        printf("%s (UTC)\n", ctime(&currentTime));
+        printf("(UTC) %s\n", ctime(&currentTime));
     }
 
     //For IST

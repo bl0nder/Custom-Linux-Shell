@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
     struct dirent* readDir;
     
     printf("cwd: %s\n", argv[2]);
-    directory = opendir(argv[2]);
+    directory = opendir(".");
     readDir = readdir(directory);
 
     struct stat fileStats;

@@ -5,7 +5,6 @@
 #include <string.h>
 
 int main(int argc, char* argv[]) {
-    printf("%s %s %s\n", argv[0], argv[1], argv[2]);
     const char* file = argv[2];
     FILE *fp = fopen(file, "r");
 

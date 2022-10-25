@@ -5,8 +5,14 @@
 #include <time.h>
 
 int main(int argc, char* argv[]) {
+    
+    setenv("TZ", "UTC", 1);
+    tzset();
+
     time_t currentTime;
     time(&currentTime);
+
+
 
     printf("%s\n", ctime(&currentTime));
     return 0;

@@ -218,6 +218,18 @@ void executeCommand(char* split[], int splitLen) {
 	}
 
 	else if (!strcmp(cmd, "date")) {
+
+		int u = 0;
+		int a = 0;
+
+		if (!strcmp(flag1, "-u") || !strcmp(flag2, "-u")) {
+			u = 1;
+		}
+
+		if (!strcmp(flag1, "-a") || !strcmp(flag2, "-a")) {
+			a = 1;
+		}
+
 		pid_t pid;
 		pid = fork();
 
@@ -225,7 +237,18 @@ void executeCommand(char* split[], int splitLen) {
 			printf("[!] Some error occurred while executing this command\n");
 		}
 		else if (pid == 0) {
-			execl("./date", "\0", "\0", 0);
+			if (u && a) {
+				execl("./date", "-u", "-a", 0);
+			}
+			else if (u && !a) {
+				execl("./date", "-u", "\0", 0);
+			}
+			else if (!a && u) {
+				execl("./date", "\0", "-a", 0);
+			}
+			else {
+				execl("./date", "\0", "\0", 0);
+			}
 		}
 		else {
 			wait(NULL);

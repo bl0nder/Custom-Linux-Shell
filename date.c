@@ -5,16 +5,23 @@
 #include <time.h>
 
 int main(int argc, char* argv[]) {
-    
-    setenv("TZ", "UTC-05:30", 1);
-    tzset();
-
     time_t currentTime;
-    time(&currentTime);
 
+    if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
+        time(&currentTime);
+        printf("%s %s\n", ctime(&currentTime), getenv("TZ"));
+    }
 
+    else if (!strcmp(argv[0], "-u") && !strcmp(argv[1], "\0")) {
+        setenv("TZ", "UTC", 1);
+        tzset();
+        time(&currentTime);
+        printf("%s (UTC)\n", ctime(&currentTime));
+    }
 
-    printf("%s\n", ctime(&currentTime));
+    else if ()
+
+    //For IST
     return 0;
 
 }

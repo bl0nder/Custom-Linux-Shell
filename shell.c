@@ -303,7 +303,20 @@ void executeCommand(char* split[], int splitLen) {
 		const char* t = flag2;
 		const char* fileName = argument[0];
 		
-		execl("./cat", e, t, fileName, 0);
+		pid_t pid;
+		pid = fork();
+
+		if (pid < 0) {
+			printf("[!] Some error occurred while executing this command\n");
+		}
+
+		else if (pid == 0) {
+			execl("./cat", e, t, fileName, 0);
+		}
+
+		else {
+			wait (NULL);
+		}
 	}
 
 	//unknown command

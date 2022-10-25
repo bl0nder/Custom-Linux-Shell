@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
 
     if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
         time(&currentTime);
-        printf("%s\n", ctime(&currentTime));
+        printf("(Local Time) %s\n", ctime(&currentTime));
     }
 
     else if (!strcmp(argv[0], "-u") && !strcmp(argv[1], "\0")) {
@@ -19,7 +19,14 @@ int main(int argc, char* argv[]) {
         printf("(UTC) %s\n", ctime(&currentTime));
     }
 
-    //For IST
+    else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-R")){
+        time(&currentTime);
+        const int maxSize = 100;
+        const char* format = "%a, %e %b %Y %T %z";
+        char s[maxSize];
+
+        strftime(&s, maxSize, )
+    }   
     return 0;
 
 }

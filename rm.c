@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     const char* file = argv[2];
 
     if (!strcmp(argv[1], "-i") && !strcmp(argv[0], "\0")) {
-        printf("Remove file '%s' (y/n)?", file);
+        printf("Remove file '%s' (y/n)? ", file);
         char ans[10];
         scanf("%s", ans);
 

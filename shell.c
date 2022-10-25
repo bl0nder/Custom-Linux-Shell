@@ -213,6 +213,7 @@ int executeCommand(char* split[], int splitLen) {
 				execl("./ls", "\0", "-i", 0);
 			}
 			else if (!m && !i) {
+				printf("%d %d\n", m, i);
 				execl("./ls", "\0", "\0", 0);
 			}
 			else {

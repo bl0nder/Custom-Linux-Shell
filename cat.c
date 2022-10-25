@@ -51,5 +51,29 @@ int main(int argc, char* argv[]) {
         }
     }
 
+    else if (!strcmp(argv[0], "-E") && !strcmp(argv[1], "-T")) {
+        char c = fgetc(fp);
+        while (1) {
+            if (c == '\t') {
+                printf("^I");
+            }
+            else if (c == '\n') {
+                printf("$\n");
+            }
+            else if (feof(fp)) {
+                break;
+            }
+            else {
+                printf("%c", c);
+            }
+            c= fgetc(fp);
+        }
+    }
+
+    else {
+        printf("[!] Invalid flag(s) entered");
+        exit(-1);
+    }
+
     return 0;
 }

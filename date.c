@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
 
         strftime(s, maxSize, format, timeStruct);
 
-        printf("%s\n", s);
+        printf("(RFC-3339) %s\n", s);
     }   
     return 0;
 

@@ -299,8 +299,19 @@ void executeCommand(char* split[], int splitLen) {
 	}
 
 	else if (!strcmp(cmd, "cat")) {
-		const char* e = flag1;
-		const char* t = flag2;
+
+		char* f1 = "\0";
+		char* f2 = "\0";
+
+		if (!strcmp(flag1, "-e") || !strcmp(flag2, "-e")) {
+			strcpy(f1, "-e");
+		}
+		if (!strcmp(flag1, "-e") || !strcmp(flag2, "-e")) {
+			strcpy(f2, "-t");
+		}
+
+		const char* e = f1;
+		const char* t = f2;
 		const char* fileName = argument[0];
 		
 		pid_t pid;

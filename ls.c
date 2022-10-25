@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
         exit(-1);
     }
     else {
-
+        int counter = 1;
         while (readDir != NULL) {
             if (readDir -> d_name[0] != '.') {
                 
@@ -38,22 +38,22 @@ int main(int argc, char* argv[]) {
                 }
 
                 if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "-i")) {
-                    if (readdir(directory) == NULL) {
+                    if (counter != 1) {
                         printf("%d %s", fileStats.st_ino, readDir -> d_name);    
                     }
                     else {
                         printf("%d %s, ", fileStats.st_ino, readDir -> d_name);    
                     }
+                    counter++;
                 }
 
                 else if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "\0")) {
-                    // if (readdir(directory) == NULL) {
-                    //     printf("%s", readDir -> d_name);    
-                    // }
-                    // else {
-                    //     printf("%s, ", readDir -> d_name);    
-                    // }
-                    printf("%s, ", readDir -> d_name);    
+                    if (counter != 1) {
+                        printf("%s", readDir -> d_name);    
+                    }
+                    else {
+                        printf("%s, ", readDir -> d_name);    
+                    }    
                 }
 
                 else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-i")) {

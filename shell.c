@@ -44,7 +44,7 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 	}
 }
 
-void pwd(char flag1[], char flag2[]) {
+int pwd(char flag1[], char flag2[]) {
 	char dir[100];
 
 	//No flags
@@ -80,12 +80,15 @@ void pwd(char flag1[], char flag2[]) {
 				printf("%s\n", path_noSymbolicLinks);
 			}
 		}
+
 	}
 
 	//Both flags present
 	else if (!strcmp(flag1, "-L")) {
 		printf("[!] Both flags cannot be used at the same time with this command\n");
 	}
+
+	return 0;
 }
 
 void cd(char flag1[], char flag2[], char* argument[]) {
@@ -100,6 +103,8 @@ void cd(char flag1[], char flag2[], char* argument[]) {
 	else {
 		printf("[!] Directory %s not found\n", path);
 	}
+
+	exit(0);
 }
 
 

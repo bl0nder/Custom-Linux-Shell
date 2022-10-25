@@ -310,8 +310,6 @@ void executeCommand(char* split[], int splitLen) {
 			t = 1;
 		}
 
-		const char* e = f1;
-		const char* t = f2;
 		const char* fileName = argument[0];
 		
 		pid_t pid;

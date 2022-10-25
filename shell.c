@@ -212,8 +212,12 @@ int executeCommand(char* split[], int splitLen) {
 			else if (!m && i) {
 				execl("./ls", "\0", "-i", 0);
 			}
-			else {
+			else if (!m && !i) {
 				execl("./ls", "\0", "\0", 0);
+			}
+			else {
+				printf("[!] Invalid flag(s) entered\n");
+				exit(-1);
 			}
 		}
 		else {

@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
                     }
                 }
 
-                else if (!strcmp(argv[1], "\0") && !strcmp(argv[1], "-i")) {
+                else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-i")) {
                     printf("%d %s ", fileStats.st_ino, readDir -> d_name);
                 }
 

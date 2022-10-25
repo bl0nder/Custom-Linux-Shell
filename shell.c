@@ -278,7 +278,7 @@ void executeCommand(char* split[], int splitLen) {
 			if (f && i) {
 				execl("./rm", "-f", "-i", (const char*) argument, 0);
 			}
-			else if (u && !r) {
+			else if (f && !i) {
 				execl("./rm", "-f", "\0", 0);
 			}
 			else if (i && !f) {

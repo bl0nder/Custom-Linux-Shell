@@ -9,6 +9,7 @@
 
 int main(int argc, char* argv[]) {    
 
+    printf("Entered ls\n");
     errno = 0;
     
     DIR* directory;

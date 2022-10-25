@@ -27,25 +27,27 @@ int main(int argc, char* argv[]) {
             }
         }
 
-        // else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
-        //     // char c = fgetc(fp);
-        //     // while (!feof(fp)) {
-        //     //     if (c == '\n') {
-        //     //         printf("$");
-        //     //     }
-        //     //     printf("%c", c);
-        //     // }
-        //     while (fgets(str, maxSize, fp)) {
-        //         char* token = strtok(str, "\n");
-        //         if (!strcmp(token, str)) {
-        //             printf("%s", str);
-        //         }
-        //         else {
-        //             printf("%s$\n", token);
-        //         }
-        //     }
-        // }
+        else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
+            // char c = fgetc(fp);
+            // while (!feof(fp)) {
+            //     if (c == '\n') {
+            //         printf("$");
+            //     }
+            //     printf("%c", c);
+            // }
+            while (fgets(str, maxSize, fp)) {
+                char* token = strtok(str, "\n");
+                if (!strcmp(token, str)) {
+                    printf("%s", str);
+                }
+                else {
+                    printf("%s$\n", token);
+                }
+            }
+        }
     }
+
+    fclose(fp);
 
     return 0;
 }

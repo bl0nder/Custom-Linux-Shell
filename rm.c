@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 
@@ -11,7 +12,7 @@ int main(int argc, char* argv[]) {
     if (!strcmp(argv[1], "-i")) {
         printf("Remove file '%s' (y/n)?", file);
         char ans[10];
-        scanf(ans);
+        scanf("%s", ans);
 
         if (!strcmp(ans, "y") || !strcmp(ans, "Y") || !strcmp(ans, "yes")) {
             remove(file);

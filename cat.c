@@ -18,7 +18,8 @@ int main(int argc, char* argv[]) {
         const int maxSize = 2000;
         if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
             while (fgets(str, maxSize, fp)) {
-                printf("%s", str[0]);
+                printf("%s", str);
+                printf("$");
             }
         }
 

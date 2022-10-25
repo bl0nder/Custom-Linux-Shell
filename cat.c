@@ -19,6 +19,7 @@ int main(int argc, char* argv[]) {
         char* str;
         const int maxSize = 2000;
         if (!strcmp(argv[0], "-?") && !strcmp(argv[1], "-?")) {
+            printf("GELoihniuhNDUH");
             while (fgets(str, maxSize, fp)) {
                 printf("%s", str);
             }

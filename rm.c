@@ -12,6 +12,6 @@ int main(int argc, char* argv[]) {
 
     // }
 
-    printf("%s", argv[2]);
+    printf("%s %s %s %s", argv[0], argv[1], argv[2], argv[3]);
     return 0;
 }

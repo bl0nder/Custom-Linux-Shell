@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[]) {
     time_t currentTime;
-    struct tm timeStruct;
+    
 
     if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
         time(&currentTime);
@@ -24,11 +24,12 @@ int main(int argc, char* argv[]) {
 
     else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-R")){
         time(&currentTime);
+        struct tm *timeStruct = localtime(&currentTime);
         const int maxSize = 100;
         const char* format = "%a, %e %b %Y %T %z";
         char s[maxSize];
 
-        strftime(s, maxSize, format, &timeStruct);
+        strftime(s, maxSize, format, timeStruct);
 
         printf("%s\n", s);
     }   

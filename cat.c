@@ -21,30 +21,29 @@ int main(int argc, char* argv[]) {
         //     printf("%s", str);
         // }
         if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
-            printf("GELoihniuhNDUH");
             while (fgets(str, maxSize, fp)) {
                 printf("%s", str);
             }
         }
 
-        // else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
-        //     // char c = fgetc(fp);
-        //     // while (!feof(fp)) {
-        //     //     if (c == '\n') {
-        //     //         printf("$");
-        //     //     }
-        //     //     printf("%c", c);
-        //     // }
-        //     while (fgets(str, maxSize, fp)) {
-        //         char* token = strtok(str, "\n");
-        //         if (!strcmp(token, str)) {
-        //             printf("%s", str);
-        //         }
-        //         else {
-        //             printf("%s$\n", token);
-        //         }
-        //     }
-        // }
+        else if (!strcmp(argv[0], "-e") && !strcmp(argv[1], "\0")) {
+            // char c = fgetc(fp);
+            // while (!feof(fp)) {
+            //     if (c == '\n') {
+            //         printf("$");
+            //     }
+            //     printf("%c", c);
+            // }
+            while (fgets(str, maxSize, fp)) {
+                char* token = strtok(str, "\n");
+                if (!strcmp(token, str)) {
+                    printf("%s", str);
+                }
+                else {
+                    printf("%s$\n", token);
+                }
+            }
+        }
     }
 
     fclose(fp);

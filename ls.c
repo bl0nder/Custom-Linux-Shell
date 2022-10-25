@@ -23,7 +23,12 @@ int main(int argc, char* argv[]) {
         while (readDir != NULL) {
             if (readDir -> d_name[0] != '.') {
                 if (!strcmp(argv[0], "-m")) {
-                    printf("%s", readDir -> d_name);    
+                    if (readdir(directory) == NULL) {
+                        printf("%s", readDir -> d_name);    
+                    }
+                    else {
+                        printf("%s, ", readDir -> d_name);    
+                    }
                 }
                 else {
                     printf("%s ", readDir -> d_name);
@@ -31,10 +36,6 @@ int main(int argc, char* argv[]) {
             }
             
             readDir = readdir(directory);
-            
-            if (!strcmp(argv[0], "-m")) {
-                printf(", ");
-            }
         }
         printf("\n");
     }

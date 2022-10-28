@@ -11,6 +11,10 @@ const int commandSize = 20;
 const int flagSize = 20;
 const int argSize = 1000;
 
+char pathForExternalCmd[100];
+getcwd(dir, 100);
+
+
 void echo(char flag1[], char flag2[], char* argument[]) {
 
 	//Flags -> (-n) and TBD
@@ -209,16 +213,16 @@ int executeCommand(char* split[], int splitLen) {
 		}
 		else if (pid == 0) {
 			if (m && i) {
-				execl("./ls", "-m", "-i", dir, 0);
+				execl(strcat(pathForExternalCmd, "/ls"), "-m", "-i", dir, 0);
 			}
 			else if (m && !i) {
-				execl("./ls", "-m", "\0", dir, 0);
+				execl(strcat(pathForExternalCmd, "/ls"), "-m", "\0", dir, 0);
 			}
 			else if (!m && i) {
-				execl("./ls", "\0", "-i", dir, 0);
+				execl(strcat(pathForExternalCmd, "/ls"), "\0", "-i", dir, 0);
 			}
 			else if (!m && !i) {
-				execl("./ls", "\0", "\0", dir, 0);
+				execl(strcat(pathForExternalCmd, "/ls"), "\0", "\0", dir, 0);
 			}
 			else {
 				printf("[!] Invalid flag(s) entered\n");

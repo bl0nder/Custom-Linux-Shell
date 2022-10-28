@@ -15,7 +15,11 @@ int main(int argc, char* argv[]) {
     struct dirent* readDir;
     
     printf("cwd: %s\n", argv[2]);
-    directory = opendir(".");
+
+    char currentDir[100];
+    getcwd(currentDir, 100);
+
+    directory = opendir(currentDir);
     readDir = readdir(directory);
 
     struct stat fileStats;

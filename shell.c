@@ -14,7 +14,6 @@ const int argSize = 1000;
 char pathForExternalCmd[100];
 getcwd(pathForExternalCmd, 100);
 
-
 void echo(char flag1[], char flag2[], char* argument[]) {
 
 	//Flags -> (-n) and TBD

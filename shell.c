@@ -362,7 +362,43 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 	}
 
 	else if (!strcmp(cmd, "mkdir")) {
+		int e = 0;
+		int t = 0;
+
+		if (!strcmp(flag1, "-E") || !strcmp(flag2, "-E")) {
+			e = 1;
+		}
+		if (!strcmp(flag1, "-T") || !strcmp(flag2, "-T")) {
+			t = 1;
+		}
+
+		const char* fileName = argument[0];
 		
+		pid_t pid;
+		pid = fork();
+
+		if (pid < 0) {
+			printf("[!] Some error occurred while executing this command\n");
+		}
+
+		else if (pid == 0) {
+			if (e && t) {
+				execl(strcat(p, "/mkdir"), "-E", "-T", fileName, 0);
+			}
+			else if (e && !t) {
+				execl(strcat(p, "/mkdir"), "-E", "\0", fileName, 0);
+			}
+			else if (!e && t) {
+				execl(strcat(p, "/mkdir"), "\0", "-T", fileName, 0);
+			}
+			else {
+				execl(strcat(p, "/mkdir"), "\0", "\0", fileName, 0);
+			}
+		}
+
+		else {
+			wait (NULL);
+		}
 	}
 
 	//unknown command

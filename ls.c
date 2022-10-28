@@ -19,6 +19,8 @@ int main(int argc, char* argv[]) {
     char currentDir[100];
     getcwd(currentDir, 100);
 
+    printf("Current directory: %s\n", currentDir);
+
     directory = opendir(currentDir);
     readDir = readdir(directory);
 

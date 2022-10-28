@@ -229,7 +229,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 		else {
 			wait(NULL);
-			printf("Child complete!\n");
 		}
 	}
 
@@ -268,7 +267,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 		else {
 			wait(NULL);
-			printf("Child complete!\n");
 		}
 	}
 
@@ -308,7 +306,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 		else {
 			wait(NULL);
-			printf("Child complete!\n");
 		}
 
 

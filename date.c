@@ -10,14 +10,14 @@ int main(int argc, char* argv[]) {
 
     if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
         time(&currentTime);
-        printf("(Local Time) %s\n", ctime(&currentTime));
+        printf("(Local Time) %s", ctime(&currentTime));
     }
 
     else if (!strcmp(argv[0], "-u") && !strcmp(argv[1], "\0")) {
         setenv("TZ", "UTC", 1);
         tzset();
         time(&currentTime);
-        printf("(UTC) %s\n", ctime(&currentTime));
+        printf("(UTC) %s", ctime(&currentTime));
         setenv("TZ", "UTC-5:30", 1);
         tzset();
     }

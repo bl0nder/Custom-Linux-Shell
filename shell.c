@@ -254,16 +254,16 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 		else if (pid == 0) {
 			if (u && r) {
-				execl("./date", "-u", "-R", 0);
+				execl(strcat(p, "/date"), "-u", "-R", 0);
 			}
 			else if (u && !r) {
-				execl("./date", "-u", "\0", 0);
+				execl(strcat(p, "/date"), "-u", "\0", 0);
 			}
 			else if (r && !u) {
-				execl("./date", "\0", "-R", 0);
+				execl(strcat(p, "/date"), "\0", "-R", 0);
 			}
 			else {
-				execl("./date", "\0", "\0", 0);
+				execl(strcat(p, "/date"), "\0", "\0", 0);
 			}
 		}
 		else {
@@ -294,16 +294,16 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 		else if (pid == 0) {
 			if (f && i) {
-				execl("./rm", "-f", "-i", fileName, 0);
+				execl(strcat(p, "/rm"), "-f", "-i", fileName, 0);
 			}
 			else if (f && !i) {
-				execl("./rm", "-f", "\0", fileName, 0);
+				execl(strcat(p, "/rm"), "-f", "\0", fileName, 0);
 			}
 			else if (i && !f) {
-				execl("./rm", "\0", "-i", fileName, 0);
+				execl(strcat(p, "/rm"), "\0", "-i", fileName, 0);
 			}
 			else {
-				execl("./rm", "\0", "\0", fileName, 0);
+				execl(strcat(p, "/rm"), "\0", "\0", fileName, 0);
 			}
 		}
 		else {
@@ -337,16 +337,16 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 		else if (pid == 0) {
 			if (e && t) {
-				execl("./cat", "-E", "-T", fileName, 0);
+				execl(strcat(p, "/cat"), "-E", "-T", fileName, 0);
 			}
 			else if (e && !t) {
-				execl("./cat", "-E", "\0", fileName, 0);
+				execl(strcat(p, "/cat"), "-E", "\0", fileName, 0);
 			}
 			else if (!e && t) {
-				execl("./cat", "\0", "-T", fileName, 0);
+				execl(strcat(p, "/cat"), "\0", "-T", fileName, 0);
 			}
 			else {
-				execl("./cat", "\0", "\0", fileName, 0);
+				execl(strcat(p, "/cat"), "\0", "\0", fileName, 0);
 			}
 		}
 

@@ -11,9 +11,6 @@ const int commandSize = 20;
 const int flagSize = 20;
 const int argSize = 1000;
 
-char pathForExternalCmd[maxChar];
-getcwd(pathForExternalCmd, maxChar);
-
 void echo(char flag1[], char flag2[], char* argument[]) {
 
 	//Flags -> (-n) and TBD
@@ -111,7 +108,7 @@ int cd(char flag1[], char flag2[], char* argument[]) {
 }
 
 
-int executeCommand(char* split[], int splitLen) {
+int executeCommand(char* split[], int splitLen, char p[]) {
 	
 	//Get command from split
 	char cmd[commandSize];
@@ -212,16 +209,16 @@ int executeCommand(char* split[], int splitLen) {
 		}
 		else if (pid == 0) {
 			if (m && i) {
-				execl(strcat(pathForExternalCmd, "/ls"), "-m", "-i", dir, 0);
+				execl(strcat(p, "/ls"), "-m", "-i", dir, 0);
 			}
 			else if (m && !i) {
-				execl(strcat(pathForExternalCmd, "/ls"), "-m", "\0", dir, 0);
+				execl(strcat(p, "/ls"), "-m", "\0", dir, 0);
 			}
 			else if (!m && i) {
-				execl(strcat(pathForExternalCmd, "/ls"), "\0", "-i", dir, 0);
+				execl(strcat(p, "/ls"), "\0", "-i", dir, 0);
 			}
 			else if (!m && !i) {
-				execl(strcat(pathForExternalCmd, "/ls"), "\0", "\0", dir, 0);
+				execl(strcat(p, "/ls"), "\0", "\0", dir, 0);
 			}
 			else {
 				printf("[!] Invalid flag(s) entered\n");
@@ -370,7 +367,7 @@ int executeCommand(char* split[], int splitLen) {
 	return 0;
 }
 
-void command(char cmd[]) {
+void command(char cmd[], char p[]) {
 	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
 	char* temp = strtok(cmd, " \n\t");
 	char* split[100];
@@ -403,21 +400,23 @@ void command(char cmd[]) {
 	// }
 
 	// split = strtok(NULL, " ");
-	executeCommand(split, splitLen);
+	executeCommand(split, splitLen, p);
 }
 
-void shell() {
+void shell(char p[]) {
 	char cmd[maxChar];
 	while (1) {
 		char dir[100];
 		getcwd(dir, 100);
 	
 		printf("[%s]> ", dir);
-		command(cmd);
+		command(cmd, p);
 	}
 }
 
 int main() {
-	shell();
+	char pathForExternalCmd[100];
+	getcwd(pathForExternalCmd, 100);
+	shell(pathForExternalCmd);
 	return 0;
 }

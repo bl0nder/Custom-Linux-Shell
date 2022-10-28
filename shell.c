@@ -221,7 +221,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 				execl(strcat(p, "/ls"), "\0", "\0", dir, 0);
 			}
 			else {
-				printf("[!] Invalid flag(s) entered\n");
+				printf("[!] Invalid flag(s) entered.\n");
 				exit(-1);
 			}
 
@@ -261,8 +261,12 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			else if (r && !u) {
 				execl(strcat(p, "/date"), "\0", "-R", 0);
 			}
-			else {
+			else if (!r && !u) {
 				execl(strcat(p, "/date"), "\0", "\0", 0);
+			}
+			else {
+				printf("[!] Invalid flag(s) entered.\n");
+				exit(-1);
 			}
 		}
 		else {

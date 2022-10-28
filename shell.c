@@ -247,10 +247,10 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 		if (strcmp(flag1, "\0") && strcmp(flag1, "-u") && strcmp(flag1, "-R")) {
 			printf("[!] Invalid flag(s) entered.\n");
-			exit(-1);
+			return -1;
 		}
 		else if (strcmp(flag2, "\0") && strcmp(flag2, "-u") && strcmp(flag2, "-R")) {
-			exit(-1);
+			return -1;
 		}
 
 		pid_t pid;

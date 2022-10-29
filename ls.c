@@ -8,7 +8,7 @@
 #include <unistd.h>
 
 int main(int argc, char* argv[]) {    
-
+    printf("testing this woohoo\n");
     errno = 0;
     
     DIR* directory;

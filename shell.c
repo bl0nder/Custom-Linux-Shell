@@ -12,6 +12,12 @@ const int commandSize = 20;
 const int flagSize = 20;
 const int argSize = 1000;
 
+//Struct args used for pthread-based functions
+struct args {
+	char path[100];
+	char* argv[100];
+};
+
 void echo(char flag1[], char flag2[], char* argument[]) {
 
 	//Flags -> (-n) and TBD
@@ -108,22 +114,30 @@ int cd(char flag1[], char flag2[], char* argument[]) {
 	}
 }
 
-struct args {
-	char* argv[100];
-};
 
 void* ls(void* passArgs) {
-	for (int i=0; i<1; i++) {
-		printf("%s\n", ((struct args *) passArgs) -> argv[i]);
-	}
+	// for (int i=0; i<1; i++) {
+	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
+	// }
+	char* str = "";
+	strcat(str, ((struct args*) passArgs) -> path);
+	strcat(str, "/ls ");
+	strcat(str, ((struct args*) passArgs) -> argv);
+
+	system((const char*) str);
+
 	printf("Thread created woohoo!\n");
 }
 
 void threadExecute(char* split[], int splitLen, char p[]) {
 	pthread_t t;
 
-	struct args* passArgs = (struct args*)malloc(sizeof(struct args));
-	
+	struct args* passArgs = (struct args*) malloc (sizeof(struct args));
+
+	for (int i=0; i<sizeof(p)/sizeof(char); i++) {
+		passArgs -> path[i] = p[i];
+	}
+
 	for (int i=0; i<splitLen; i++) {
 		passArgs -> argv[i] = split[i];
 	}

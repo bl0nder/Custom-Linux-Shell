@@ -374,12 +374,12 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 
 		const char* fileName = argument[0];
-		char* mode = NULL;
+		int mode = NULL;
 		if (argument[1] != NULL) {
-			mode = argument[1]; 			
+			mode = (int) argument[1]; 			
 		}
 
-		const char* modeArg = (const char*) mode;
+		const int modeArg = (const int) mode;
 		
 		pid_t pid;
 		pid = fork();

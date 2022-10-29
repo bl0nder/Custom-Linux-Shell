@@ -119,10 +119,9 @@ void* ls(void* passArgs) {
 	// for (int i=0; i<1; i++) {
 	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
 	// }
-	char* str = "";
+	char* str = (char*) malloc (100*sizeof*(char));
 	strcat(str, ((struct args*) passArgs) -> path);
 	strcat(str, "/ls ");
-	strcat(str, ((struct args*) passArgs) -> argv);
 
 	system((const char*) str);
 

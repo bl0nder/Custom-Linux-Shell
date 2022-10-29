@@ -368,7 +368,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		int pFlag = 0;
 
 
-		printf("%s\n", p);
 
 		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
 			m = 1;
@@ -400,6 +399,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 				execl(strcat(p, "/mkdir"), "\0", "-p", fileName, modeArg, 0);
 			}
 			else {
+				printf("%s\n", p);
 				execl(strcat(p, "/mkdir"), "\0", "\0", fileName, modeArg, 0);
 			}
 		}

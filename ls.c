@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
         while (readDir != NULL) {
             if (readDir -> d_name[0] != '.') {
                 
-                if (!strcmp(argv[1], "-i")) {
+                if (!strcmp(argv[2], "-i")) {
                     stat(readDir -> d_name, &fileStats);
                     if (errno != 0) {
                         printf ("[!] Could not retrieve file statistics\n");
@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
                     }
                 }
 
-                if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "-i")) {
+                if (!strcmp(argv[1], "-m") && !strcmp(argv[2], "-i")) {
                     if (counter == 1) {
                         printf("%d %s", fileStats.st_ino, readDir -> d_name);    
                     }
@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
                     counter++;
                 }
 
-                else if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "\0")) {
+                else if (!strcmp(argv[1], "-m") && !strcmp(argv[2], "\0")) {
                     if (counter == 1) {
                         printf("%s", readDir -> d_name);    
                     }
@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
                     counter++; 
                 }
 
-                else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-i")) {
+                else if (!strcmp(argv[1], "\0") && !strcmp(argv[2], "-i")) {
                     printf("%d %s ", fileStats.st_ino, readDir -> d_name);
                 }
 

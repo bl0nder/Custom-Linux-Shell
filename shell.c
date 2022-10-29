@@ -108,14 +108,24 @@ int cd(char flag1[], char flag2[], char* argument[]) {
 	}
 }
 
-void* ls() {
+void* ls(void* args) {
+	for (int i=0; i<1; i++) {
+		printf("%s\n", args[i]);
+	}
 	printf("Thread created woohoo!\n");
 }
 
 void threadExecute(char* split[], int splitLen, char p[]) {
 	pthread_t t;
 
-	int test = pthread_create(&t, NULL, ls, NULL);
+	struct args {
+		char* argv[100];
+	};
+
+	struct args* passArgs;
+	passArgs -> argv = split;
+
+	int test = pthread_create(&t, NULL, ls, (void *) passArgs);
 	pthread_join(t, NULL);
 	exit(0);
 }

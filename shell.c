@@ -110,7 +110,7 @@ int cd(char flag1[], char flag2[], char* argument[]) {
 
 void* ls(void* args) {
 	for (int i=0; i<1; i++) {
-		printf("%s\n", args[i]);
+		printf("%s\n", (*args)[i]);
 	}
 	printf("Thread created woohoo!\n");
 }

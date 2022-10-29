@@ -16,9 +16,6 @@ int main(int argc, char* argv[]) {
             printf("[!] There was an error in creating directory '%s'.\n", argv[2]);
             exit(-1);
         }
-        else {
-            exit(0);
-        }
     }
 
     //-m flag only
@@ -26,5 +23,5 @@ int main(int argc, char* argv[]) {
         int createDir = mkdir(argv[2], S_IRWXU);
     }
 
-    return 0;
+    exit(0);
 }

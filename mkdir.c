@@ -8,6 +8,9 @@
 
 int main(int argc, char* argv[]) {
 
+
+    printf("HELLO THIS IS MKDIR\n");
+
     //No flags
     if (!strcmp(argv[0], "\0") && strcmp(argv[1], "\0")) {
         int createDir = mkdir(argv[2], 777);

@@ -339,6 +339,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 		if (pid < 0) {
 			printf("[!] Some error occurred while executing this command\n");
+			return -1;
 		}
 
 		else if (pid == 0) {
@@ -362,37 +363,44 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 	}
 
 	else if (!strcmp(cmd, "mkdir")) {
-		int e = 0;
-		int t = 0;
+		int m = 0;
+		int p = 0;
 
-		if (!strcmp(flag1, "-E") || !strcmp(flag2, "-E")) {
-			e = 1;
+		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
+			m = 1;
 		}
-		if (!strcmp(flag1, "-T") || !strcmp(flag2, "-T")) {
-			t = 1;
+		if (!strcmp(flag1, "-p") || !strcmp(flag2, "-p")) {
+			p = 1;
 		}
 
 		const char* fileName = argument[0];
+		char* mode = NULL;
+		if (argument[1] != NULL) {
+			mode = argument[1]; 			
+		}
+
+		const char* modeArg = (const char*) mode;
 		
 		pid_t pid;
 		pid = fork();
 
 		if (pid < 0) {
 			printf("[!] Some error occurred while executing this command\n");
+			return -1;
 		}
 
 		else if (pid == 0) {
-			if (e && t) {
-				execl(strcat(p, "/mkdir"), "-E", "-T", fileName, 0);
+			if (m && p) {
+				execl(strcat(p, "/mkdir"), "-m", "-p", fileName, modeArg, 0);
 			}
-			else if (e && !t) {
-				execl(strcat(p, "/mkdir"), "-E", "\0", fileName, 0);
+			else if (m && !p) {
+				execl(strcat(p, "/mkdir"), "-m", "\0", fileName, modeArg, 0);
 			}
-			else if (!e && t) {
-				execl(strcat(p, "/mkdir"), "\0", "-T", fileName, 0);
+			else if (!m && p) {
+				execl(strcat(p, "/mkdir"), "\0", "-p", fileName, modeArg, 0);
 			}
 			else {
-				execl(strcat(p, "/mkdir"), "\0", "\0", fileName, 0);
+				execl(strcat(p, "/mkdir"), "\0", "\0", fileName, modeArg, 0);
 			}
 		}
 

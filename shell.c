@@ -378,7 +378,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 		const char* fileName = argument[0];		
 
-		const int modeArg = 777;
+		const char* modeArg = 777;
 		
 		pid_t pid;
 		pid = fork();
@@ -398,7 +398,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			else if (!m && pFlag) {
 				execl(strcat(p, "/mkdir"), "\0", "-p", fileName, modeArg, 0);
 			}
-			else if (!m && !pFlag) {
+			else {
 				printf("%s\n", p);
 				execl(strcat(p, "/mkdir"), "\0", "\0", fileName, modeArg, 0);
 			}

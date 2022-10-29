@@ -112,12 +112,12 @@ void* ls() {
 	printf("Thread created woohoo!\n");
 }
 
-int threadExecute(char* split[], int splitLen, char p[]) {
+void threadExecute(char* split[], int splitLen, char p[]) {
 	pthread_t t;
 
 	int test = pthread_create(&t, NULL, ls, NULL);
 	pthread_join(t, NULL);
-	return 0;
+	exit(0);
 }
 
 int executeCommand(char* split[], int splitLen, char p[]) {

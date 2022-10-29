@@ -122,7 +122,7 @@ void* ls(void* passArgs) {
 void threadExecute(char* split[], int splitLen, char p[]) {
 	pthread_t t;
 
-	struct args* passArgs;
+	struct args* passArgs = (struct args*)malloc(sizeof(struct args));
 	
 	for (int i=0; i<splitLen; i++) {
 		passArgs -> argv[i] = split[i];

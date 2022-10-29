@@ -364,17 +364,17 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 	else if (!strcmp(cmd, "mkdir")) {
 		int m = 0;
-		int p = 0;
+		int pFlag = 0;
 
 		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
 			m = 1;
 		}
 		if (!strcmp(flag1, "-p") || !strcmp(flag2, "-p")) {
-			p = 1;
+			pFlag = 1;
 		}
 
 		const char* fileName = argument[0];
-		int mode = NULL;
+		int mode = 0;
 		if (argument[1] != NULL) {
 			mode = (int) argument[1]; 			
 		}
@@ -390,13 +390,13 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 
 		else if (pid == 0) {
-			if (m && p) {
+			if (m && pFlag) {
 				execl(strcat(p, "/mkdir"), "-m", "-p", fileName, modeArg, 0);
 			}
-			else if (m && !p) {
+			else if (m && !pFlag) {
 				execl(strcat(p, "/mkdir"), "-m", "\0", fileName, modeArg, 0);
 			}
-			else if (!m && p) {
+			else if (!m && pFlag) {
 				execl(strcat(p, "/mkdir"), "\0", "-p", fileName, modeArg, 0);
 			}
 			else {

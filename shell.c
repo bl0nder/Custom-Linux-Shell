@@ -114,7 +114,7 @@ struct args {
 
 void* ls(void* passArgs) {
 	for (int i=0; i<1; i++) {
-		printf("%s\n", (struct args *) passArgs -> argv[i]);
+		printf("%s\n", ((struct args *) passArgs) -> argv[i]);
 	}
 	printf("Thread created woohoo!\n");
 }

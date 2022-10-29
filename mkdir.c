@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 
 
 int main(int argc, char* argv[]) {
@@ -22,7 +23,7 @@ int main(int argc, char* argv[]) {
 
     //-m flag only
     if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "\0")) {
-        int createDir = mkdir(argv[2], (const int) argv[3]);
+        int createDir = mkdir(argv[2], S_IRWXU);
     }
 
     return 0;

@@ -119,7 +119,7 @@ void* ls(void* passArgs) {
 	// for (int i=0; i<1; i++) {
 	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
 	// }
-	char* str = (char*) malloc (100*sizeof*(char));
+	char* str = (char*) malloc (100*sizeof(char));
 	strcat(str, ((struct args*) passArgs) -> path);
 	strcat(str, "/ls ");
 
@@ -133,7 +133,7 @@ void threadExecute(char* split[], int splitLen, char p[]) {
 
 	struct args* passArgs = (struct args*) malloc (sizeof(struct args));
 
-	for (int i=0; i<sizeof(p)/sizeof(char); i++) {
+	for (int i=0; i<100; i++) {
 		passArgs -> path[i] = p[i];
 	}
 

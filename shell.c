@@ -123,6 +123,11 @@ void* ls(void* passArgs) {
 	strcat(str, ((struct args*) passArgs) -> path);
 	strcat(str, "/ls ");
 
+	for (int i=0; i<100; i++) {
+		strcat(str, ((struct args*) passArgs) -> argv[i]);
+		strcat(str, " ");
+	}
+
 	system((const char*) str);
 
 	printf("Thread created woohoo!\n");

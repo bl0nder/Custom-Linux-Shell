@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
 
     //-m flag only
     if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "\0")) {
-        int createDir = mkdir(argv[2], argv[3]);
+        int createDir = mkdir(argv[2], (int) argv[3]);
     }
 
     return 0;

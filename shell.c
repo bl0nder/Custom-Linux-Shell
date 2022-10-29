@@ -399,6 +399,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 				execl(strcat(p, "/mkdir"), "\0", "-p", fileName, modeArg, 0);
 			}
 			else {
+				printf("%s %d\n", fileName, modeArg);
 				execl(strcat(p, "/mkdir"), "\0", "\0", fileName, modeArg, 0);
 			}
 			exit(0);

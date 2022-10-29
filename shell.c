@@ -378,7 +378,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 		const char* fileName = argument[0];		
 
-		const char* modeArg = 777;
+		const char* modeArg = "777";
 		
 		pid_t pid;
 		pid = fork();

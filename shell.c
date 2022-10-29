@@ -325,6 +325,8 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		int e = 0;
 		int t = 0;
 
+		printf("%s\n", p);
+
 		if (!strcmp(flag1, "-E") || !strcmp(flag2, "-E")) {
 			e = 1;
 		}
@@ -365,6 +367,8 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 	else if (!strcmp(cmd, "mkdir")) {
 		int m = 0;
 		int pFlag = 0;
+
+
 
 		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
 			m = 1;

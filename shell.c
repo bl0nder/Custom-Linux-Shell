@@ -108,19 +108,19 @@ int cd(char flag1[], char flag2[], char* argument[]) {
 	}
 }
 
-void* ls(void* args) {
+struct args {
+	char* argv[100];
+};
+
+void* ls(void* passArgs) {
 	for (int i=0; i<1; i++) {
-		printf("%s\n", (char *) args[i]);
+		printf("%s\n", (struct args *) passArgs -> argv[i]);
 	}
 	printf("Thread created woohoo!\n");
 }
 
 void threadExecute(char* split[], int splitLen, char p[]) {
 	pthread_t t;
-
-	struct args {
-		char* argv[100];
-	};
 
 	struct args* passArgs;
 	

@@ -25,6 +25,5 @@ int main(int argc, char* argv[]) {
     // else if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "\0")) {
     //     int createDir = mkdir(argv[2], S_IRWXU);
     // }
-
-    exit(0);
+    return 0;
 }

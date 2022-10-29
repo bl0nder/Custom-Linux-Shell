@@ -115,7 +115,7 @@ void* ls() {
 int threadExecute(char* split[], int splitLen, char p[]) {
 	pthread_t t;
 
-	int test = pthread_create(&t, NULL, )
+	int test = pthread_create(&t, NULL, ls, NULL);
 	return 0;
 	
 }

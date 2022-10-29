@@ -374,7 +374,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 
 		const char* fileName = argument[0];
-		int mode = (int) argument[1]; 			
+		void* mode = (int) argument[1]; 			
 
 		const int modeArg = (const int) mode;
 		

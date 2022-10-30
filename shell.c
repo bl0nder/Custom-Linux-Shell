@@ -151,10 +151,10 @@ void* date(void* passArgs) {
 	int strLen;
 
 	if (*((((struct args*)passArgs)) -> argument) != NULL) {
-		strLen = snprintf(str, 2000, "%s%s %s %s %s", ((struct args*)passArgs) -> path, "/ls", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));
+		strLen = snprintf(str, 2000, "%s%s %s %s %s", ((struct args*)passArgs) -> path, "/date", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));
 	}
 	else {
-		strLen = snprintf(str, 2000, "%s%s %s %s", ((struct args*)passArgs) -> path, "/ls", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2);
+		strLen = snprintf(str, 2000, "%s%s %s %s", ((struct args*)passArgs) -> path, "/date", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2);
 	}
 	
 	system((const char*) str);
@@ -189,7 +189,7 @@ void* rm(void* passArgs) {
 	else {
 		char str[2000];
 		int strLen;
-		strLen = snprintf(str, 2000, "%s%s %s %s %s", ((struct args*)passArgs) -> path, "/cat", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));		
+		strLen = snprintf(str, 2000, "%s%s %s %s %s", ((struct args*)passArgs) -> path, "/rm", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));		
 		system((const char*) str);
 	}
 	return NULL;
@@ -207,7 +207,7 @@ void* mkdir(void* passArgs) {
 		const char* modeArg = "777";
 		char str[2000];
 		int strLen;
-		strLen = snprintf(str, 2000, "%s%s %s %s %s %s", ((struct args*)passArgs) -> path, "/cat", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument), modeArg);		
+		strLen = snprintf(str, 2000, "%s%s %s %s %s %s", ((struct args*)passArgs) -> path, "/mkdir", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument), modeArg);		
 		system((const char*) str);
 	}
 	return NULL;
@@ -265,7 +265,7 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 		test = pthread_create(&t, NULL, rm, (void *) passArgs);
 	}
 	else if (!strcmp(cmd, "mkdir&t")) {
-		test = pthread_create(&t, NULL, date, (void *) passArgs);
+		test = pthread_create(&t, NULL, mkdir, (void *) passArgs);
 	}
 
 	pthread_join(t, NULL);

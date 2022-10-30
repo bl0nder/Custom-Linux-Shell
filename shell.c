@@ -278,7 +278,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 		if (argument[0] != NULL) {
 			printf("[!] This command does not take any arguments.\n");
-			exit(-1);
+			return -1;
 		}
 
 		char tempDir[100];

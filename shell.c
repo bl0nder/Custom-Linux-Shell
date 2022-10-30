@@ -119,7 +119,7 @@ int cd(char flag1[], char flag2[], char* argument[]) {
 }
 
 
-void* ls(void* passArgs) {
+void* lsT(void* passArgs) {
 	// for (int i=0; i<1; i++) {
 	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
 	// }
@@ -145,7 +145,7 @@ void* ls(void* passArgs) {
 	return NULL;
 }
 
-void* date(void* passArgs) {
+void* dateT(void* passArgs) {
 	char str[2000];
 
 	int strLen;
@@ -161,7 +161,7 @@ void* date(void* passArgs) {
 	return NULL;
 }
 
-void* cat(void* passArgs) {
+void* catT(void* passArgs) {
 
 	if (*(((struct args*) passArgs) -> argument) == NULL) {
 		printf("[!] Enter the name of the file you want to read.\n");
@@ -178,7 +178,7 @@ void* cat(void* passArgs) {
 	return NULL;
 }
 
-void* rm(void* passArgs) {
+void* rmT(void* passArgs) {
 
 	if (*(((struct args*) passArgs) -> argument) == NULL) {
 		printf("[!] Enter the name of the file you want to remove.\n");
@@ -195,7 +195,7 @@ void* rm(void* passArgs) {
 	return NULL;
 }
 
-void* mkdir(void* passArgs) {
+void* mkdirT(void* passArgs) {
 
 	if (*(((struct args*) passArgs) -> argument) == NULL) {
 		printf("[!] Enter the name of the folder you want to create.\n");
@@ -253,19 +253,19 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 
 	int test;
 	if (!strcmp(cmd, "ls&t")) {
-		test = pthread_create(&t, NULL, ls, (void *) passArgs);
+		test = pthread_create(&t, NULL, lsT, (void *) passArgs);
 	}
 	else if (!strcmp(cmd, "cat&t")) {
-		test = pthread_create(&t, NULL, cat, (void *) passArgs);
+		test = pthread_create(&t, NULL, catT, (void *) passArgs);
 	}
 	else if (!strcmp(cmd, "date&t")) {
-		test = pthread_create(&t, NULL, date, (void *) passArgs);
+		test = pthread_create(&t, NULL, dateT, (void *) passArgs);
 	}
 	else if (!strcmp(cmd, "rm&t")) {
-		test = pthread_create(&t, NULL, rm, (void *) passArgs);
+		test = pthread_create(&t, NULL, rmT, (void *) passArgs);
 	}
 	else if (!strcmp(cmd, "mkdir&t")) {
-		test = pthread_create(&t, NULL, mkdir, (void *) passArgs);
+		test = pthread_create(&t, NULL, mkdirT, (void *) passArgs);
 	}
 
 	pthread_join(t, NULL);

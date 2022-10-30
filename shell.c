@@ -131,12 +131,12 @@ void* ls(void* passArgs) {
 	// 	strcat(str, " ");
 	// }
 
-	int check;
+	int strLen;
 	if (*((((struct args*)passArgs)) -> argument) != NULL) {
-		check = snprintf(str, 2000, "%s %s %s %s", strcat(((struct args*)passArgs) -> path, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));
-	}
+		strLen = snprintf(str, 2000, "%s %s %s %s", strcat(((struct args*)passArgs) -> path, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));
+	}strLen
 	else {
-		check = snprintf(str, 2000, "%s %s %s", strcat(((struct args*)passArgs) -> path, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2);
+		strLen = snprintf(str, 2000, "%s %s %s", strcat(((struct args*)passArgs) -> path, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2);
 	}
 	
 	printf("%s\n", str);	
@@ -183,7 +183,6 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 	int test = pthread_create(&t, NULL, ls, (void *) passArgs);
 	pthread_join(t, NULL);
 	free((void *) passArgs);
-	exit(0);
 }
 
 int executeCommand(char* split[], int splitLen, char p[]) {

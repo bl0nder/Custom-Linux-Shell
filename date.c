@@ -8,12 +8,12 @@ int main(int argc, char* argv[]) {
     time_t currentTime;
     
 
-    if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
+    if (!strcmp(argv[1], "NO") && !strcmp(argv[2], "NO")) {
         time(&currentTime);
         printf("(Local Time) %s", ctime(&currentTime));
     }
 
-    else if (!strcmp(argv[0], "-u") && !strcmp(argv[1], "\0")) {
+    else if (!strcmp(argv[1], "-u") && !strcmp(argv[2], "NO")) {
         setenv("TZ", "UTC", 1);
         tzset();
         time(&currentTime);
@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
         tzset();
     }
 
-    else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-R")){
+    else if (!strcmp(argv[1], "NO") && !strcmp(argv[2], "-R")){
         time(&currentTime);
         struct tm *timeStruct = localtime(&currentTime);
         const int maxSize = 100;

@@ -60,7 +60,6 @@ int main(int argc, char* argv[]) {
                 }
 
                 else if ((!strcmp(argv[1], "NO") && !strcmp(argv[2], "-i")) || (!strcmp(argv[2], "NO") && !strcmp(argv[1], "-i"))) {
-                    printf("Testing tesetint adifhasdfhk\n");
                     printf("%d %s ", fileStats.st_ino, readDir -> d_name);
                 }
 

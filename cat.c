@@ -5,21 +5,21 @@
 
 int main(int argc, char* argv[]) {
 
-    const char* file = argv[2];
+    const char* file = argv[3];
     char* str;
     const int maxSize = 1000;
     FILE *fp = fopen(file, "r");
     // while (fgets(str, maxSize, fp)) {
     //     printf("%s", str);
     // }
-    if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "\0")) {
+    if (!strcmp(argv[1], "NO") && !strcmp(argv[2], "NO")) {
         while (fgets(str, maxSize, fp)) {
             printf("%s", str);
         }
         fclose(fp);
     }
 
-    else if (!strcmp(argv[0], "-E") && !strcmp(argv[1], "\0")) {
+    else if ((!strcmp(argv[1], "-E") && !strcmp(argv[2], "NO")) || (!strcmp(argv[1], "NO") && !strcmp(argv[2], "-E"))) {
         char c = fgetc(fp);
         while (1) {
             if (c == '\n') {
@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    else if (!strcmp(argv[0], "\0") && !strcmp(argv[1], "-T")) {
+    else if ((!strcmp(argv[1], "NO") && !strcmp(argv[2], "-T")) || (!strcmp(argv[1], "-T") && !strcmp(argv[2], "NO"))) {
         char c = fgetc(fp);
         while (1) {
             if (c == '\t') {
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    else if (!strcmp(argv[0], "-E") && !strcmp(argv[1], "-T")) {
+    else if ((!strcmp(argv[1], "-E") && !strcmp(argv[2], "-T")) || (!strcmp(argv[1], "-T") && !strcmp(argv[2], "-E"))) {
         char c = fgetc(fp);
         while (1) {
             if (c == '\t') {
@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
     }
 
     else {
-        printf("[!] Invalid flag(s) entered");
+        printf("[!] Invalid flag(s) entered.\n");
         exit(-1);
     }
 

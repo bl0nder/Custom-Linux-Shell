@@ -16,9 +16,9 @@ const int argSize = 1000;
 struct args {
 	char* path[100];
 	// char* argv[100];
-	char* flag1[flagSize];
-	char* flag2[flagSize];
-	char** argument[argSize];
+	char* flag1[20];
+	char* flag2[20];
+	char** argument[1000];
 };
 
 void echo(char flag1[], char flag2[], char* argument[]) {
@@ -149,10 +149,10 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 	// 	passArgs -> argv[i] = split[i];
 	// }
 
-	passArgs -> path = p;
-	passArgs -> flag1 = flag1;
-	passArgs -> flag2 = flag2;
-	passArgs -> argument = argument;
+	passArgs -> path = &p;
+	passArgs -> flag1 = &flag1;
+	passArgs -> flag2 = &flag2;
+	passArgs -> argument = &argument;
 
 	int test = pthread_create(&t, NULL, ls, (void *) passArgs);
 	pthread_join(t, NULL);

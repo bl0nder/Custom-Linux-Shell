@@ -14,8 +14,11 @@ const int argSize = 1000;
 
 //Struct args used for pthread-based functions
 struct args {
-	char path[100];
-	char* argv[100];
+	char* path[100];
+	// char* argv[100];
+	char* flag1[flagSize];
+	char* flag2[flagSize];
+	char** argument[argSize];
 };
 
 void echo(char flag1[], char flag2[], char* argument[]) {
@@ -138,15 +141,22 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 
 	struct args* passArgs = (struct args*) malloc (sizeof(struct args));
 
-	for (int i=0; i<100; i++) {
-		passArgs -> path[i] = p[i];
-	}
+	// for (int i=0; i<100; i++) {
+	// 	passArgs -> path[i] = p[i];
+	// }
 
-	printf("%s\n", passArgs -> path);
+	// for (int i=0; i<splitLen; i++) {
+	// 	passArgs -> argv[i] = split[i];
+	// }
 
-	// int test = pthread_create(&t, NULL, ls, (void *) passArgs);
-	// pthread_join(t, NULL);
-	// free((void *) passArgs);
+	passArgs -> path = p;
+	passArgs -> flag1 = flag1;
+	passArgs -> flag2 = flag2;
+	passArgs -> argument = argument;
+
+	int test = pthread_create(&t, NULL, ls, (void *) passArgs);
+	pthread_join(t, NULL);
+	free((void *) passArgs);
 	exit(0);
 }
 

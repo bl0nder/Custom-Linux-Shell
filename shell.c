@@ -145,6 +145,22 @@ void* ls(void* passArgs) {
 	return NULL;
 }
 
+void* date(void* passArgs) {
+	char str[2000];
+
+	int strLen;
+
+	if (*((((struct args*)passArgs)) -> argument) != NULL) {
+		strLen = snprintf(str, 2000, "%s%s %s %s %s", ((struct args*)passArgs) -> path, "/ls", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));
+	}
+	else {
+		strLen = snprintf(str, 2000, "%s%s %s %s", ((struct args*)passArgs) -> path, "/ls", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2);
+	}
+	
+	system((const char*) str);
+	return NULL;
+}
+
 void* cat(void* passArgs) {
 
 	if (*(((struct args*) passArgs) -> argument) == NULL) {
@@ -161,6 +177,42 @@ void* cat(void* passArgs) {
 	}
 	return NULL;
 }
+
+void* rm(void* passArgs) {
+
+	if (*(((struct args*) passArgs) -> argument) == NULL) {
+		printf("[!] Enter the name of the file you want to remove.\n");
+	}
+	// for (int i=0; i<1; i++) {
+	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
+	// }
+	else {
+		char str[2000];
+		int strLen;
+		strLen = snprintf(str, 2000, "%s%s %s %s %s", ((struct args*)passArgs) -> path, "/cat", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));		
+		system((const char*) str);
+	}
+	return NULL;
+}
+
+void* mkdir(void* passArgs) {
+
+	if (*(((struct args*) passArgs) -> argument) == NULL) {
+		printf("[!] Enter the name of the folder you want to create.\n");
+	}
+	// for (int i=0; i<1; i++) {
+	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
+	// }
+	else {
+		const char* modeArg = "777";
+		char str[2000];
+		int strLen;
+		strLen = snprintf(str, 2000, "%s%s %s %s %s %s", ((struct args*)passArgs) -> path, "/cat", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument), modeArg);		
+		system((const char*) str);
+	}
+	return NULL;
+}
+
 
 void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], char p[]) {
 	pthread_t t;
@@ -205,6 +257,15 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 	}
 	else if (!strcmp(cmd, "cat&t")) {
 		test = pthread_create(&t, NULL, cat, (void *) passArgs);
+	}
+	else if (!strcmp(cmd, "date&t")) {
+		test = pthread_create(&t, NULL, date, (void *) passArgs);
+	}
+	else if (!strcmp(cmd, "rm&t")) {
+		test = pthread_create(&t, NULL, rm, (void *) passArgs);
+	}
+	else if (!strcmp(cmd, "mkdir&t")) {
+		test = pthread_create(&t, NULL, date, (void *) passArgs);
 	}
 
 	pthread_join(t, NULL);

@@ -131,7 +131,7 @@ void* ls(void* passArgs) {
 	// 	strcat(str, " ");
 	// }
 
-	system("./ls NO NO");
+	system("./ls %s %s %s", ((struct args* passArgs) -> flag1), ((struct args* passArgs) -> flag2), ((struct args* passArgs) -> argument));
 
 	printf("Thread created woohoo!\n");
 }

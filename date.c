@@ -52,6 +52,11 @@ int main(int argc, char* argv[]) {
         setenv("TZ", "UTC-5:30", 1);
         tzset();
     }
+
+    else {
+        printf("[!] Invalid flag(s) entered.\n");
+        exit(-1);
+    }
     return 0;
 
 }

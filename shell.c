@@ -309,16 +309,16 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			snprintf(pathToBinary, 100, "%s%s", p, "/ls");
 
 			if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (!strcmp(flag1, "-i") || !strcmp(flag2, "-i"))) {
-				execl(pathToBinary, "-m", "-i", dir, 0);
+				execl(pathToBinary, pathToBinary, "-m", "-i", dir, 0);
 			}
 			else if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
-				execl(pathToBinary, "-m", "NO", dir, 0);
+				execl(pathToBinary, pathToBinary, "-m", "NO", dir, 0);
 			}
 			else if ((!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
-				execl(pathToBinary, "-i", "NO", dir, 0);
+				execl(pathToBinary, pathToBinary, "-i", "NO", dir, 0);
 			}
 			else if (flag1[0] == '\0' && flag2[0] == '\0') {
-				execl(pathToBinary, "NO", "NO", dir, 0);
+				execl(pathToBinary, pathToBinary, "NO", "NO", dir, 0);
 			}
 
 

@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
                     counter++;
                 }
 
-                else if (!strcmp(argv[1], "-m") && !strcmp(argv[2], "\0")) {
+                else if (!strcmp(argv[1], "-m") && !strcmp(argv[2], "NO")) {
                     printf("HELLLOOOO?\n");
                     if (counter == 1) {
                         printf("%s", readDir -> d_name);    
@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
                     counter++; 
                 }
 
-                else if (!strcmp(argv[1], "\0") && !strcmp(argv[2], "-i")) {
+                else if (!strcmp(argv[1], "NO") && !strcmp(argv[2], "-i")) {
                     printf("%d %s ", fileStats.st_ino, readDir -> d_name);
                 }
 

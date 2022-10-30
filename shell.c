@@ -128,7 +128,7 @@ void* ls(void* passArgs) {
 	// 	strcat(str, " ");
 	// }
 
-	system("./ls \\0 \\0");
+	system("./ls NO NO");
 
 	printf("Thread created woohoo!\n");
 }
@@ -258,13 +258,13 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 	// 			execl(strcat(p, "/ls"), "-m", "-i", dir, 0);
 	// 		}
 	// 		else if (m && !i) {
-	// 			execl(strcat(p, "/ls"), "-m", "\0", dir, 0);
+	// 			execl(strcat(p, "/ls"), "-m", "NO", dir, 0);
 	// 		}
 	// 		else if (!m && i) {
-	// 			execl(strcat(p, "/ls"), "\0", "-i", dir, 0);
+	// 			execl(strcat(p, "/ls"), "NO", "-i", dir, 0);
 	// 		}
 	// 		else if (!m && !i) {
-	// 			execl(strcat(p, "/ls"), "\0", "\0", dir, 0);
+	// 			execl(strcat(p, "/ls"), "NO", "NO", dir, 0);
 	// 		}
 	// 		else {
 	// 			printf("[!] Invalid flag(s) entered.\n");

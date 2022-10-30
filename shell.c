@@ -461,7 +461,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			return -1;
 		}
 
-		const char* folderName = argument[0];		
+		const char* folderName = (const char*) argument[0];		
 
 		const char* modeArg = "777";
 		

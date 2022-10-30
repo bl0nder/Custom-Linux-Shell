@@ -9,7 +9,7 @@
 int main (int argc, char* argv[]) {
 
     //No flags
-    if (!strcmp(argv[1], "\0") && !strcmp(argv[2], "\0")) {
+    if (!strcmp(argv[1], "NO") && !strcmp(argv[2], "NO")) {
         int createDir = mkdir(argv[3], S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 
         if (createDir!=0) {

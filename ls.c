@@ -50,6 +50,7 @@ int main(int argc, char* argv[]) {
                 }
 
                 else if (!strcmp(argv[1], "-m") && !strcmp(argv[2], "\0")) {
+                    printf("HELLLOOOO?\n");
                     if (counter == 1) {
                         printf("%s", readDir -> d_name);    
                     }

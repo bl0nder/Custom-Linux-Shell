@@ -357,15 +357,15 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 	int threadFlag = 0;
 	int cmds = 0;
 	for (int i=0; i<commandSize; i++) {
-		if (cmd[i] == '\0') {
-			cmds = i+1;
-		}
-		// if (cmd[i-2] == '&' && cmd[i-1] == 't' && cmd[i] == '\0') {
-		// 	threadFlag = 1;
+		// if (cmd[i] == '\0') {
+		// 	cmds = i;
 		// }
+		if (cmd[i-2] == '&' && cmd[i-1] == 't' && cmd[i] == '\0') {
+			threadFlag = 1;
+		}
 	}
 
-	if (cmd[cmds-1-1] == '&' && cmd[cmds-1] == 't') {
+	if (threadFlag) {
 		threadExecute(cmd, f1, f2, argument, p);
 	}
 

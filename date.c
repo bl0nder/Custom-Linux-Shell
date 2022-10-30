@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
         printf("(RFC-3339) %s\n", s);
     
 
-        setenv("TZ", "UTC", 1);
+        setenv("TZ", "UTC-5:30", 1);
         tzset();
     }
     return 0;

@@ -133,8 +133,8 @@ void* ls(void* passArgs) {
 
 	int strLen;
 	char temp[100];
-	strcpy(temp, ((struct args*)passArgs) -> path);
-	
+	strcpy(temp, (const char*)((struct args*)passArgs) -> path);
+
 	if (*((((struct args*)passArgs)) -> argument) != NULL) {
 		strLen = snprintf(str, 2000, "%s %s %s %s", strcat(temp, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));
 	}

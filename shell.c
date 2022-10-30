@@ -19,6 +19,7 @@ struct args {
 	char* flag1;
 	char* flag2;
 	char** argument;
+	char* fileName;
 };
 
 void echo(char flag1[], char flag2[], char* argument[]) {
@@ -144,6 +145,23 @@ void* ls(void* passArgs) {
 	return NULL;
 }
 
+void* cat(void* passArgs) {
+
+	if (*(((struct args*) passArgs) -> argument) == NULL) {
+		printf("[!] Enter the name of the file you want to read.\n");
+	}
+	// for (int i=0; i<1; i++) {
+	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
+	// }
+	else {
+		char str[2000];
+		int strLen;
+		strLen = snprintf(str, 2000, "%s%s %s %s %s", ((struct args*)passArgs) -> path, "/cat", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));		
+		system((const char*) str);
+	}
+	return NULL;
+}
+
 void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], char p[]) {
 	pthread_t t;
 
@@ -180,7 +198,15 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 		passArgs -> argument = argument;
 	}
 
-	int test = pthread_create(&t, NULL, ls, (void *) passArgs);
+
+	int test;
+	if (!strcmp(cmd, "ls&t")) {
+		test = pthread_create(&t, NULL, ls, (void *) passArgs);
+	}
+	else if (!strcmp(cmd, "cat&t")) {
+		test = pthread_create(&t, NULL, cat, (void *) passArgs);
+	}
+
 	pthread_join(t, NULL);
 	free((void *) passArgs);
 }
@@ -355,10 +381,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 	}
 
-	else if (!strcmp(cmd, "ls&t")) {
-		threadExecute(cmd, flag1, flag2, argument, p);
-	}
-
 	else if (!strcmp(cmd, "date")) {
 
 		if (argument[0] != NULL) {
@@ -474,18 +496,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 
 		else if (pid == 0) {
-			// if (m && pFlag) {
-			// 	execl(strcat(p, "/mkdir"), "-m", "-p", fileName, modeArg, 0);
-			// }
-			// else if (m && !pFlag) {
-			// 	execl(strcat(p, "/mkdir"), "-m", "\0", fileName, modeArg, 0);
-			// }
-			// else if (!m && pFlag) {
-			// 	execl(strcat(p, "/mkdir"), "\0", "-p", fileName, "777", 0);
-			// }
-			// else {
-			// 	execl(strcat(p, "/mkdir"), "\0", "\0", fileName, "777", 0);
-			// }
 			char pathToBinary[100];
 			snprintf(pathToBinary, 100, "%s%s", p, "/mkdir");
 

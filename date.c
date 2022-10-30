@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
         tzset();
     }
 
-    else if (!strcmp(argv[1], "NO") && !strcmp(argv[2], "-R")){
+    else if ((!strcmp(argv[1], "NO") && !strcmp(argv[2], "-R")) || (!strcmp(argv[1], "-R") && !strcmp(argv[2], "NO"))){
         time(&currentTime);
         struct tm *timeStruct = localtime(&currentTime);
         const int maxSize = 100;

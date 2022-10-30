@@ -131,7 +131,6 @@ void* ls(void* passArgs) {
 	// 	strcat(str, " ");
 	// }
 
-	if ()
 	int check = snprintf(str, 2000, "%s %s %s %s", strcat(((struct args*)passArgs) -> path, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));
 	
 	printf("%s\n", str);	

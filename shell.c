@@ -365,7 +365,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		// }
 	}
 
-	if (cmd[cmds-1-2] == '&' && cmd[cmds-1-1] == 't' && cmd[cmds-1] == '\0') {
+	if (cmd[cmds-1-1] == '&' && cmd[cmds-1] == 't') {
 		threadExecute(cmd, f1, f2, argument, p);
 	}
 

@@ -152,8 +152,21 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 	// }
 
 	passArgs -> path = p;
-	passArgs -> flag1 = flag1;
-	passArgs -> flag2 = flag2;
+	
+	if (flag1[0] == '\0') {
+		passArgs -> flag1 = "NO";
+	}
+	else {
+		passArgs -> flag1 = flag1;
+	}
+	
+	if (flag2[0] == '\0') {
+		passArgs -> flag2 = "NO";
+	}
+	else {
+		passArgs -> flag2 = flag2;
+	}
+
 	if (argument == NULL) {
 		passArgs -> argument = NULL;
 	}

@@ -487,7 +487,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			// 	execl(strcat(p, "/mkdir"), "\0", "\0", fileName, "777", 0);
 			// }
 			char pathToBinary[100];
-			snprintf(pathToBinary, 100, "%s%s", p, "/cat");
+			snprintf(pathToBinary, 100, "%s%s", p, "/mkdir");
 
 			execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, folderName, modeArg, 0);
 			exit(0);

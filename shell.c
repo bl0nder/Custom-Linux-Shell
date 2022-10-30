@@ -243,74 +243,91 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		exit(0);
 	}
 	
-	threadExecute(cmd, flag1, flag2, argument, p);
+	//threadExecute(cmd, flag1, flag2, argument, p);
 
-	// //cd - change directory
-	// else if (!strcmp(cmd, "cd")) {
-	// 	cd(flag1, flag2, argument);
-	// }
+	//cd - change directory
+	else if (!strcmp(cmd, "cd")) {
+		cd(flag1, flag2, argument);
+	}
 
-	// //pwd - print working directory
-	// else if (!strcmp(cmd, "pwd")) {
-	// 	pwd(flag1, flag2);
-	// }
+	//pwd - print working directory
+	else if (!strcmp(cmd, "pwd")) {
+		pwd(flag1, flag2);
+	}
 
-	// //echo 
-	// else if (!strcmp(cmd, "echo")) {
-	// 	echo(flag1, flag2, argument);
-	// }
+	//echo 
+	else if (!strcmp(cmd, "echo")) {
+		echo(flag1, flag2, argument);
+	}
 
-	// else if (!strcmp(cmd, "ls")) {
+	else if (!strcmp(cmd, "ls")) {
 		
-	// 	//Flags
-	// 	int m = 0;
-	// 	int i = 0;
+		// //Flags
+		// int m = 0;
+		// int i = 0;
 
-	// 	//-m flag
-	// 	if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
-	// 		m = 1;
-	// 	}
+		// //-m flag
+		// if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
+		// 	m = 1;
+		// }
 
-	// 	//-i flag
-	// 	if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
-	// 		i = 1;
-	// 	}
+		// //-i flag
+		// if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
+		// 	i = 1;
+		// }
 
-	// 	char tempDir[100];
-	// 	getcwd(tempDir, 100);
+		char tempDir[100];
+		getcwd(tempDir, 100);
 
-	// 	const char* dir = tempDir;
+		const char* dir = tempDir;
 		
-	// 	pid_t pid;
-	// 	pid = fork();
+		pid_t pid;
+		pid = fork();
 
-	// 	if (pid < 0) {
-	// 		printf("[!] Some error occurred while executing this command");
-	// 	}
-	// 	else if (pid == 0) {
-	// 		if (m && i) {
-	// 			execl(strcat(p, "/ls"), "-m", "-i", dir, 0);
-	// 		}
-	// 		else if (m && !i) {
-	// 			execl(strcat(p, "/ls"), "-m", "NO", dir, 0);
-	// 		}
-	// 		else if (!m && i) {
-	// 			execl(strcat(p, "/ls"), "NO", "-i", dir, 0);
-	// 		}
-	// 		else if (!m && !i) {
-	// 			execl(strcat(p, "/ls"), "NO", "NO", dir, 0);
-	// 		}
-	// 		else {
-	// 			printf("[!] Invalid flag(s) entered.\n");
-	// 			exit(-1);
-	// 		}
+		if (pid < 0) {
+			printf("[!] Some error occurred while executing this command");
+		}
+		else if (pid == 0) {
+			// if (m && i) {
+			// 	execl(strcat(p, "/ls"), "-m", "-i", dir, 0);
+			// }
+			// else if (m && !i) {
+			// 	execl(strcat(p, "/ls"), "-m", "NO", dir, 0);
+			// }
+			// else if (!m && i) {
+			// 	execl(strcat(p, "/ls"), "NO", "-i", dir, 0);
+			// }
+			// else if (!m && !i) {
+			// 	execl(strcat(p, "/ls"), "NO", "NO", dir, 0);
+			// }
+			// else {
+			// 	printf("[!] Invalid flag(s) entered.\n");
+			// 	exit(-1);
+			// }
 
-	// 		exit(0);
-	// 	}
-	// 	else {
-	// 		wait(NULL);
-	// 	}
-	// }
+			char pathToBinary[100];
+			snprintf(pathToBinary, 100, "%s%s", p, "/ls");
+
+			if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (!strcmp(flag1, "-i") || !strcmp(flag2, "-i"))) {
+				execl(pathToBinary, "-m", "-i", dir, 0);
+			}
+			else if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
+				execl(pathToBinary, "-m", "NO", dir, 0);
+			}
+			else if ((!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
+				execl(pathToBinary, "-i", "NO", dir, 0);
+			}
+			else if (flag1[0] == '\0' && flag2[0] == '\0') {
+				execl(pathToBinary, "NO", "NO", dir, 0);
+			}
+
+
+			exit(0);
+		}
+		else {
+			wait(NULL);
+		}
+	}
 
 	// else if (!strcmp(cmd, "date")) {
 

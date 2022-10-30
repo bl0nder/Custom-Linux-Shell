@@ -128,7 +128,7 @@ void* ls(void* passArgs) {
 	// 	strcat(str, " ");
 	// }
 
-	system("./ls \0 \0");
+	system("./ls 1 1");
 
 	printf("Thread created woohoo!\n");
 }

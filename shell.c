@@ -132,7 +132,7 @@ void* ls(void* passArgs) {
 	// }
 
 	int check;
-	if (*argument != NULL) {
+	if (*((((struct args*)passArgs)) -> argument) != NULL) {
 		check = snprintf(str, 2000, "%s %s %s %s", strcat(((struct args*)passArgs) -> path, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));
 	}
 	else {

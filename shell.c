@@ -128,7 +128,7 @@ void* ls(void* passArgs) {
 	// 	strcat(str, " ");
 	// }
 
-	system("./ls -m \0");
+	system("./ls");
 
 	printf("Thread created woohoo!\n");
 }
@@ -148,6 +148,7 @@ void threadExecute(char* split[], int splitLen, char p[]) {
 
 	int test = pthread_create(&t, NULL, ls, (void *) passArgs);
 	pthread_join(t, NULL);
+	free((void *) passArgs);
 	exit(0);
 }
 

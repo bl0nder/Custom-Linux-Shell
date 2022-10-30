@@ -416,17 +416,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 	else if (!strcmp(cmd, "cat")) {
 
-		// int e = 0;
-		// int t = 0;
-
-
-		// if (!strcmp(flag1, "-E") || !strcmp(flag2, "-E")) {
-		// 	e = 1;
-		// }
-		// if (!strcmp(flag1, "-T") || !strcmp(flag2, "-T")) {
-		// 	t = 1;
-		// }
-
 		if (argument[0] == NULL) {
 			printf("[!] Enter the name of the file you want to read.\n");
 			return -1;
@@ -443,18 +432,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 
 		else if (pid == 0) {
-			// if (e && t) {
-			// 	execl(strcat(p, "/cat"), "-E", "-T", fileName, 0);
-			// }
-			// else if (e && !t) {
-			// 	execl(strcat(p, "/cat"), "-E", "\0", fileName, 0);
-			// }
-			// else if (!e && t) {
-			// 	execl(strcat(p, "/cat"), "\0", "-T", fileName, 0);
-			// }
-			// else {
-			// 	execl(strcat(p, "/cat"), "\0", "\0", fileName, 0);
-			// }
 			char pathToBinary[100];
 			snprintf(pathToBinary, 100, "%s%s", p, "/cat");
 
@@ -467,19 +444,24 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 	}
 
 	else if (!strcmp(cmd, "mkdir")) {
-		int m = 0;
-		int pFlag = 0;
+		// int m = 0;
+		// int pFlag = 0;
 
 
 
-		if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
-			m = 1;
+		// if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
+		// 	m = 1;
+		// }
+		// if (!strcmp(flag1, "-p") || !strcmp(flag2, "-p")) {
+		// 	pFlag = 1;
+		// }
+
+		if (argument[0] == NULL) {
+			printf("[!] Enter the name of the file you want to read.\n");
+			return -1;
 		}
-		if (!strcmp(flag1, "-p") || !strcmp(flag2, "-p")) {
-			pFlag = 1;
-		}
 
-		const char* fileName = argument[0];		
+		const char* folderName = argument[0];		
 
 		const char* modeArg = "777";
 		
@@ -492,18 +474,22 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 
 		else if (pid == 0) {
-			if (m && pFlag) {
-				execl(strcat(p, "/mkdir"), "-m", "-p", fileName, modeArg, 0);
-			}
-			else if (m && !pFlag) {
-				execl(strcat(p, "/mkdir"), "-m", "\0", fileName, modeArg, 0);
-			}
-			else if (!m && pFlag) {
-				execl(strcat(p, "/mkdir"), "\0", "-p", fileName, "777", 0);
-			}
-			else {
-				execl(strcat(p, "/mkdir"), "\0", "\0", fileName, "777", 0);
-			}
+			// if (m && pFlag) {
+			// 	execl(strcat(p, "/mkdir"), "-m", "-p", fileName, modeArg, 0);
+			// }
+			// else if (m && !pFlag) {
+			// 	execl(strcat(p, "/mkdir"), "-m", "\0", fileName, modeArg, 0);
+			// }
+			// else if (!m && pFlag) {
+			// 	execl(strcat(p, "/mkdir"), "\0", "-p", fileName, "777", 0);
+			// }
+			// else {
+			// 	execl(strcat(p, "/mkdir"), "\0", "\0", fileName, "777", 0);
+			// }
+			char pathToBinary[100];
+			snprintf(pathToBinary, 100, "%s%s", p, "/cat");
+
+			execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, folderName, modeArg, 0);
 			exit(0);
 		}
 

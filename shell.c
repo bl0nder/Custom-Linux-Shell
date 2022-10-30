@@ -238,8 +238,8 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		counter++;
 	}
 
-	char* f1 = (char*)malloc(flagSize*sizeof(char));
-	char* f2 = (char*)malloc(flagSize*sizeof(char));
+	char f1[flagSize];
+	char f2[flagSize];
 
 	if (flag1[0] != '\0') {
 		strcpy(f1, flag1);

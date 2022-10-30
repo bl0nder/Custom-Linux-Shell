@@ -140,9 +140,7 @@ void* ls(void* passArgs) {
 		strLen = snprintf(str, 2000, "%s%s %s %s", ((struct args*)passArgs) -> path, "/ls", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2);
 	}
 	
-	printf("%s\n", str);	
 	system((const char*) str);
-	printf("Thread created woohoo!\n");
 	return NULL;
 }
 

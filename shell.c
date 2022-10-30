@@ -142,6 +142,7 @@ void* ls(void* passArgs) {
 	printf("%s\n", str);	
 	system((const char*) str);
 	printf("Thread created woohoo!\n");
+	return NULL;
 }
 
 void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], char p[]) {

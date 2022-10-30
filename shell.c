@@ -238,6 +238,18 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		counter++;
 	}
 
+	char f1[flagSize];
+	char f2[flagSize];
+
+	if (flag1[0] != '\0') {
+		strcpy(f1, flag1);
+		strcpy(f2, flag2);
+	}
+	else {
+		strcpy(f1, "NO");
+		strcpy(f2, "NO");
+	}
+
 	//Exit shell
 	if (!strcmp(cmd, "exit")) {
 		exit(0);
@@ -313,22 +325,24 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			char pathToBinary[100];
 			snprintf(pathToBinary, 100, "%s%s", p, "/ls");
 
-			if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (!strcmp(flag1, "-i") || !strcmp(flag2, "-i"))) {
-				execl(pathToBinary, pathToBinary, "-m", "-i", dir, 0);
-			}
-			else if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
-				execl(pathToBinary, pathToBinary, "-m", "NO", dir, 0);
-			}
-			else if ((!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
-				execl(pathToBinary, pathToBinary, "-i", "NO", dir, 0);
-			}
-			else if (flag1[0] == '\0' && flag2[0] == '\0') {
-				execl(pathToBinary, pathToBinary, "NO", "NO", dir, 0);
-			}
-			else {
-				printf("[!] Invalid flag(s) entered.\n");
-				exit(-1);
-			}
+			execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, dir, 0);
+
+			// if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (!strcmp(flag1, "-i") || !strcmp(flag2, "-i"))) {
+			// 	execl(pathToBinary, pathToBinary, "-m", "-i", dir, 0);
+			// }
+			// else if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
+			// 	execl(pathToBinary, pathToBinary, "-m", "NO", dir, 0);
+			// }
+			// else if ((!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
+			// 	execl(pathToBinary, pathToBinary, "-i", "NO", dir, 0);
+			// }
+			// else if (flag1[0] == '\0' && flag2[0] == '\0') {
+			// 	execl(pathToBinary, pathToBinary, "NO", "NO", dir, 0);
+			// }
+			// else {
+			// 	printf("[!] Invalid flag(s) entered.\n");
+			// 	exit(-1);
+			// }
 
 			exit(0);
 		}

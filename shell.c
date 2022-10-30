@@ -199,17 +199,17 @@ void* mkdirT(void* passArgs) {
 
 	if (*(((struct args*) passArgs) -> argument) == NULL) {
 		printf("[!] Enter the name of the folder you want to create.\n");
+		return NULL;
 	}
 	// for (int i=0; i<1; i++) {
 	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
 	// }
-	else {
-		const char* modeArg = "777";
-		char str[2000];
-		int strLen;
-		strLen = snprintf(str, 2000, "%s%s %s %s %s %s", ((struct args*)passArgs) -> path, "/mkdir", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument), modeArg);		
-		system((const char*) str);
-	}
+	const char* modeArg = "777";
+	char str[2000];
+	int strLen;
+	strLen = snprintf(str, 2000, "%s%s %s %s %s %s", ((struct args*)passArgs) -> path, "/mkdir", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument), modeArg);		
+	system((const char*) str);
+	
 	return NULL;
 }
 

@@ -366,25 +366,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			return -1;
 		}
 
-		// int u = 0;
-		// int r = 0;
-
-		// if (!strcmp(flag1, "-u") || !strcmp(flag2, "-u")) {
-		// 	u = 1;
-		// }
-
-		// if (!strcmp(flag1, "-R") || !strcmp(flag2, "-R")) {
-		// 	r = 1;
-		// }
-
-		// if (strcmp(flag1, "\0") && strcmp(flag1, "-u") && strcmp(flag1, "-R")) {
-		// 	printf("[!] Invalid flag(s) entered.\n");
-		// 	return -1;
-		// }
-		// else if (strcmp(flag2, "\0") && strcmp(flag2, "-u") && strcmp(flag2, "-R")) {
-		// 	return -1;
-		// }
-
+		
 		pid_t pid;
 		pid = fork();
 
@@ -392,18 +374,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			printf("[!] Some error occurred while executing this command\n");
 		}
 		else if (pid == 0) {
-			// if (u && r) {
-			// 	execl(strcat(p, "/date"), "-u", "-R", 0);
-			// }
-			// else if (u && !r) {
-			// 	execl(strcat(p, "/date"), "-u", "\0", 0);
-			// }
-			// else if (r && !u) {
-			// 	execl(strcat(p, "/date"), "\0", "-R", 0);
-			// }
-			// else if (!r && !u) {
-			// 	execl(strcat(p, "/date"), "\0", "\0", 0);
-			// }
 
 			char pathToBinary[100];
 			snprintf(pathToBinary, 100, "%s%s", p, "/date");
@@ -417,18 +387,13 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 	}
 
 	else if (!strcmp(cmd, "rm")) {
-		int f = 0;
-		int i = 0;
 
+		if (argument[0] == NULL) {
+			printf("[!] Enter the name of the file to be removed.\n");
+			return -1;
+
+		}
 		const char* fileName = argument[0];
-
-		if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
-			i = 1;
-		}
-
-		if (!strcmp(flag1, "-f") || !strcmp(flag2, "-f")) {
-			f = 1;
-		}
 
 		pid_t pid;
 		pid = fork();
@@ -437,18 +402,23 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			printf("[!] Some error occurred while executing this command\n");
 		}
 		else if (pid == 0) {
-			if (f && i) {
-				execl(strcat(p, "/rm"), "-f", "-i", fileName, 0);
-			}
-			else if (f && !i) {
-				execl(strcat(p, "/rm"), "-f", "\0", fileName, 0);
-			}
-			else if (i && !f) {
-				execl(strcat(p, "/rm"), "\0", "-i", fileName, 0);
-			}
-			else {
-				execl(strcat(p, "/rm"), "\0", "\0", fileName, 0);
-			}
+			// if (f && i) {
+			// 	execl(strcat(p, "/rm"), "-f", "-i", fileName, 0);
+			// }
+			// else if (f && !i) {
+			// 	execl(strcat(p, "/rm"), "-f", "\0", fileName, 0);
+			// }
+			// else if (i && !f) {
+			// 	execl(strcat(p, "/rm"), "\0", "-i", fileName, 0);
+			// }
+			// else {
+			// 	execl(strcat(p, "/rm"), "\0", "\0", fileName, 0);
+			// }
+
+			char pathToBinary[100];
+			snprintf(pathToBinary, 100, "%s%s", p, "/rm");
+
+			execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, fileName, 0);
 		}
 		else {
 			wait(NULL);

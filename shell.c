@@ -320,7 +320,10 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			else if (flag1[0] == '\0' && flag2[0] == '\0') {
 				execl(pathToBinary, pathToBinary, "NO", "NO", dir, 0);
 			}
-
+			else {
+				printf("[!] Invalid flags entered.\n");
+				exit(-1);
+			}
 
 			exit(0);
 		}

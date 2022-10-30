@@ -241,9 +241,13 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 	char f1[flagSize];
 	char f2[flagSize];
 
-	if (flag1[0] != '\0') {
+	if (flag1[0] != '\0' && flag2[0] != '\0') {
 		strcpy(f1, flag1);
 		strcpy(f2, flag2);
+	}
+	else if (flag1[0] != '\0' && flag2[0] == '\0') {
+		strcpy(f1, flag1);
+		strcpy(f2, "NO");
 	}
 	else {
 		strcpy(f1, "NO");

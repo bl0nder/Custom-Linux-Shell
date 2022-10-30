@@ -119,16 +119,16 @@ void* ls(void* passArgs) {
 	// for (int i=0; i<1; i++) {
 	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
 	// }
-	char* str = (char*) malloc (100*sizeof(char));
-	strcat(str, ((struct args*) passArgs) -> path);
-	strcat(str, "/ls ");
+	// char* str = (char*) malloc (100*sizeof(char));
+	// strcat(str, ((struct args*) passArgs) -> path);
+	// strcat(str, "/ls ");
 
-	for (int i=0; i<100; i++) {
-		strcat(str, ((struct args*) passArgs) -> argv[i]);
-		strcat(str, " ");
-	}
+	// for (int i=0; i<100; i++) {
+	// 	strcat(str, ((struct args*) passArgs) -> argv[i]);
+	// 	strcat(str, " ");
+	// }
 
-	system((const char*) str);
+	system("./ls \0 \0");
 
 	printf("Thread created woohoo!\n");
 }

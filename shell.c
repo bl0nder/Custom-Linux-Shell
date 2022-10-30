@@ -133,7 +133,7 @@ void* ls(void* passArgs) {
 	printf("Thread created woohoo!\n");
 }
 
-void threadExecute(char* split[], int splitLen, char p[]) {
+void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], char p[]) {
 	pthread_t t;
 
 	struct args* passArgs = (struct args*) malloc (sizeof(struct args));
@@ -142,74 +142,73 @@ void threadExecute(char* split[], int splitLen, char p[]) {
 		passArgs -> path[i] = p[i];
 	}
 
-	for (int i=0; i<splitLen; i++) {
-		passArgs -> argv[i] = split[i];
-	}
+	printf("%s\n", passArgs -> path);
 
-	int test = pthread_create(&t, NULL, ls, (void *) passArgs);
-	pthread_join(t, NULL);
-	free((void *) passArgs);
+	// int test = pthread_create(&t, NULL, ls, (void *) passArgs);
+	// pthread_join(t, NULL);
+	// free((void *) passArgs);
 	exit(0);
 }
 
 int executeCommand(char* split[], int splitLen, char p[]) {
 	
-	threadExecute(split, splitLen, p);
 
-	// //Get command from split
-	// char cmd[commandSize];
-	// strcpy(cmd, split[0]);
+	//Get command from split
+	char cmd[commandSize];
+	strcpy(cmd, split[0]);
 
-	// //Strings to store flags
-	// char flag1[flagSize];
-	// char flag2[flagSize];
+	//Strings to store flags
+	char flag1[flagSize];
+	char flag2[flagSize];
 
-	// //Char pointer to store argument (could have multiple substrings in it)
-	// char* argument[argSize];
+	//Char pointer to store argument (could have multiple substrings in it)
+	char* argument[argSize];
 
-	// //Initialise flag1 and flag2 to be arrays of null characters (helps in checking if flags exist or not)
-	// for (int i=0; i<flagSize; i++) {
-	// 	flag1[i] = '\0';
-	// 	flag2[i] = '\0';
-	// }
+	//Initialise flag1 and flag2 to be arrays of null characters (helps in checking if flags exist or not)
+	for (int i=0; i<flagSize; i++) {
+		flag1[i] = '\0';
+		flag2[i] = '\0';
+	}
 
-	// //Initialise argument array to contain null 
-	// for (int i=0; i<argSize; i++) {
-	// 	argument[i] = NULL;
-	// }
+	//Initialise argument array to contain null 
+	for (int i=0; i<argSize; i++) {
+		argument[i] = NULL;
+	}
 
-	// //Get flags from split and store them in flag1 and flag2
-	// if (splitLen >= 2) {
-	// 	if (split[1][0] == '-' && strlen(split[1])==2) {
-	// 		strcpy(flag1, split[1]);
-	// 	}
-	// 	if (splitLen >= 3 && split[2][0] == '-' && strlen(split[2])==2) {
-	// 		strcpy(flag2, split[2]);
-	// 	}
-	// }
+	//Get flags from split and store them in flag1 and flag2
+	if (splitLen >= 2) {
+		if (split[1][0] == '-' && strlen(split[1])==2) {
+			strcpy(flag1, split[1]);
+		}
+		if (splitLen >= 3 && split[2][0] == '-' && strlen(split[2])==2) {
+			strcpy(flag2, split[2]);
+		}
+	}
 
-	// //set argument based on how many flags there are
-	// int start = 0;
-	// if (flag1[0] == '\0' && flag2[0] == '\0') {
-	// 	start = 1;
-	// }
-	// else if (flag1[0] != '\0' && flag2[0]=='\0') {
-	// 	start = 2;
-	// }
-	// else if (flag1[0] != '\0' && flag2[0] !='\0') {
-	// 	start = 3;
-	// }
+	//set argument based on how many flags there are
+	int start = 0;
+	if (flag1[0] == '\0' && flag2[0] == '\0') {
+		start = 1;
+	}
+	else if (flag1[0] != '\0' && flag2[0]=='\0') {
+		start = 2;
+	}
+	else if (flag1[0] != '\0' && flag2[0] !='\0') {
+		start = 3;
+	}
 
-	// int counter = 0;
-	// for (int i=start; i<splitLen; i++) {
-	// 	argument[counter] = split[i];
-	// 	counter++;
-	// }
+	int counter = 0;
+	for (int i=start; i<splitLen; i++) {
+		argument[counter] = split[i];
+		counter++;
+	}
 
-	// //Exit shell
-	// if (!strcmp(cmd, "exit")) {
-	// 	exit(0);
-	// }
+	//Exit shell
+	if (!strcmp(cmd, "exit")) {
+		exit(0);
+	}
+	
+	threadExecute(cmd, flag1, flag2, argument, p);
 
 	// //cd - change directory
 	// else if (!strcmp(cmd, "cd")) {

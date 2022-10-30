@@ -131,9 +131,9 @@ void* ls(void* passArgs) {
 	// 	strcat(str, " ");
 	// }
 
-	int check = snprintf(str, 2000, "%s %s %s %s", strcat(((struct args*)passArgs) -> path, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, ((struct args*)passArgs) -> argument);
+	int check = snprintf(str, 2000, "%s %s %s %s", strcat(((struct args*)passArgs) -> path, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, (((struct args*)passArgs)) -> argument[0]);
 	
-	printf("%s\n", str);
+	printf("%s\n", str);	
 	//system((const char*) str);
 	printf("Thread created woohoo!\n");
 }

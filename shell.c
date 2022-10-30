@@ -276,7 +276,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		// 	i = 1;
 		// }
 
-		if (argument[0] != '\0') {
+		if (argument[0] != NULL) {
 			printf("[!] This command does not take any arguments.\n");
 			exit(-1);
 		}

@@ -255,24 +255,28 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 
 	if (!strcmp(cmd, "ls&t")) {
 		test = pthread_create(&t, NULL, lsT, (void *) passArgs);
+		pthread_join(t, NULL);
 	}
 	else if (!strcmp(cmd, "cat&t")) {
 		test = pthread_create(&t, NULL, catT, (void *) passArgs);
+		pthread_join(t, NULL);
 	}
 	else if (!strcmp(cmd, "date&t")) {
 		test = pthread_create(&t, NULL, dateT, (void *) passArgs);
+		pthread_join(t, NULL);
 	}
 	else if (!strcmp(cmd, "rm&t")) {
 		test = pthread_create(&t, NULL, rmT, (void *) passArgs);
+		pthread_join(t, NULL);
 	}
 	else if (!strcmp(cmd, "mkdir&t")) {
 		test = pthread_create(&t, NULL, mkdirT, (void *) passArgs);
+		pthread_join(t, NULL);
 	}
 	else {
-		printf("[!] akdjsfksdajhfkasjdfhkasjdfhkasjdhf.\n");
+		printf("[!] Invalid command entered.\n");
 	}
 
-	pthread_join(t, NULL);
 	free((void *) passArgs);
 }
 

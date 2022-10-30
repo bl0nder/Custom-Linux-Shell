@@ -132,8 +132,9 @@ void* ls(void* passArgs) {
 	// }
 
 	int strLen;
+	char* temp = ((struct args*)passArgs) -> path;
 	if (*((((struct args*)passArgs)) -> argument) != NULL) {
-		strLen = snprintf(str, 2000, "%s %s %s %s", strcat(((struct args*)passArgs) -> path, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));
+		strLen = snprintf(str, 2000, "%s %s %s %s", strcat(temp, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, *((((struct args*)passArgs)) -> argument));
 	}
 	else {
 		strLen = snprintf(str, 2000, "%s %s %s", strcat(((struct args*)passArgs) -> path, "/ls"), ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2);

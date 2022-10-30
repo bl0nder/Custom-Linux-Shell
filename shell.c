@@ -276,6 +276,11 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		// 	i = 1;
 		// }
 
+		if (argument[0] != '\0') {
+			printf("[!] This command does not take any arguments.\n");
+			exit(-1);
+		}
+
 		char tempDir[100];
 		getcwd(tempDir, 100);
 
@@ -321,7 +326,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 				execl(pathToBinary, pathToBinary, "NO", "NO", dir, 0);
 			}
 			else {
-				printf("[!] Invalid flags entered.\n");
+				printf("[!] Invalid flag(s) entered.\n");
 				exit(-1);
 			}
 

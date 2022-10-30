@@ -243,7 +243,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		exit(0);
 	}
 	
-	//threadExecute(cmd, flag1, flag2, argument, p);
+	
 
 	//cd - change directory
 	else if (!strcmp(cmd, "cd")) {
@@ -327,6 +327,10 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		else {
 			wait(NULL);
 		}
+	}
+
+	else if (!strcmp(cmd, "ls&t")) {
+		threadExecute(cmd, flag1, flag2, argument, p);
 	}
 
 	// else if (!strcmp(cmd, "date")) {

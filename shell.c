@@ -283,234 +283,246 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 	//Exit shell
 	if (!strcmp(cmd, "exit")) {
 		exit(0);
-	}
-	
-	
+	}	
 
-	//cd - change directory
-	else if (!strcmp(cmd, "cd")) {
-		cd(flag1, flag2, argument);
-	}
+	int threadFlag = 0;
 
-	//pwd - print working directory
-	else if (!strcmp(cmd, "pwd")) {
-		pwd(flag1, flag2);
-	}
-
-	//echo 
-	else if (!strcmp(cmd, "echo")) {
-		echo(flag1, flag2, argument);
-	}
-
-	else if (!strcmp(cmd, "ls")) {
-		
-		// //Flags
-		// int m = 0;
-		// int i = 0;
-
-		// //-m flag
-		// if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
-		// 	m = 1;
-		// }
-
-		// //-i flag
-		// if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
-		// 	i = 1;
-		// }
-
-		if (argument[0] != NULL) {
-			printf("[!] This command does not take any arguments.\n");
-			return -1;
-		}
-
-		char tempDir[100];
-		getcwd(tempDir, 100);
-
-		const char* dir = tempDir;
-		
-		pid_t pid;
-		pid = fork();
-
-		if (pid < 0) {
-			printf("[!] Some error occurred while executing this command");
-		}
-		else if (pid == 0) {
-			// if (m && i) {
-			// 	execl(strcat(p, "/ls"), "-m", "-i", dir, 0);
-			// }
-			// else if (m && !i) {
-			// 	execl(strcat(p, "/ls"), "-m", "NO", dir, 0);
-			// }
-			// else if (!m && i) {
-			// 	execl(strcat(p, "/ls"), "NO", "-i", dir, 0);
-			// }
-			// else if (!m && !i) {
-			// 	execl(strcat(p, "/ls"), "NO", "NO", dir, 0);
-			// }
-			// else {
-			// 	printf("[!] Invalid flag(s) entered.\n");
-			// 	exit(-1);
-			// }
-
-			char pathToBinary[100];
-			snprintf(pathToBinary, 100, "%s%s", p, "/ls");
-
-			execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, dir, 0);
-
-			// if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (!strcmp(flag1, "-i") || !strcmp(flag2, "-i"))) {
-			// 	execl(pathToBinary, pathToBinary, "-m", "-i", dir, 0);
-			// }
-			// else if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
-			// 	execl(pathToBinary, pathToBinary, "-m", "NO", dir, 0);
-			// }
-			// else if ((!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
-			// 	execl(pathToBinary, pathToBinary, "-i", "NO", dir, 0);
-			// }
-			// else if (flag1[0] == '\0' && flag2[0] == '\0') {
-			// 	execl(pathToBinary, pathToBinary, "NO", "NO", dir, 0);
-			// }
-			// else {
-			// 	printf("[!] Invalid flag(s) entered.\n");
-			// 	exit(-1);
-			// }
-
-			exit(0);
-		}
-		else {
-			wait(NULL);
+	for (int i=0; i<commandSize; i++) {
+		if (cmd[i-2] == '&' && cmd[i-1] == 't' && cmd[i] == '\0') {
+			threadFlag = 1;
 		}
 	}
 
-	else if (!strcmp(cmd, "date")) {
-
-		if (argument[0] != NULL) {
-			printf("[!] This command does not take any arguments.\n");
-			return -1;
-		}
-
-		
-		pid_t pid;
-		pid = fork();
-
-		if (pid < 0) {
-			printf("[!] Some error occurred while executing this command\n");
-		}
-		else if (pid == 0) {
-
-			char pathToBinary[100];
-			snprintf(pathToBinary, 100, "%s%s", p, "/date");
-
-			execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, 0);
-
-		}
-		else {
-			wait(NULL);
-		}
+	if (threadFlag) {
+		threadExecute(cmd, f1, f2, argument, p);
 	}
 
-	else if (!strcmp(cmd, "rm")) {
-
-		if (argument[0] == NULL) {
-			printf("[!] Enter the name of the file to be removed.\n");
-			return -1;
-
-		}
-		const char* fileName = argument[0];
-
-		pid_t pid;
-		pid = fork();
-
-		if (pid < 0) {
-			printf("[!] Some error occurred while executing this command\n");
-		}
-		else if (pid == 0) {
-			char pathToBinary[100];
-			snprintf(pathToBinary, 100, "%s%s", p, "/rm");
-
-			execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, fileName, 0);
-		}
-		else {
-			wait(NULL);
-		}
-
-
-	}
-
-	else if (!strcmp(cmd, "cat")) {
-
-		if (argument[0] == NULL) {
-			printf("[!] Enter the name of the file you want to read.\n");
-			return -1;
-		}
-
-		const char* fileName = argument[0];
-		
-		pid_t pid;
-		pid = fork();
-
-		if (pid < 0) {
-			printf("[!] Some error occurred while executing this command\n");
-			return -1;
-		}
-
-		else if (pid == 0) {
-			char pathToBinary[100];
-			snprintf(pathToBinary, 100, "%s%s", p, "/cat");
-
-			execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, fileName, 0);
-		}
-
-		else {
-			wait (NULL);
-		}
-	}
-
-	else if (!strcmp(cmd, "mkdir")) {
-		// int m = 0;
-		// int pFlag = 0;
-
-
-
-		// if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
-		// 	m = 1;
-		// }
-		// if (!strcmp(flag1, "-p") || !strcmp(flag2, "-p")) {
-		// 	pFlag = 1;
-		// }
-
-		if (argument[0] == NULL) {
-			printf("[!] Enter the name of the file you want to read.\n");
-			return -1;
-		}
-
-		const char* folderName = (const char*) argument[0];		
-
-		const char* modeArg = "777";
-		
-		pid_t pid;
-		pid = fork();
-
-		if (pid < 0) {
-			printf("[!] Some error occurred while executing this command\n");
-			return -1;
-		}
-
-		else if (pid == 0) {
-			char pathToBinary[100];
-			snprintf(pathToBinary, 100, "%s%s", p, "/mkdir");
-
-			execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, folderName, modeArg, 0);
-			exit(0);
-		}
-
-		else {
-			wait (NULL);
-		}
-	}
-
-	//unknown command
 	else {
-		printf("[!] Unknown command %s entered\n", cmd);
+		//cd - change directory
+		if (!strcmp(cmd, "cd")) {
+			cd(flag1, flag2, argument);
+		}
+
+		//pwd - print working directory
+		else if (!strcmp(cmd, "pwd")) {
+			pwd(flag1, flag2);
+		}
+
+		//echo 
+		else if (!strcmp(cmd, "echo")) {
+			echo(flag1, flag2, argument);
+		}
+
+		else if (!strcmp(cmd, "ls")) {
+			
+			// //Flags
+			// int m = 0;
+			// int i = 0;
+
+			// //-m flag
+			// if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
+			// 	m = 1;
+			// }
+
+			// //-i flag
+			// if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
+			// 	i = 1;
+			// }
+
+			if (argument[0] != NULL) {
+				printf("[!] This command does not take any arguments.\n");
+				return -1;
+			}
+
+			char tempDir[100];
+			getcwd(tempDir, 100);
+
+			const char* dir = tempDir;
+			
+			pid_t pid;
+			pid = fork();
+
+			if (pid < 0) {
+				printf("[!] Some error occurred while executing this command");
+			}
+			else if (pid == 0) {
+				// if (m && i) {
+				// 	execl(strcat(p, "/ls"), "-m", "-i", dir, 0);
+				// }
+				// else if (m && !i) {
+				// 	execl(strcat(p, "/ls"), "-m", "NO", dir, 0);
+				// }
+				// else if (!m && i) {
+				// 	execl(strcat(p, "/ls"), "NO", "-i", dir, 0);
+				// }
+				// else if (!m && !i) {
+				// 	execl(strcat(p, "/ls"), "NO", "NO", dir, 0);
+				// }
+				// else {
+				// 	printf("[!] Invalid flag(s) entered.\n");
+				// 	exit(-1);
+				// }
+
+				char pathToBinary[100];
+				snprintf(pathToBinary, 100, "%s%s", p, "/ls");
+
+				execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, dir, 0);
+
+				// if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (!strcmp(flag1, "-i") || !strcmp(flag2, "-i"))) {
+				// 	execl(pathToBinary, pathToBinary, "-m", "-i", dir, 0);
+				// }
+				// else if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
+				// 	execl(pathToBinary, pathToBinary, "-m", "NO", dir, 0);
+				// }
+				// else if ((!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
+				// 	execl(pathToBinary, pathToBinary, "-i", "NO", dir, 0);
+				// }
+				// else if (flag1[0] == '\0' && flag2[0] == '\0') {
+				// 	execl(pathToBinary, pathToBinary, "NO", "NO", dir, 0);
+				// }
+				// else {
+				// 	printf("[!] Invalid flag(s) entered.\n");
+				// 	exit(-1);
+				// }
+
+				exit(0);
+			}
+			else {
+				wait(NULL);
+			}
+		}
+
+		else if (!strcmp(cmd, "date")) {
+
+			if (argument[0] != NULL) {
+				printf("[!] This command does not take any arguments.\n");
+				return -1;
+			}
+
+			
+			pid_t pid;
+			pid = fork();
+
+			if (pid < 0) {
+				printf("[!] Some error occurred while executing this command\n");
+			}
+			else if (pid == 0) {
+
+				char pathToBinary[100];
+				snprintf(pathToBinary, 100, "%s%s", p, "/date");
+
+				execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, 0);
+
+			}
+			else {
+				wait(NULL);
+			}
+		}
+
+		else if (!strcmp(cmd, "rm")) {
+
+			if (argument[0] == NULL) {
+				printf("[!] Enter the name of the file to be removed.\n");
+				return -1;
+
+			}
+			const char* fileName = argument[0];
+
+			pid_t pid;
+			pid = fork();
+
+			if (pid < 0) {
+				printf("[!] Some error occurred while executing this command\n");
+			}
+			else if (pid == 0) {
+				char pathToBinary[100];
+				snprintf(pathToBinary, 100, "%s%s", p, "/rm");
+
+				execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, fileName, 0);
+			}
+			else {
+				wait(NULL);
+			}
+
+
+		}
+
+		else if (!strcmp(cmd, "cat")) {
+
+			if (argument[0] == NULL) {
+				printf("[!] Enter the name of the file you want to read.\n");
+				return -1;
+			}
+
+			const char* fileName = argument[0];
+			
+			pid_t pid;
+			pid = fork();
+
+			if (pid < 0) {
+				printf("[!] Some error occurred while executing this command\n");
+				return -1;
+			}
+
+			else if (pid == 0) {
+				char pathToBinary[100];
+				snprintf(pathToBinary, 100, "%s%s", p, "/cat");
+
+				execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, fileName, 0);
+			}
+
+			else {
+				wait (NULL);
+			}
+		}
+
+		else if (!strcmp(cmd, "mkdir")) {
+			// int m = 0;
+			// int pFlag = 0;
+
+
+
+			// if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
+			// 	m = 1;
+			// }
+			// if (!strcmp(flag1, "-p") || !strcmp(flag2, "-p")) {
+			// 	pFlag = 1;
+			// }
+
+			if (argument[0] == NULL) {
+				printf("[!] Enter the name of the file you want to read.\n");
+				return -1;
+			}
+
+			const char* folderName = (const char*) argument[0];		
+
+			const char* modeArg = "777";
+			
+			pid_t pid;
+			pid = fork();
+
+			if (pid < 0) {
+				printf("[!] Some error occurred while executing this command\n");
+				return -1;
+			}
+
+			else if (pid == 0) {
+				char pathToBinary[100];
+				snprintf(pathToBinary, 100, "%s%s", p, "/mkdir");
+
+				execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, folderName, modeArg, 0);
+				exit(0);
+			}
+
+			else {
+				wait (NULL);
+			}
+		}
+
+		//unknown command
+		else {
+			printf("[!] Unknown command %s entered\n", cmd);
+		}
 	}
 
 	return 0;

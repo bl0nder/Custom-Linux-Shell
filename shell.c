@@ -272,7 +272,7 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 	}
 	else if (!strcmp(cmd, "mkdir&t")) {
 		test = pthread_create(&t, NULL, mkdirT, (void *) passArgs);
-		pthread_join(t, NULL);
+		pthread_exit();
 	}
 	else {
 		printf("[!] Invalid command entered.\n");

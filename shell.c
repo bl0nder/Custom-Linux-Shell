@@ -368,7 +368,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 	if (!strcmp(cmd, "ls&t") || !strcmp(cmd, "rm&t") ||!strcmp(cmd, "cat&t") ||!strcmp(cmd, "mkdir&t") ||!strcmp(cmd, "date&t")) {
 		threadExecute(cmd, f1, f2, argument, p);
-		threadFlag = 0;
+		// threadFlag = 0;
 		printf("hello\n");
 	}
 

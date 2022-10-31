@@ -368,6 +368,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 	if (threadFlag) {
 		threadExecute(cmd, f1, f2, argument, p);
+		threadFlag = 0;
 	}
 
 	else {

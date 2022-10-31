@@ -272,16 +272,13 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 	}
 	else if (!strcmp(cmd, "mkdir&t")) {
 		test = pthread_create(&t, NULL, mkdirT, (void *) passArgs);
-		printf("hello\n");
 		pthread_join(t, NULL);
-		printf("hello2\n");
 	}
 	else {
 		printf("[!] Invalid command entered.\n");
 	}
 
 	free((void *) passArgs);
-	printf("hello3\n");
 }
 
 int executeCommand(char* split[], int splitLen, char p[]) {
@@ -372,6 +369,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 	if (threadFlag) {
 		threadExecute(cmd, f1, f2, argument, p);
 		threadFlag = 0;
+		printf("hello\n");
 	}
 
 	else {

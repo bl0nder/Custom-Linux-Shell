@@ -16,12 +16,14 @@ int main (int argc, char* argv[]) {
             printf("[!] There was an error in creating directory '%s'.\n", argv[3]);
             exit(-1);
         }
+        else {
+            exit(0);
+        }
     }
 
     // //-m flag only
     // else if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "\0")) {
     //     int createDir = mkdir(argv[2], S_IRWXU);
     // }
-    exit(0);
     return 0;
 }

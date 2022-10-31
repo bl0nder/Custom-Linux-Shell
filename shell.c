@@ -205,7 +205,7 @@ void* mkdirT(void* passArgs) {
 	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
 	// }
 	const char* modeArg = "777";
-	const char* folderName =  *((((struct args*)passArgs)) -> argument)[0];
+	const char* folderName =  (((struct args*)passArgs) -> argument)[0];
 	char str[2000];
 	int strLen;
 	strLen = snprintf(str, 2000, "%s%s %s %s %s %s", ((struct args*)passArgs) -> path, "/mkdir", ((struct args*)passArgs) -> flag1, ((struct args*)passArgs) -> flag2, folderName, modeArg);		

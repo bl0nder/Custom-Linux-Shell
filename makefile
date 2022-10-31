@@ -1,3 +1,5 @@
+all: ls mkdir date rm cat shell
+
 ls: ls.c
 	gcc ls.c -o ls
 

@@ -22,7 +22,7 @@ struct args {
 	char* fileName;
 };
 
-void echo(char flag1[], char flag2[], char* argument[]) {
+int echo(char flag1[], char flag2[], char* argument[]) {
 
 	//Flags -> (-n) and TBD
 
@@ -51,8 +51,11 @@ void echo(char flag1[], char flag2[], char* argument[]) {
 		}
 		else {
 			printf("[!] Unknown flag %s entered\n");
+			return -1;
 		}
 	}
+
+	return 0;
 }
 
 int pwd(char flag1[], char flag2[]) {
@@ -90,6 +93,11 @@ int pwd(char flag1[], char flag2[]) {
 			else {
 				printf("%s\n", path_noSymbolicLinks);
 			}
+		}
+
+		else {
+			printf("[!] Invalid flag(s) entered.\n");
+			return -1;
 		}
 
 	}

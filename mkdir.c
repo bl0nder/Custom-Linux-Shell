@@ -35,6 +35,18 @@ int main (int argc, char* argv[]) {
             exit(0);
         }
     }
+    else if ((!strcmp(argv[1], "-v") && !strcmp(argv[2], "NO")) || (!strcmp(argv[1], "NO") && !strcmp(argv[2], "-v"))) {
+        
+        int createDir = mkdir(argv[3], S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+        if (createDir!=0) {
+            printf("[!] There was an error in creating directory '%s'.\n", argv[3]);
+            exit(-1);
+        }
+        else {
+            printf("The directory %s has been created.\n", argv[3]);
+            exit(0);
+        }
+    }
 
     // //-m flag only
     // else if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "\0")) {

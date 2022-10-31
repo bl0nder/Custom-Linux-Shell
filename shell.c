@@ -359,21 +359,15 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 		else if (!strcmp(cmd, "ls")) {
 
-			// if (argument[0] != NULL) {
-			// 	printf("[!] This command does not take any arguments.\n");
-			// 	return -1;
-			// }
+			if (argument[0] != NULL) {
+				printf("[!] This command does not take any arguments.\n");
+				return -1;
+			}
 
 			char tempDir[100];
-			if (argument[0] == NULL) {
-				getcwd(tempDir, 100);
-			}
-			else {
-				strcpy(tempDir, (const char*) argument);
-			}
-			
+			getcwd(tempDir, 100);
 
-			const char* dir = (const char*) tempDir;
+			const char* dir = tempDir;
 			
 			pid_t pid;
 			pid = fork();

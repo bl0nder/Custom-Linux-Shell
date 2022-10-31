@@ -10,15 +10,13 @@
 int main(int argc, char* argv[]) {    
     errno = 0;
     
-    printf("%s\n", argv[3]);
-
     DIR* directory;
     struct dirent* readDir;
 
     char currentDir[100];
     getcwd(currentDir, 100);
 
-    directory = opendir(argv[3]);
+    directory = opendir(currentDir);
     readDir = readdir(directory);
 
     struct stat fileStats;

@@ -20,6 +20,21 @@ int main (int argc, char* argv[]) {
             exit(0);
         }
     }
+    else if ((!strcmp(argv[1], "-m") && !strcmp(argv[2], "NO")) || (!strcmp(argv[1], "NO") && !strcmp(argv[2], "-m"))) {
+        int mode;
+        printf("Enter mode: ");
+        scanf("%d", &mode);
+
+        int createDir = mkdir(argv[3], (const int) mode);
+
+        if (createDir!=0) {
+            printf("[!] There was an error in creating directory '%s'.\n", argv[3]);
+            exit(-1);
+        }
+        else {
+            exit(0);
+        }
+    }
 
     // //-m flag only
     // else if (!strcmp(argv[0], "-m") && !strcmp(argv[1], "\0")) {

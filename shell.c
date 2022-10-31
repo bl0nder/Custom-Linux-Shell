@@ -103,7 +103,7 @@ int pwd(char flag1[], char flag2[]) {
 	}
 
 	//Both flags present
-	else if (!strcmp(flag1, "-L")) {
+	else {
 		printf("[!] Both flags cannot be used at the same time with this command\n");
 	}
 

@@ -36,7 +36,7 @@ int echo(char flag1[], char flag2[], char* argument[]) {
 	}
 
 	//1 flag 
-	if (flag1[0] != '\0' && flag2[0] == '\0') {
+	else if (flag1[0] != '\0' && flag2[0] == '\0') {
 		if (!strcmp(flag1, "-n")) {
 			for (int i=0; argument[i] != NULL; i++) {
 				if (i+1 < argSize)  {
@@ -49,10 +49,38 @@ int echo(char flag1[], char flag2[], char* argument[]) {
 				}
 			}
 		}
+
+		else if (!strcmp(flag1, "-v")) {
+			for (int i=0; argument[i] != NULL; i++) {
+				printf("%s ", argument[i]);
+			}
+			printf("\n");
+			printf("Message has been printed.\n");
+		}
+
 		else {
 			printf("[!] Unknown flag %s entered\n", flag1);
 			return -1;
 		}
+	}
+
+	else if ((!strcmp(flag1, "-v") && !strcmp(flag2, "-n")) || (!strcmp(flag1, "-n") && !strcmp(flag2, "-v"))) {
+		for (int i=0; argument[i] != NULL; i++) {
+			if (i+1 < argSize)  {
+				if (argument[i+1] != NULL) {
+					printf("%s ", argument[i]);
+				}
+				else {
+					printf("%s", argument[i]);
+				}
+			}
+		}
+		printf("Message has been printed.\n");
+	}
+
+	else {
+		printf("[!] Invalid flag(s) entered.\n");
+		return -1;
 	}
 
 	return 0;

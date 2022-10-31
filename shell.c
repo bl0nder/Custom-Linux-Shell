@@ -272,7 +272,7 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 	}
 	else if (!strcmp(cmd, "mkdir&t")) {
 		test = pthread_create(&t, NULL, mkdirT, (void *) passArgs);
-		pthread_exit(NULL);
+		pthread_join(t, NULL);
 	}
 	else {
 		printf("[!] Invalid command entered.\n");
@@ -355,18 +355,18 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		exit(0);
 	}	
 
-	int threadFlag = 0;
-	int cmds = 0;
-	for (int i=0; i<commandSize; i++) {
-		// if (cmd[i] == '\0') {
-		// 	cmds = i;
-		// }
-		if (cmd[i-2] == '&' && cmd[i-1] == 't' && cmd[i] == '\0') {
-			threadFlag = 1;
-		}
-	}
+	// int threadFlag = 0;
+	// int cmds = 0;
+	// for (int i=0; i<commandSize; i++) {
+	// 	// if (cmd[i] == '\0') {
+	// 	// 	cmds = i;
+	// 	// }
+	// 	if (cmd[i-2] == '&' && cmd[i-1] == 't' && cmd[i] == '\0') {
+	// 		threadFlag = 1;
+	// 	}
+	// }
 
-	if (threadFlag) {
+	if (!strcmp(cmd, "ls&t") || !strcmp(cmd, "rm&t") ||!strcmp(cmd, "cat&t") ||!strcmp(cmd, "mkdir&t") ||!strcmp(cmd, "date&t")) {
 		threadExecute(cmd, f1, f2, argument, p);
 		threadFlag = 0;
 		printf("hello\n");

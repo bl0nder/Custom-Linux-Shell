@@ -10,6 +10,8 @@
 int main(int argc, char* argv[]) {    
     errno = 0;
     
+    printf("%s\n", argv[3]);
+
     DIR* directory;
     struct dirent* readDir;
 

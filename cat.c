@@ -12,6 +12,12 @@ int main(int argc, char* argv[]) {
     // while (fgets(str, maxSize, fp)) {
     //     printf("%s", str);
     // }
+
+    if (fp == NULL) {
+        printf("[!] File does not exist.\n");
+        exit(-1);
+    }
+
     if (!strcmp(argv[1], "NO") && !strcmp(argv[2], "NO")) {
         while (fgets(str, maxSize, fp)) {
             printf("%s", str);

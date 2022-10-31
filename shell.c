@@ -120,18 +120,8 @@ int cd(char flag1[], char flag2[], char* argument[]) {
 
 
 void* lsT(void* passArgs) {
-	// for (int i=0; i<1; i++) {
-	// 	printf("%s\n", ((struct args *) passArgs) -> argv[i]);
-	// }
 	char str[2000];
-	// strcat(str, ((struct args*) passArgs) -> path);
-	// strcat(str, "/ls ");
-
-	// for (int i=0; i<100; i++) {
-	// 	strcat(str, ((struct args*) passArgs) -> argv[i]);
-	// 	strcat(str, " ");
-	// }
-
+	
 	int strLen;
 
 	if (*((((struct args*)passArgs)) -> argument) != NULL) {
@@ -355,21 +345,8 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		exit(0);
 	}	
 
-	// int threadFlag = 0;
-	// int cmds = 0;
-	// for (int i=0; i<commandSize; i++) {
-	// 	// if (cmd[i] == '\0') {
-	// 	// 	cmds = i;
-	// 	// }
-	// 	if (cmd[i-2] == '&' && cmd[i-1] == 't' && cmd[i] == '\0') {
-	// 		threadFlag = 1;
-	// 	}
-	// }
-
-	if (!strcmp(cmd, "ls&t") || !strcmp(cmd, "rm&t") ||!strcmp(cmd, "cat&t") ||!strcmp(cmd, "mkdir&t") ||!strcmp(cmd, "date&t")) {
+	if (!strcmp(cmd, "ls&t") || !strcmp(cmd, "rm&t") || !strcmp(cmd, "cat&t") || !strcmp(cmd, "mkdir&t") || !strcmp(cmd, "date&t")) {
 		threadExecute(cmd, f1, f2, argument, p);
-		// threadFlag = 0;
-		printf("hello\n");
 	}
 
 	else {
@@ -389,20 +366,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 
 		else if (!strcmp(cmd, "ls")) {
-			
-			// //Flags
-			// int m = 0;
-			// int i = 0;
-
-			// //-m flag
-			// if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
-			// 	m = 1;
-			// }
-
-			// //-i flag
-			// if (!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) {
-			// 	i = 1;
-			// }
 
 			if (argument[0] != NULL) {
 				printf("[!] This command does not take any arguments.\n");
@@ -421,45 +384,11 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 				printf("[!] Some error occurred while executing this command");
 			}
 			else if (pid == 0) {
-				// if (m && i) {
-				// 	execl(strcat(p, "/ls"), "-m", "-i", dir, 0);
-				// }
-				// else if (m && !i) {
-				// 	execl(strcat(p, "/ls"), "-m", "NO", dir, 0);
-				// }
-				// else if (!m && i) {
-				// 	execl(strcat(p, "/ls"), "NO", "-i", dir, 0);
-				// }
-				// else if (!m && !i) {
-				// 	execl(strcat(p, "/ls"), "NO", "NO", dir, 0);
-				// }
-				// else {
-				// 	printf("[!] Invalid flag(s) entered.\n");
-				// 	exit(-1);
-				// }
 
 				char pathToBinary[100];
 				snprintf(pathToBinary, 100, "%s%s", p, "/ls");
 
 				execl(pathToBinary, pathToBinary, (const char*) f1, (const char*) f2, dir, 0);
-
-				// if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (!strcmp(flag1, "-i") || !strcmp(flag2, "-i"))) {
-				// 	execl(pathToBinary, pathToBinary, "-m", "-i", dir, 0);
-				// }
-				// else if ((!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
-				// 	execl(pathToBinary, pathToBinary, "-m", "NO", dir, 0);
-				// }
-				// else if ((!strcmp(flag1, "-i") || !strcmp(flag2, "-i")) && (flag1[0] == '\0' || flag2[0] == '\0')) {
-				// 	execl(pathToBinary, pathToBinary, "-i", "NO", dir, 0);
-				// }
-				// else if (flag1[0] == '\0' && flag2[0] == '\0') {
-				// 	execl(pathToBinary, pathToBinary, "NO", "NO", dir, 0);
-				// }
-				// else {
-				// 	printf("[!] Invalid flag(s) entered.\n");
-				// 	exit(-1);
-				// }
-
 				exit(0);
 			}
 			else {
@@ -552,17 +481,6 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 		}
 
 		else if (!strcmp(cmd, "mkdir")) {
-			// int m = 0;
-			// int pFlag = 0;
-
-
-
-			// if (!strcmp(flag1, "-m") || !strcmp(flag2, "-m")) {
-			// 	m = 1;
-			// }
-			// if (!strcmp(flag1, "-p") || !strcmp(flag2, "-p")) {
-			// 	pFlag = 1;
-			// }
 
 			if (argument[0] == NULL) {
 				printf("[!] Enter the name of the file you want to read.\n");

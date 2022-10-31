@@ -50,7 +50,7 @@ int echo(char flag1[], char flag2[], char* argument[]) {
 			}
 		}
 		else {
-			printf("[!] Unknown flag %s entered\n");
+			printf("[!] Unknown flag %s entered\n", flag1);
 			return -1;
 		}
 	}

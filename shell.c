@@ -69,7 +69,7 @@ int pwd(char flag1[], char flag2[]) {
 
 		//L flag - outputs contents of $PWD environment variable
 		if (!strcmp(flag1, "-L")) {
-			char* envName = getenv("PWD");
+			const char* envName = (const char*) getenv("PWD");
 			printf("%s\n", envName);
 		}
 
@@ -209,14 +209,6 @@ void threadExecute(char cmd[], char flag1[], char flag2[], char* argument[], cha
 	pthread_t t;
 
 	struct args* passArgs = (struct args*) malloc (sizeof(struct args));
-
-	// for (int i=0; i<100; i++) {
-	// 	passArgs -> path[i] = p[i];
-	// }
-
-	// for (int i=0; i<splitLen; i++) {
-	// 	passArgs -> argv[i] = split[i];
-	// }
 
 	passArgs -> path = p;
 	
@@ -522,7 +514,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 }
 
 void command(char cmd[], char p[]) {
-	fgets(cmd, maxChar, stdin);	//fgets is better than scanf since scanf stops reading input when it encouters whitespace
+	fgets(cmd, maxChar, stdin);	
 	char* temp = strtok(cmd, " \n\t");
 	char* split[100];
 

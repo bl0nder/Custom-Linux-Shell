@@ -373,7 +373,7 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			}
 			
 
-			char* dir = (char*) tempDir;
+			const char* dir = (const char*) tempDir;
 			
 			pid_t pid;
 			pid = fork();

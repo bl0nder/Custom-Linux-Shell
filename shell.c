@@ -359,10 +359,10 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 
 		else if (!strcmp(cmd, "ls")) {
 
-			if (argument[0] != NULL) {
-				printf("[!] This command does not take any arguments.\n");
-				return -1;
-			}
+			// if (argument[0] != NULL) {
+			// 	printf("[!] This command does not take any arguments.\n");
+			// 	return -1;
+			// }
 
 			char tempDir[100];
 			if (argument[0] == NULL) {

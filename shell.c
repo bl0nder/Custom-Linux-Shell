@@ -365,7 +365,13 @@ int executeCommand(char* split[], int splitLen, char p[]) {
 			}
 
 			char tempDir[100];
-			getcwd(tempDir, 100);
+			if (argument[0] == NULL) {
+				getcwd(tempDir, 100);
+			}
+			else {
+				strcpy(tempDir, (const char*) argument);
+			}
+			
 
 			const char* dir = tempDir;
 			

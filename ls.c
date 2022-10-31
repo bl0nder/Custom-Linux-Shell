@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
     char currentDir[100];
     getcwd(currentDir, 100);
 
-    directory = opendir(currentDir);
+    directory = opendir(argv[3]);
     readDir = readdir(directory);
 
     struct stat fileStats;

@@ -1,9 +1,3 @@
-shell: a.out
-	./a.out
-
-a.out: shell.c
-	gcc shell.c
-
 ls: ls.c
 	gcc ls.c -o ls
 
@@ -18,3 +12,11 @@ rm: rm.c
 
 cat: cat.c
 	gcc cat.c -o cat
+
+shell: a.out
+	./a.out
+
+a.out: shell.c
+	gcc shell.c
+
+
